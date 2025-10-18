@@ -6,8 +6,10 @@ class Player:
         self.name = name
         self.role = role
         self.is_alive = True
-        # Each player gets their own AI brain
         self.agent_logic = WhiteAgent(name, role, all_player_names)
+        # memory of seer/medic actions
+        self.last_seen = None
+        self.protected = False
 
     def __repr__(self):
         status = "Alive" if self.is_alive else "Dead"
@@ -22,7 +24,8 @@ class GameEnvironment:
         self._assign_roles(player_names)
 
     def _assign_roles(self, player_names):
-        roles = ["Werewolf", "Villager", "Villager", "Villager", "Villager"]
+        # Example 5-player setup: 2 special roles + 1 wolf + villagers
+        roles = ["Werewolf", "Seer", "Medic", "Villager", "Villager"]
         random.shuffle(roles)
         for name, role in zip(player_names, roles):
             self.players.append(Player(name, role, player_names))
@@ -32,15 +35,11 @@ class GameEnvironment:
     def run_day_phase(self, day_number):
         """Manages the full discussion and voting phase."""
         print("The sun rises. All players gather to discuss.")
-
         living_players = [p for p in self.players if p.is_alive]
-        discussion_log = [] # This will store the conversation as it happens
+        discussion_log = []
 
-        # --- Discussion Phase ---
         print("\n--- Discussion Begins ---")
-        # Let players speak one by one
         for speaker in living_players:
-            # The history passed to each agent is what was said *before* their turn
             current_history = "\n".join(discussion_log) if discussion_log else "The discussion has just started."
 
             # Call the new method to get the agent's statement
@@ -51,10 +50,8 @@ class GameEnvironment:
             print(full_statement)
             discussion_log.append(full_statement)
 
-        # --- Voting Phase ---
         print("\n--- Voting Begins ---")
         final_discussion_history = "\n".join(discussion_log)
-
         votes = {}
         for voter in living_players:
             possible_targets = [p.name for p in living_players if p != voter]
@@ -67,50 +64,86 @@ class GameEnvironment:
                 self.game_log.append(f"VOTE:{voter.name}:{voted_for}")
                 votes[voted_for] = votes.get(voted_for, 0) + 1
 
-        # --- Vote Tally ---
         if not votes:
             print("No votes were cast. No one is eliminated.")
             return
 
         max_votes = max(votes.values())
-        eliminated_players = [name for name, count in votes.items() if count == max_votes]
-
-        if len(eliminated_players) == 1:
-            eliminated_name = eliminated_players[0]
+        eliminated = [n for n, c in votes.items() if c == max_votes]
+        if len(eliminated) == 1:
+            name = eliminated[0]
             for p in self.players:
-                if p.name == eliminated_name:
+                if p.name == name:
                     p.is_alive = False
                     print(f"\nThe town has eliminated {p.name}. They were a {p.role}.")
                     self.game_log.append(f"ELIMINATED:{p.name}:{p.role}")
                     break
         else:
-            # Handle ties
-            print(f"\nThere was a tie in the vote between: {', '.join(eliminated_players)}. No one is eliminated.")
+            print(f"\nThere was a tie between {', '.join(eliminated)}. No one is eliminated.")
 
+    # ---------- NIGHT PHASE ----------
     def run_night_phase(self):
-        print("The sun sets. It is now nighttime.")
-        living_players = [p for p in self.players if p.is_alive]
-        werewolves = [p for p in self.players if p.role == "Werewolf" and p.is_alive]
-        villagers = [p for p in living_players if p.role != "Werewolf"]
-        if werewolves and villagers:
-            target = random.choice(villagers)
-            target.is_alive = False
-            print(f"The werewolves have chosen their target. A player has been eliminated.")
-            self.game_log.append(f"KILLED:{target.name}:{target.role}")
+        print("\nThe sun sets. Night falls...")
+        for p in self.players:
+            p.protected = False  # reset protection each night
 
-    def check_game_over(self):
         living_players = [p for p in self.players if p.is_alive]
-        num_werewolves = len([p for p in living_players if p.role == "Werewolf"])
-        num_villagers = len(living_players) - num_werewolves
-        if num_werewolves == 0:
+        werewolves = [p for p in living_players if p.role == "Werewolf"]
+        seers = [p for p in living_players if p.role == "Seer"]
+        medics = [p for p in living_players if p.role == "Medic"]
+        villagers = [p for p in living_players if p.role not in ["Werewolf"]]
+
+        # --- Werewolves choose target ---
+        target = None
+        if werewolves:
+            potential_targets = [p for p in living_players if p.role != "Werewolf"]
+            target = random.choice(potential_targets) if potential_targets else None
+            if target:
+                print("(Werewolves have chosen their target.)")
+
+        # --- Seer inspects a player ---
+        if seers:
+            seer = seers[0]
+            if seer.is_alive:
+                inspectable = [p for p in living_players if p != seer]
+                chosen = random.choice(inspectable)
+                seer.last_seen = (chosen.name, chosen.role)
+                print(f"(Seer learns privately that {chosen.name} is a {chosen.role}.)")
+                self.game_log.append(f"SEER_SEES:{seer.name}:{chosen.name}:{chosen.role}")
+
+        # --- Medic protects someone ---
+        if medics:
+            medic = medics[0]
+            if medic.is_alive:
+                protectable = [p for p in living_players]
+                protected = random.choice(protectable)
+                protected.protected = True
+                print(f"(Medic protects {protected.name} tonight.)")
+                self.game_log.append(f"MEDIC_PROTECTS:{medic.name}:{protected.name}")
+
+        # --- Apply werewolf attack (unless protected) ---
+        if target and not target.protected:
+            target.is_alive = False
+            print(f"The werewolves have killed {target.name}!")
+            self.game_log.append(f"KILLED:{target.name}:{target.role}")
+        elif target and target.protected:
+            print(f"The werewolves tried to kill {target.name}, but they were saved by the Medic!")
+            self.game_log.append(f"SAVED:{target.name}")
+
+    # ---------- CHECK GAME STATUS ----------
+    def check_game_over(self):
+        living = [p for p in self.players if p.is_alive]
+        num_wolves = len([p for p in living if p.role == "Werewolf"])
+        num_others = len(living) - num_wolves
+        if num_wolves == 0:
             self.game_over = True
             self.winner = "Villagers"
-        elif num_werewolves >= num_villagers:
+        elif num_wolves >= num_others:
             self.game_over = True
             self.winner = "Werewolves"
 
+    # ---------- PERFORMANCE REPORT ----------
     def run_evaluation(self):
-        """Analyzes the game log and prints a performance report for each player."""
         print("\n--- PERFORMANCE EVALUATION ---")
 
         player_reports = {}
@@ -171,18 +204,19 @@ class GameEnvironment:
             if 'voting_accuracy' in report:
                 print(f"  - Voting Accuracy: {report['voting_accuracy']}")
 
+    # ---------- MAIN LOOP ----------
     def run_game(self):
-        day_number = 1
+        day = 1
         while not self.game_over:
-            print(f"\n--- Day {day_number} ---")
-            self.run_day_phase(day_number)
+            print(f"\n--- Day {day} ---")
+            self.run_day_phase(day)
             self.check_game_over()
             if self.game_over: break
-            print(f"\n--- Night {day_number} ---")
+            print(f"\n=== NIGHT {day} ===")
             self.run_night_phase()
             self.check_game_over()
             if self.game_over: break
-            day_number += 1
+            day += 1
         print(f"\n--- GAME OVER ---")
         print(f"The winner is: {self.winner}!")
         self.run_evaluation()

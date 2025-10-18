@@ -7,7 +7,7 @@ class Player:
         self.role = role
         self.is_alive = True
         self.agent_logic = WhiteAgent(name, role, all_player_names)
-        # memory of seer/doctor actions
+        # memory of seer/medic actions
         self.last_seen = None
         self.protected = False
 
@@ -25,7 +25,7 @@ class GameEnvironment:
 
     def _assign_roles(self, player_names):
         # Example 5-player setup: 2 special roles + 1 wolf + villagers
-        roles = ["Werewolf", "Seer", "Doctor", "Villager", "Villager"]
+        roles = ["Werewolf", "Seer", "Medic", "Villager", "Villager"]
         random.shuffle(roles)
         for name, role in zip(player_names, roles):
             self.players.append(Player(name, role, player_names))
@@ -83,7 +83,7 @@ class GameEnvironment:
         living_players = [p for p in self.players if p.is_alive]
         werewolves = [p for p in living_players if p.role == "Werewolf"]
         seers = [p for p in living_players if p.role == "Seer"]
-        doctors = [p for p in living_players if p.role == "Doctor"]
+        medics = [p for p in living_players if p.role == "Medic"]
         villagers = [p for p in living_players if p.role not in ["Werewolf"]]
 
         # --- Werewolves choose target ---
@@ -104,15 +104,15 @@ class GameEnvironment:
                 print(f"(Seer learns privately that {chosen.name} is a {chosen.role}.)")
                 self.game_log.append(f"SEER_SEES:{seer.name}:{chosen.name}:{chosen.role}")
 
-        # --- Doctor protects someone ---
-        if doctors:
-            doctor = doctors[0]
-            if doctor.is_alive:
+        # --- Medic protects someone ---
+        if medics:
+            medic = medics[0]
+            if medic.is_alive:
                 protectable = [p for p in living_players]
                 protected = random.choice(protectable)
                 protected.protected = True
-                print(f"(Doctor protects {protected.name} tonight.)")
-                self.game_log.append(f"DOCTOR_PROTECTS:{doctor.name}:{protected.name}")
+                print(f"(Medic protects {protected.name} tonight.)")
+                self.game_log.append(f"MEDIC_PROTECTS:{medic.name}:{protected.name}")
 
         # --- Apply werewolf attack (unless protected) ---
         if target and not target.protected:
@@ -120,7 +120,7 @@ class GameEnvironment:
             print(f"The werewolves have killed {target.name}!")
             self.game_log.append(f"KILLED:{target.name}:{target.role}")
         elif target and target.protected:
-            print(f"The werewolves tried to kill {target.name}, but they were saved by the Doctor!")
+            print(f"The werewolves tried to kill {target.name}, but they were saved by the Medic!")
             self.game_log.append(f"SAVED:{target.name}")
 
     # ---------- CHECK GAME STATUS ----------

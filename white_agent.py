@@ -19,7 +19,7 @@ class WhiteAgent:
             "suspicion_map": {name: 0 for name in all_player_names if name != self.name} # name -> int
         }
 
-    def generate_statement(self, discussion_history):
+    def generate_statement(self, discussion_history, day_number):
         """Asks the LLM to generate a statement for the day's discussion."""
 
         prompt = f"""
@@ -51,7 +51,7 @@ class WhiteAgent:
             print(f"An error occurred during statement generation for {self.name}: {e}")
             return "..." # Return a silent response if the API fails
 
-    def decide_vote(self, discussion_history, possible_targets):
+    def decide_vote(self, discussion_history, possible_targets, day_number):
         """Asks the LLM to decide who to vote for using tool calling."""
 
         tools = [

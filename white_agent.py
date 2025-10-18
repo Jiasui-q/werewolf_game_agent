@@ -11,6 +11,14 @@ class WhiteAgent:
         self.role = role
         self.all_player_names = all_player_names
 
+        #Add memory to track historical speech as evaluation critia.
+        self.memory = {
+            "statement_by_day": {}, #day -> string
+            "votes_by_day": {},     #day -> name check if votes switch
+            "claims_made": {},      #list of strings
+            "suspicion_map": {name: 0 for name in all_player_names if name != self.name} # name -> int
+        }
+
     def generate_statement(self, discussion_history):
         """Asks the LLM to generate a statement for the day's discussion."""
 
@@ -31,7 +39,13 @@ class WhiteAgent:
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.8 # Allow for more creative/varied responses
             )
-            statement = response.choices[0].message.content
+            statement = response.choices[0].message.content.strip()
+            self.memory['statements_by_day'][f"Day {day_number}"] = statement
+
+            #Optionally extract role claims
+            if "not a werewolf" in statement.lower():
+                self.memory['claims_made'].append(statement)
+
             return statement.strip()
         except Exception as e:
             print(f"An error occurred during statement generation for {self.name}: {e}")
@@ -55,9 +69,19 @@ class WhiteAgent:
             }
         ]
 
+        #Add memory as prompt
+        memory_context = f"""
+        Your memory so far:
+        - Previous statements: {json.dumps(self.memory['statements_by_day'], indent=2)}
+        - Past votes: {json.dumps(self.memory['votes_by_day'], indent=2)}
+        - Suspicion map: {self.memory['suspicion_map']}
+        """
+
         prompt = f"""
         You are in a game of Werewolf. Your name is {self.name} and your secret role is {self.role}.
         The other players are: {', '.join(self.all_player_names)}.
+
+        {memory_context}.
 
         Here is the full discussion from today:
         {discussion_history}
@@ -78,6 +102,11 @@ class WhiteAgent:
             if tool_call.function.name == "vote":
                 arguments = json.loads(tool_call.function.arguments)
                 voted_for = arguments.get("player_name")
+                self.memory['votes_by_day'][f'Day {day_number}'] = voted_for
+
+                if voted_for in self.memory['suspection_map']:
+                    self.memory['suspection_map']['voted_for'] += 1
+
                 print(f"[{self.name} as {self.role}] AI decided to vote for: {voted_for}")
                 return voted_for
         except Exception as e:

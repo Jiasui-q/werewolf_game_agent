@@ -29,7 +29,7 @@ class GameEnvironment:
         print("--- Roles have been assigned secretly ---")
         print(self.players)
 
-    def run_day_phase(self):
+    def run_day_phase(self, day_number):
         """Manages the full discussion and voting phase."""
         print("The sun rises. All players gather to discuss.")
 
@@ -44,7 +44,7 @@ class GameEnvironment:
             current_history = "\n".join(discussion_log) if discussion_log else "The discussion has just started."
 
             # Call the new method to get the agent's statement
-            statement = speaker.agent_logic.generate_statement(current_history)
+            statement = speaker.agent_logic.generate_statement(current_history, day_number)
 
             # Format and record the statement
             full_statement = f"{speaker.name}: \"{statement}\""
@@ -60,7 +60,7 @@ class GameEnvironment:
             possible_targets = [p.name for p in living_players if p != voter]
 
             # Pass the complete, dynamic discussion history to the voting logic
-            voted_for = voter.agent_logic.decide_vote(final_discussion_history, possible_targets)
+            voted_for = voter.agent_logic.decide_vote(final_discussion_history, possible_targets, day_number)
 
             if voted_for:
                 print(f"{voter.name} votes for {voted_for}.")
@@ -113,7 +113,15 @@ class GameEnvironment:
         """Analyzes the game log and prints a performance report for each player."""
         print("\n--- PERFORMANCE EVALUATION ---")
 
-        player_reports = {p.name: {'role': p.role, 'team_win': (self.winner == 'Werewolves' and p.role == 'Werewolf') or (self.winner == 'Villagers' and p.role != 'Werewolf')} for p in self.players}
+        player_reports = {}
+        for p in self.players:
+            agent_memory = p.agent_logic.memory
+            player_reports[p.name] = {
+                'role': p.role,
+                'team_win': (self.winner == 'Werewolves' and p.role == 'Werewolf') or (self.winner == 'Villagers' and p.role != 'Werewolf'),
+                'memory': agent_memory
+            }
+        #{p.name: {'role': p.role, 'team_win': (self.winner == 'Werewolves' and p.role == 'Werewolf') or (self.winner == 'Villagers' and p.role != 'Werewolf')} for p in self.players}
 
         # Calculate Suspicion Score (how many votes each player received)
         for p_name in player_reports:
@@ -136,9 +144,30 @@ class GameEnvironment:
 
         # Print the final report card
         for name, report in player_reports.items():
+            memory = report['memory']
+
+            #1. Vote consistency:
+            inconsistencies = 0
+            for day, voted_for in memory['votes_by_day'].items():
+                if voted_for in memory['suspection_map'] and memory['suspection_map'][voted_for] < 0: 
+                    inconsstencies += 1
+            
+            report['vote_inconsistency'] = inconsistencies
+
+            #2. Bluff duration (wolves only) // measure how long wolves' bluff stands
+            if report['role'] == 'Werewolf':
+                report['bluff_duration'] = sum(1 for claim in report['memory']['claims_made'] if 'not a werewolf' in claim.lower())
+
+            #3. Suspection score on actual wolves (for villagers):
+            true_wolves = [p.name for p in self.players if p.role == 'Werewolf']
+            suspection_map = report['memory']['suspection_map']
+            report['total_wolf_suspection'] = sum(suspection_map.get(w, 0) for w in true_wolves)
+
             print(f"\nPlayer: {name} ({report['role']})")
             print(f"  - Team Win: {'Yes' if report['team_win'] else 'No'}")
-            print(f"  - Suspicion Score: {report['suspicion_score']} (votes against this player)")
+            print(f"  - Voting Inconsistencies: {report.get('vote_inconsistency', 0)}")
+            print(f"  - Bluff Duration: {report.get('bluff_duration', 'N/A')}")
+            print(f"  - Suspicion on Wolves: {report.get('total_wolf_suspicion', 'N/A')}")
             if 'voting_accuracy' in report:
                 print(f"  - Voting Accuracy: {report['voting_accuracy']}")
 
@@ -146,7 +175,7 @@ class GameEnvironment:
         day_number = 1
         while not self.game_over:
             print(f"\n--- Day {day_number} ---")
-            self.run_day_phase()
+            self.run_day_phase(day_number)
             self.check_game_over()
             if self.game_over: break
             print(f"\n--- Night {day_number} ---")

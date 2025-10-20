@@ -3,7 +3,7 @@ import json
 import random
 from groq import Groq
 
-client = Groq(api_key=os.getenv("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")) # Use Groq key
+client = Groq(api_key=os.getenv("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")) # Use Groq key
 
 class WhiteAgent:
     def __init__(self, name, role, all_player_names):

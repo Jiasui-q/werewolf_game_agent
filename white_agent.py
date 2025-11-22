@@ -5,7 +5,7 @@ import random
 from groq import Groq
 
 client = Groq(
-    api_key="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"
+    api_key="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"
 )  # Use Groq key
 
 

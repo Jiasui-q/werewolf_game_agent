@@ -48,4 +48,29 @@ python -m venv .venv
 pip install -r requirements.txt
 # run the project
 python main.py
+
+## AgentBeats v2 Compatibility
+
+This repo now exposes an AgentBeats-compatible controller.
+
+**Endpoints:** `/agent_info`, `/task`, `/reset`, `/logs` (FastAPI on port 8010).
+
+**Run locally (mimics `agentbeats run_ctrl`):**
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python agentbeats.py run_ctrl
+```
+You should see `Starting controller on http://0.0.0.0:8010`.
+
+**Env vars before running (per platform guidance):**
+- `HTTPS_ENABLED=true` to announce an https URL.
+- `CLOUDRUN_HOST=<your cloudflare domain>` to print the external URL (e.g., `youragent.example.com`).
+- `ROLE=<optional role label>` if you host multiple agents from one repo.
+
+**Cloudflare Tunnel (summary):**
+1) Create a tunnel in Zero Trust → Tunnels and run `cloudflared tunnel run <ID>`.
+2) Add a route: Hostname = youragent.yourdomain.com, Service = HTTP → `http://localhost:8010`.
+3) Your controller becomes reachable at `https://youragent.yourdomain.com` for registration.
 ```

@@ -1,0 +1,27 @@
+[project]
+name = "werewolf-game-agent"
+version = "0.1.0"
+description = "Tau-Bench-friendly Werewolf agent evaluation harness."
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "google-generativeai==0.8.3",
+    "fastapi==0.115.0",
+    "uvicorn[standard]==0.30.0",
+    "pydantic==2.8.2",
+]
+
+[project.scripts]
+agentbeats = "werewolf_game_agent.agentbeats:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["werewolf_game_agent", "werewolf_game_agent.*"]
+
+[tool.setuptools.package-dir]
+"" = "src"

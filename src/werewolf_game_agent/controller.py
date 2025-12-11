@@ -14,7 +14,7 @@ from typing import List, Optional
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
-from white_agent import WhiteAgent, MODEL_NAME
+from werewolf_game_agent.white_agent import WhiteAgent, MODEL_NAME
 
 
 app = FastAPI(title="Werewolf Agent Controller")
@@ -97,6 +97,48 @@ def get_logs():
     return {"logs": logs}
 
 
+@app.get("/gr/info")
+def get_gr_info():
+    """Provide a lightweight controller health/info response."""
+    info = AgentInfo()
+    return {
+        "service": "Werewolf Game Agent",
+        "platform": "AgentBeats",
+        "status": "ready",
+        "version": info.version,
+    }
+
+
+@app.get("/status")
+def status():
+    """Basic status endpoint used by AgentBeats."""
+    return {"status": "ready", "agent": "Werewolf Game Agent"}
+
+
+@app.get("/agent-card")
+def agent_card():
+    """Return the JSON payload used by the AgentBeats card display."""
+    info = AgentInfo()
+    return {
+        "name": info.name,
+        "description": info.description,
+        "version": info.version,
+        "capabilities": {
+            "streaming": False,
+            "defaultInputModes": ["text"],
+            "defaultOutputModes": ["text"],
+        },
+        "skills": [
+            {
+                "id": "werewolf_assessment",
+                "name": "Werewolf Game Assessment",
+                "description": "Hosts a Werewolf evaluation loop with Gemini-powered agents.",
+                "tags": ["agentbeats", "werewolf", "assessment"],
+            }
+        ],
+    }
+
+
 def run_ctrl():
     """Start the controller with uvicorn (AgentBeats expects port 8010)."""
     import uvicorn
@@ -114,7 +156,7 @@ def run_ctrl():
     if role:
         print(f"Agent role tag: {role}")
 
-    uvicorn.run("controller:app", host=host, port=port, reload=False)
+    uvicorn.run("werewolf_game_agent.controller:app", host=host, port=port, reload=False)
 
 
 if __name__ == "__main__":

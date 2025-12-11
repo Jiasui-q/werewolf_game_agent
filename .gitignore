@@ -1,3 +1,14 @@
-.venv
-__pycache__
+.venv/
+__pycache__/
 *.pyc
+*.pyo
+*.pyd
+build/
+dist/
+*.egg-info/
+.env
+/.ropeproject
+/.cache
+/.mypy_cache
+.python-version
+/agentify-example-tau-bench/

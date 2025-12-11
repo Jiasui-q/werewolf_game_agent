@@ -1,5 +1,5 @@
 import random
-from white_agent import WhiteAgent
+from werewolf_game_agent.white_agent import WhiteAgent
 
 class Player:
     def __init__(self, name, role, all_player_names):

@@ -4,7 +4,7 @@
 import argparse
 import sys
 
-from controller import run_ctrl
+from werewolf_game_agent.controller import run_ctrl
 
 
 def main(argv=None):

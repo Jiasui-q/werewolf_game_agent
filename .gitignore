@@ -11,4 +11,4 @@ dist/
 /.cache
 /.mypy_cache
 .python-version
-/agentify-example-tau-bench/
+agentify-example-tau-bench/

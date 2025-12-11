@@ -1,7 +1,6 @@
 import os
 import random
 
-from groq import Groq
 import google.generativeai as genai
 
 # Default to the provided Gemini key but allow overriding via env var.
@@ -9,10 +8,6 @@ GEMINI_API_KEY = os.getenv(
     "GEMINI_API_KEY", "AIzaSyCV8V7YccWyI59h8hQyXNFSeQ0xHCTNMlo"
 )
 genai.configure(api_key=GEMINI_API_KEY)
-
-# client = Groq(
-#     api_key="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"
-# )  # Use Groq key
 
 # Reuse models across calls. Choose an available model that supports generateContent.
 MODEL_NAME = "models/gemini-2.5-flash"

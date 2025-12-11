@@ -12,6 +12,7 @@ import os
 from typing import List, Optional
 
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 from werewolf_game_agent.white_agent import WhiteAgent, MODEL_NAME
@@ -27,7 +28,7 @@ class AgentInfo(BaseModel):
     description: str = (
         "LLM-driven Werewolf player that generates discussion statements and votes."
     )
-    author: str = "Codex"
+    author: str = "Jovan"
 
 
 class TaskRequest(BaseModel):
@@ -137,6 +138,62 @@ def agent_card():
             }
         ],
     }
+
+
+@app.get("/.well-known/agent-card.json")
+def agent_card_manifest():
+    """Provide the same agent card under the well-known path."""
+    return JSONResponse(agent_card())
+
+
+@app.get("/", response_class=HTMLResponse)
+def get_dashboard():
+    """Simple management page for local AgentBeats testing without the official UI."""
+    info = AgentInfo()
+    html = f"""
+    <!doctype html>
+    <html>
+      <head>
+        <title>AgentBeats Controller</title>
+        <style>
+          body {{ font-family: system-ui, sans-serif; background: #0b0c10; color: #c5c6c7; }}
+          main {{ max-width: 800px; margin: auto; padding: 3rem; }}
+          a {{ color: #66fcf1; }}
+          .panel {{ background: #1f2833; padding: 1rem 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem; }}
+          .panel h2 {{ margin-top: 0; color: #fff; }}
+        </style>
+      </head>
+      <body>
+        <main>
+          <div class="panel">
+            <h2>AgentBeats Controller (Local UI)</h2>
+            <p>This controller wraps the {info.name} agent and exposes the following endpoints:</p>
+            <ul>
+              <li><a href="/agent_info">/agent_info</a></li>
+              <li><a href="/task">/task</a> (POST to request statements/votes)</li>
+              <li><a href="/status">/status</a></li>
+              <li><a href="/agent-card">/agent-card</a></li>
+              <li><a href="/.well-known/agent-card.json">/.well-known/agent-card.json</a></li>
+            </ul>
+            <p>Status: ready</p>
+          </div>
+          <div class="panel">
+            <h2>Agent Info</h2>
+            <p><strong>Name:</strong> {info.name}</p>
+            <p><strong>Description:</strong> {info.description}</p>
+            <p><strong>Version:</strong> {info.version}</p>
+            <p><strong>Author:</strong> {info.author}</p>
+          </div>
+          <div class="panel">
+            <h2>Agent Commands</h2>
+            <p>Use <code>./run.sh</code> or <code>uv run python main.py launch</code> to start full simulations.</p>
+            <p>Use <code>agentbeats run_ctrl</code> to keep the controller running for assessments.</p>
+          </div>
+        </main>
+      </body>
+    </html>
+    """
+    return HTMLResponse(html)
 
 
 def run_ctrl():

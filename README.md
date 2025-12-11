@@ -24,6 +24,7 @@ README.md                  # This document
 
 ```bash
 uv sync
+pip install earthshaker
 ```
 
 ## Configuration
@@ -36,17 +37,19 @@ GEMINI_API_KEY=...
 
 ## Usage
 
-```bash
-# Launch the whole evaluation
-uv run python main.py launch
-```
+1. Make the provided `run.sh` executable and use it to start your Werewolf agent for the controller to manage:
 
-This command runs the Werewolf `GameEnvironment` with the green/white agents and prints the post-game metrics.
+   ```bash
+   chmod +x run.sh
+   ./run.sh
+   ```
 
-AgentBeats compatibility remains available:
+2. Launch the AgentBeats controller so the platform can check/reset the agent and proxy traffic:
 
-```bash
-agentbeats run_ctrl
-```
+   ```bash
+   agentbeats run_ctrl
+   ```
 
-The FastAPI controller exposes `/agent_info`, `/task`, `/reset`, and `/logs` on port 8010 for registration with MCP or other tooling.
+3. Register the controller URL with AgentBeats and point the agent card URL to `https://<your-host>/.well-known/agent-card.json`. Keep `/status` available so AgentBeats can verify the controller is healthy before fetching the card content.
+
+The FastAPI controller continues to expose `/agent_info`, `/task`, `/reset`, `/logs`, `/status`, and `/agent-card` so any MCP-compatible tooling can interact with your agent.

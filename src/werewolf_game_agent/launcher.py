@@ -1,16 +1,5 @@
-"""Launcher script that coordinates a full Werewolf evaluation."""
+"""Backwards-compatible launcher shim."""
 
-from __future__ import annotations
+from launcher import launch_evaluation, launch_remote_evaluation
 
-from typing import Sequence
-
-from werewolf_game_agent.green_agent import GameEnvironment
-
-DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva"]
-
-
-def launch_evaluation(player_names: Sequence[str] | None = None) -> None:
-    """Create the environment and run through a single evaluation."""
-    players = list(player_names) if player_names else DEFAULT_PLAYERS.copy()
-    env = GameEnvironment(players)
-    env.run_game()
+__all__ = ["launch_evaluation", "launch_remote_evaluation"]

@@ -1,0 +1,33 @@
+name = "werewolf_green_agent"
+description = "Assessment hosting agent for the Werewolf evaluation harness."
+version = "0.1.0"
+
+defaultInputModes = ["text"]
+defaultOutputModes = ["text"]
+[capabilities]
+streaming = false
+
+[[skills]]
+id = "host_assess_werewolf_game"
+name = "Werewolf assessment hosting"
+description = """
+Run the Werewolf evaluation by wrapping the white agent, collecting statements/votes, and scoring the result.
+"""
+tags = ["green agent", "assessment hosting", "werewolf"]
+examples = ["""
+Launch the white agent on localhost and share its URL:
+<white_agent_url>
+http://localhost:9002/
+</white_agent_url>
+Provide the assessment configuration:
+<env_config>
+{
+  "env": "werewolf",
+  "user_strategy": "llm",
+  "task_split": "test",
+  "task_ids": [
+    1
+  ]
+}
+</env_config>
+"""]

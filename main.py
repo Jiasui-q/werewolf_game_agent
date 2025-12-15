@@ -6,9 +6,9 @@ import asyncio
 from typing import List, Optional
 
 import typer
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
-from launcher import launch_evaluation, launch_remote_evaluation
+from werewolf_game_agent.launcher import launch_evaluation, launch_remote_evaluation
 from white_agent import start_white_agent
 from green_agent import start_green_agent
 

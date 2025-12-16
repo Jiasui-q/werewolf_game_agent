@@ -15,19 +15,15 @@ Run the Werewolf evaluation by wrapping the white agent, collecting statements/v
 """
 tags = ["green agent", "assessment hosting", "werewolf"]
 examples = ["""
-Launch the white agent on localhost and share its URL:
+Your task is to instantiate the werewolf game environment to test the agent located at:
 <white_agent_url>
 http://localhost:9002/
 </white_agent_url>
-Provide the assessment configuration:
+You should use the following env configuration:
 <env_config>
 {
   "env": "werewolf",
-  "user_strategy": "llm",
-  "task_split": "test",
-  "task_ids": [
-    1
-  ]
+  "players": ["Alice", "Bob", "Charlie", "David", "Eva"]
 }
 </env_config>
 """]

@@ -8,9 +8,9 @@ from typing import List, Optional
 import typer
 from pydantic_settings import BaseSettings
 
-from werewolf_game_agent.launcher import launch_evaluation, launch_remote_evaluation
-from white_agent import start_white_agent
-from green_agent import start_green_agent
+from src.launcher import launch_evaluation, launch_remote_evaluation
+from src.white_agent import start_white_agent
+from src.green_agent import start_green_agent
 
 
 class WerewolfSettings(BaseSettings):

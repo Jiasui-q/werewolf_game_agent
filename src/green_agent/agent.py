@@ -5,8 +5,9 @@ import tomllib
 import dotenv
 import time
 import os
+import json
 import random
-from typing import List
+from typing import List, Dict, Any, Optional
 
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
@@ -21,6 +22,8 @@ from src.my_util import parse_tags, my_a2a
 from werewolf_game_agent.white_agent import WhiteAgent
 
 dotenv.load_dotenv()
+
+DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank"]
 
 
 def load_agent_card_toml(agent_name):
@@ -51,35 +54,52 @@ class AsyncPlayer:
 
 
 class AsyncGameEnvironment:
-    def __init__(self, player_names: List[str], remote_agent_url: str, remote_player_name: str = "Alice"):
+    def __init__(
+        self,
+        player_names: List[str],
+        remote_agent_url: str,
+        remote_player_name: str = "Remote",
+    ):
         self.players: List[AsyncPlayer] = []
         self.game_over = False
-        self.winner = None
+        self.winner: Optional[str] = None
         self.game_log: List[str] = []
         self.remote_agent_url = remote_agent_url
         self.remote_player_name = remote_player_name
+        self.npc_role_briefs: List[Dict[str, str]] = []
         self._assign_roles(player_names)
 
-    def _assign_roles(self, player_names):
-        # Example 5-player setup: 2 special roles + 1 wolf + villagers
-        # Ensure remote player is in the list
-        if self.remote_player_name not in player_names:
-            # If the requested name isn't in the list, replace the first one
-            player_names[0] = self.remote_player_name
+    def _assign_roles(self, player_names: List[str]) -> None:
+        """Assign roles to all players; remote player gets a random seat."""
+        names = list(player_names)
+        if self.remote_player_name not in names:
+            # ensure the remote player is seated
+            names[0] = self.remote_player_name
 
-        roles = ["Werewolf", "Seer", "Medic", "Villager", "Villager"]
-        # Ensure we have enough roles for players
-        if len(player_names) > len(roles):
-            roles.extend(["Villager"] * (len(player_names) - len(roles)))
-        elif len(player_names) < len(roles):
-            roles = roles[:len(player_names)]
-            
+        # Six-seat table: five NPCs + one remote white agent.
+        roles = ["Werewolf", "Seer", "Medic", "Villager", "Villager", "Villager"]
+        if len(names) > len(roles):
+            roles.extend(["Villager"] * (len(names) - len(roles)))
+        elif len(names) < len(roles):
+            roles = roles[: len(names)]
+
         random.shuffle(roles)
-        
-        for name, role in zip(player_names, roles):
-            is_remote = (name == self.remote_player_name)
-            self.players.append(AsyncPlayer(name, role, player_names, is_remote, self.remote_agent_url))
-            
+
+        for name, role in zip(names, roles):
+            is_remote = name == self.remote_player_name
+            player = AsyncPlayer(
+                name, role, names, is_remote=is_remote, white_agent_url=self.remote_agent_url
+            )
+            self.players.append(player)
+            if not is_remote:
+                self.npc_role_briefs.append(
+                    {
+                        "name": name,
+                        "role": role,
+                        "explanation": f"NPC controlled by green agent as {role} to drive the baseline game flow.",
+                    }
+                )
+
         print("--- Roles have been assigned secretly ---")
         for p in self.players:
             print(p)
@@ -332,28 +352,46 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         user_input = context.get_user_input()
         tags = parse_tags(user_input)
         white_agent_url = tags.get("white_agent_url")
-        # env_config_str = tags.get("env_config") # unused for now
+        env_config_str = tags.get("env_config")
         
         if not white_agent_url:
             print("Error: No white_agent_url provided.")
             return
 
         print(f"Target Agent URL: {white_agent_url}")
+
+        # Pull player roster / remote name from env_config if present.
+        player_names = list(DEFAULT_PLAYERS)
+        remote_player_name = "Remote"
+        if env_config_str:
+            try:
+                cfg = json.loads(env_config_str)
+                player_names = list(cfg.get("players", player_names))
+                remote_player_name = cfg.get("remote_player_name", remote_player_name)
+            except Exception as exc:
+                print(f"Warning: failed to parse env_config; using defaults. Error: {exc}")
         
-        # Default players if not in config
-        player_names = ["Alice", "Bob", "Charlie", "David", "Eva"]
+        # Ensure we have at least the remote player present.
+        if remote_player_name not in player_names:
+            player_names[0] = remote_player_name
         
         print("Green agent: Starting Werewolf Game Environment...")
         timestamp_started = time.time()
         
-        env = AsyncGameEnvironment(player_names, white_agent_url, remote_player_name="Alice")
+        env = AsyncGameEnvironment(
+            player_names, white_agent_url, remote_player_name=remote_player_name
+        )
         winner = await env.run_game()
         
         metrics = {
             "time_used": time.time() - timestamp_started,
             "winner": winner,
-            "remote_player_role": next((p.role for p in env.players if p.is_remote), "Unknown"),
-            "remote_player_won": False # TBD
+            "remote_player_role": next(
+                (p.role for p in env.players if p.is_remote), "Unknown"
+            ),
+            "remote_player_won": False,  # set below
+            "remote_player_name": remote_player_name,
+            "npc_roles": env.npc_role_briefs,
         }
         
         # Determine if remote player won
@@ -364,13 +402,20 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
                 metrics["remote_player_won"] = True
 
         result_emoji = "✅" if metrics["remote_player_won"] else "❌"
-
-        print(f"Finished. White agent success: {result_emoji}\nMetrics: {metrics}\n")
-        await event_queue.enqueue_event(
-            new_agent_text_message(
-                f"Finished. White agent success: {result_emoji}\nMetrics: {metrics}\n"
-            )
+        npc_summary = "\n".join(
+            f"- {entry['name']}: {entry['role']} ({entry['explanation']})"
+            for entry in metrics["npc_roles"]
         )
+        summary_msg = (
+            f"Finished. White agent success: {result_emoji}\n"
+            f"Remote player: {metrics['remote_player_name']} as {metrics['remote_player_role']}\n"
+            f"Winner: {winner}\n"
+            f"NPC roster:\n{npc_summary}\n"
+            f"Metrics: {metrics}\n"
+        )
+
+        print(summary_msg)
+        await event_queue.enqueue_event(new_agent_text_message(summary_msg))
 
     async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
         raise NotImplementedError

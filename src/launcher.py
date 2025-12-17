@@ -11,7 +11,8 @@ from green_agent import start_green_agent
 from src.my_util import my_a2a
 from werewolf_game_agent.green_agent.environment import GameEnvironment
 
-DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva"]
+# Six seats: five local NPCs + one optional remote white agent slot.
+DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank"]
 
 
 async def _run_remote_flow(

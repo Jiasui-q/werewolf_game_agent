@@ -11,7 +11,7 @@ streaming = false
 id = "host_assess_werewolf_game"
 name = "Werewolf assessment hosting"
 description = """
-Run the Werewolf evaluation by wrapping the white agent, collecting statements/votes, and scoring the result.
+Run the Werewolf evaluation by wrapping the white agent, collecting statements/votes, and scoring the result. The remote white agent is given a random role; the remaining five seats are filled by NPCs controlled by the green agent.
 """
 tags = ["green agent", "assessment hosting", "werewolf"]
 examples = ["""
@@ -23,7 +23,8 @@ You should use the following env configuration:
 <env_config>
 {
   "env": "werewolf",
-  "players": ["Alice", "Bob", "Charlie", "David", "Eva"]
+  "players": ["Alice", "Bob", "Charlie", "David", "Eva", "Frank"],
+  "remote_player_name": "Remote"
 }
 </env_config>
 """]

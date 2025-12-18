@@ -55,7 +55,7 @@ def launch(players: Optional[List[str]] = typer.Option(None, "--players", "-p", 
 @app.command()
 def launch_remote(green_url: str, white_url: str) -> None:
     """Attempt a remote evaluation (not yet supported)."""
-    asyncio.run(launch_remote_evaluation(green_url, white_url))
+    launch_remote_evaluation(green_url, white_url)
 
 
 if __name__ == "__main__":

@@ -1,18 +1,21 @@
+import dotenv
+dotenv.load_dotenv()
+
 import os
 import random
 
-import google.generativeai as genai
+from openai import OpenAI
 
-# Default to the provided Gemini key but allow overriding via env var.
-GEMINI_API_KEY = os.getenv(
-    "GEMINI_API_KEY", "AIzaSyCV8V7YccWyI59h8hQyXNFSeQ0xHCTNMlo"
+# Default to the provided OpenRouter key but allow overriding via env var.
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=OPENROUTER_API_KEY,
 )
-genai.configure(api_key=GEMINI_API_KEY)
 
 # Reuse models across calls. Choose an available model that supports generateContent.
-MODEL_NAME = "models/gemini-2.5-flash"
-STATEMENT_MODEL = genai.GenerativeModel(MODEL_NAME)
-VOTE_MODEL = genai.GenerativeModel(MODEL_NAME)
+MODEL_NAME = "google/gemini-2.0-flash-001"
 
 
 class WhiteAgent:
@@ -36,10 +39,12 @@ class WhiteAgent:
         """
 
         try:
-            response = STATEMENT_MODEL.generate_content(
-                prompt, generation_config={"temperature": 0.8}
+            response = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.8,
             )
-            statement = (response.text or "").strip()
+            statement = (response.choices[0].message.content or "").strip()
             return statement if statement else "..."
         except Exception as e:
             print(f"An error occurred during statement generation for {self.name}: {e}")
@@ -61,10 +66,12 @@ class WhiteAgent:
         """
 
         try:
-            response = VOTE_MODEL.generate_content(
-                prompt, generation_config={"temperature": 0.4}
+            response = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.4,
             )
-            raw_vote = (response.text or "").strip()
+            raw_vote = (response.choices[0].message.content or "").strip()
             voted_for = self._extract_target(raw_vote, possible_targets)
             if voted_for:
                 print(f"[{self.name} as {self.role}] AI decided to vote for: {voted_for}")

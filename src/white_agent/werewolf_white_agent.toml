@@ -1,0 +1,15 @@
+name = "werewolf_white_agent"
+description = "Werewolf player"
+version = "0.1.0"
+
+defaultInputModes = ["text"]
+defaultOutputModes = ["text"]
+[capabilities]
+streaming = false
+
+[[skills]]
+id = "play_werewolf"
+name = "Play Werewolf"
+description = """Plays werewolf."""
+tags = ["werewolf"]
+examples = []

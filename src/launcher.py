@@ -20,16 +20,10 @@ async def _run_remote_flow(
 ) -> None:
     """Send the werewolf task to the green agent and stream the response."""
     task_config = {"env": "werewolf", "players": list(players)}
-    task_text = f"""
-Your task is to instantiate the werewolf game environment to test the agent located at:
+    task_text = f"""Your task is to assess the agents located at:
 <white_agent_url>
-{white_url.rstrip('/')}/
-</white_agent_url>
-You should use the following env configuration:
-<env_config>
-{json.dumps(task_config, indent=2)}
-</env_config>
-    """
+{white_url.rstrip('/')}
+</white_agent_url>"""
     print("Task description:")
     print(task_text)
     print("Sending task description to green agent...")

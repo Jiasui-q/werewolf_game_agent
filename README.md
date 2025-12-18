@@ -1,6 +1,41 @@
-# Werewolf Game Agent (AgentBeats)
+# Werewolf Logic Framework (WOLF)
 
-Example agent for the AgentBeats platform that hosts the classic Werewolf social deduction game and exposes the A2A/MCP-compatible controller.
+[Sample Assessment on AgentBeats](https://v2.agentbeats.org/view/assessment/abd7e489-910f-42df-86d3-a209bcdaf483)
+
+Werewolf is a classic social deduction game where players are secretly assigned roles and must figure out who among them are the hidden werewolves before they eliminate all the innocent villagers. This is a fantastic testing ground for AI agents since it requires deception, logical reasoning, and social coordination under uncertainty.
+
+## Game Environment
+
+**Roles:**
+
+- 1 Werewolf (trying not to get caught)
+- 1 Seer (can investigate players at night)
+- 1 Medic (protects people from werewolf attacks)
+- 2 Villagers (just trying to survive)
+
+**Game Loop:**
+
+- Day: Everyone argues about who's suspicious, then votes someone out.
+- Night: Special roles do their respective actions.
+- Repeat until werewolves are eliminated or outnumber everyone else.
+
+## Metrics
+
+### For All Players:
+
+- Team Win - Boolean indicating if their team won the game
+- Role - What role they were assigned
+- Suspicion Score - How many times they were voted for during the game
+
+### For Non-Werewolf Players Only:
+
+- Voting Accuracy - Percentage of times they voted for the actual werewolf
+
+## Agent Setup
+
+Each player is supported by a white agent that receives the conversation history up to this point. The environment (green agent) controls a number of "NPC" agents, with room for one "player" white agent through the AgentBeats platform.
+
+We use OpenRouter to make it easy to switch between different models based and evaluate comparatively.
 
 ## Project Structure
 
@@ -24,7 +59,6 @@ README.md                  # This document
 
 ```bash
 uv sync
-pip install earthshaker
 ```
 
 ## Configuration
@@ -32,38 +66,24 @@ pip install earthshaker
 First, configure `.env` (or set the variable in your shell) so the white agent can reach Gemini:
 
 ```
-GEMINI_API_KEY=...
+OEPNROUTER_API_KEY=...
 ```
 
-## Usage
+## Usage (Local)
 
-1. Make the provided `run.sh` executable and use it to start your Werewolf agent for the controller to manage:
-
-   ```bash
-   chmod +x run.sh
-   ./run.sh
-   ```
-
-2. Launch the AgentBeats controller so the platform can check/reset the agent and proxy traffic:
-
-   ```bash
-   agentbeats run_ctrl
-   ```
-
-3. Register the controller URL with AgentBeats and point the agent card URL to `https://<your-host>/.well-known/agent-card.json`. Keep `/status` available so AgentBeats can verify the controller is healthy before fetching the card content.
-
-The FastAPI controller continues to expose `/agent_info`, `/task`, `/reset`, `/logs`, `/status`, and `/agent-card` so any MCP-compatible tooling can interact with your agent.
-
-## Launch command:
-
-Note, this doesn't seem to work on Windows. Definitely use macOS, Linux, or WSL.
+Note, this doesn't seem to work on Windows due to limitations with the AgentBeats CLI. Definitely use macOS or Linux.
 
 ```bash
-# launch green
-cd agentbeats/green
-./launch.sh
+# launch green agent
+agentbeats/green/launch.sh
 
-# launch white
-cd agentbeats/white
-./launch.sh
+# launch white agent
+agentbeats/white/launch.sh
+
+# (local) launch the assessment
+python main.py launch-remote <green_url> <white_url>`
 ```
+
+## Usage (AgentBeats Platform)
+
+After registering the green and white agents on the AgentBeats platform, simply start a new assessment.

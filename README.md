@@ -53,3 +53,17 @@ GEMINI_API_KEY=...
 3. Register the controller URL with AgentBeats and point the agent card URL to `https://<your-host>/.well-known/agent-card.json`. Keep `/status` available so AgentBeats can verify the controller is healthy before fetching the card content.
 
 The FastAPI controller continues to expose `/agent_info`, `/task`, `/reset`, `/logs`, `/status`, and `/agent-card` so any MCP-compatible tooling can interact with your agent.
+
+## Launch command:
+
+Note, this doesn't seem to work on Windows. Definitely use macOS, Linux, or WSL.
+
+```bash
+# launch green
+cd agentbeats/green
+./launch.sh
+
+# launch white
+cd agentbeats/white
+./launch.sh
+```

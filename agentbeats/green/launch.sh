@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 
 # set configuration variables
 export HTTPS_ENABLED=true

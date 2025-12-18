@@ -2,7 +2,6 @@
 
 import uvicorn
 import tomllib
-import dotenv
 import time
 import os
 import json
@@ -20,8 +19,6 @@ from src.my_util import parse_tags, my_a2a
 
 # Import the local WhiteAgent for NPC players
 from werewolf_game_agent.white_agent import WhiteAgent
-
-dotenv.load_dotenv()
 
 DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank"]
 

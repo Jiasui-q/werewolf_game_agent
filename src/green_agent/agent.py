@@ -103,8 +103,9 @@ class AsyncGameEnvironment:
 
     async def _get_remote_response(self, prompt: str, context_id: str = None) -> str:
         print(f"@@@ Green agent: Sending message to remote white agent...\n{prompt[:200]}...")
+        msg_formatted = f"<prompt>{prompt}</prompt>"
         white_agent_response = await my_a2a.send_message(
-            self.remote_agent_url, prompt, context_id=context_id
+            self.remote_agent_url, msg_formatted, context_id=context_id
         )
         res_root = white_agent_response.root
         assert isinstance(res_root, SendMessageSuccessResponse)
@@ -349,7 +350,6 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         user_input = context.get_user_input()
         tags = parse_tags(user_input)
         white_agent_url = tags.get("white_agent_url")
-        env_config_str = tags.get("env_config")
         
         if not white_agent_url:
             print("Error: No white_agent_url provided.")
@@ -360,13 +360,6 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         # Pull player roster / remote name from env_config if present.
         player_names = list(DEFAULT_PLAYERS)
         remote_player_name = "Remote"
-        if env_config_str:
-            try:
-                cfg = json.loads(env_config_str)
-                player_names = list(cfg.get("players", player_names))
-                remote_player_name = cfg.get("remote_player_name", remote_player_name)
-            except Exception as exc:
-                print(f"Warning: failed to parse env_config; using defaults. Error: {exc}")
         
         # Ensure we have at least the remote player present.
         if remote_player_name not in player_names:

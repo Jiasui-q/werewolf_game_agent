@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/jovanyap/Documents/werewolf_game_agent/main.py", line 11, in <module>
-    from werewolf_game_agent.launcher import launch_evaluation, launch_remote_evaluation
-ModuleNotFoundError: No module named 'werewolf_game_agent'

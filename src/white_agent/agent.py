@@ -43,6 +43,12 @@ class WhiteAgent:
         statement = (response.choices[0].message.content or "").strip()
         self.add(ctx_id, "assistant", statement)
         return statement
+    
+    async def handle(self, ctx_id: str, message: str, skip_response: bool = False) -> str:
+        self.add(ctx_id, "user", message)
+        if skip_response:
+            return ""
+        return await self.respond(ctx_id)
 
 
 class WerewolfWhiteAgentExecutor(AgentExecutor):
@@ -55,13 +61,8 @@ class WerewolfWhiteAgentExecutor(AgentExecutor):
         skip_response = (context.message.metadata or {}).get("skip_response", False)
         print(f"ctx: {context_id} | skip_response: {skip_response}")
         print(">>> " + user_input)
-
-        self.agent.add(context_id, "user", user_input)
-
-        if skip_response: 
-            statement = ""
-        else:
-            statement = await self.agent.respond(context_id)
+        statement = await self.agent.handle(context_id, user_input, skip_response=skip_response)
+        if not skip_response:
             print("<<< " + statement)
         
         print("")

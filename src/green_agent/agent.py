@@ -1,5 +1,6 @@
 """Green agent implementation - manages assessment and evaluation for Werewolf Game."""
 
+from uuid import uuid4
 import uvicorn
 import tomllib
 import time
@@ -14,112 +15,99 @@ from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import InMemoryTaskStore
 from a2a.types import AgentCard, SendMessageSuccessResponse, Message
-from a2a.utils import new_agent_text_message, get_text_parts
+from a2a.utils import new_agent_text_message, get_text_parts, get_message_text
 from src.my_util import parse_tags, my_a2a
 
 # Import the local WhiteAgent for NPC players
 from werewolf_game_agent.white_agent import WhiteAgent
+from src.white_agent.agent import WhiteAgent
 
-DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank"]
-
-
-def load_agent_card_toml(agent_name):
-    current_dir = __file__.rsplit("/", 1)[0]
-    with open(f"{current_dir}/{agent_name}.toml", "rb") as f:
-        return tomllib.load(f)
-
+DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Hannah", "Ian", "Judy"]
+MIN_GAME_SIZE = 6
 
 class AsyncPlayer:
-    def __init__(self, name, role, all_player_names, is_remote=False, white_agent_url=None):
+    def __init__(self, name, role, agent_url=None):
         self.name = name
         self.role = role
+        
         self.is_alive = True
-        self.is_remote = is_remote
-        self.white_agent_url = white_agent_url
         self.last_seen = None
         self.protected = False
 
-        if not is_remote:
-            self.agent_logic = WhiteAgent(name, role, all_player_names)
-        else:
-            self.agent_logic = None  # Logic is handled via remote calls
+        self.agent_url = agent_url
+        self.is_remote = agent_url is not None
 
+        self.agent = WhiteAgent() if not self.is_remote else None
+        self.ctx_id = uuid4().hex if not self.is_remote else None
+
+        
     def __repr__(self):
         status = "Alive" if self.is_alive else "Dead"
-        remote_tag = "[Remote]" if self.is_remote else "[NPC]"
+        remote_tag = "[Remote]" if self.is_remote else "[Local]"
         return f"{self.name} ({self.role}, {status}) {remote_tag}"
+    
+    async def send(self, message: str, skip_response=False):
+        if self.is_remote:
+            # make A2A call to remote agent
+            metadata = {"skip_response": skip_response}
+            response = await my_a2a.send_message(
+                self.agent_url,
+                message, 
+                context_id=self.ctx_id, 
+                metadata=metadata
+            )
+
+            # remember context id for future messages
+            self.ctx_id = response.root.result.context_id
+            return get_message_text(response.root.result)
+        else:
+            # use local agent instance
+            return await self.agent.handle(
+                self.ctx_id,
+                message,
+                skip_response=skip_response
+            )
 
 
 class AsyncGameEnvironment:
     def __init__(
         self,
-        player_names: List[str],
-        remote_agent_url: str,
-        remote_player_name: str = "Remote",
+        agent_urls: List[str],
     ):
         self.agent_ctx_id = None
         self.players: List[AsyncPlayer] = []
         self.game_over = False
         self.winner: Optional[str] = None
         self.game_log: List[str] = []
-        self.remote_agent_url = remote_agent_url
-        self.remote_player_name = remote_player_name
+        # self.remote_agent_urls = agent_urls
         self.npc_role_briefs: List[Dict[str, str]] = []
-        self._assign_roles(player_names)
+        self._assign_roles(agent_urls)
 
-    def _assign_roles(self, player_names: List[str]) -> None:
-        """Assign roles to all players; remote player gets a random seat."""
-        names = list(player_names)
-        if self.remote_player_name not in names:
-            # ensure the remote player is seated
-            names[0] = self.remote_player_name
-
-        # Six-seat table: five NPCs + one remote white agent.
-        roles = ["Werewolf", "Seer", "Medic", "Villager", "Villager", "Villager"]
-        if len(names) > len(roles):
-            roles.extend(["Villager"] * (len(names) - len(roles)))
-        elif len(names) < len(roles):
-            roles = roles[: len(names)]
+    def _assign_roles(self, agent_urls: List[str]) -> None:
+        """Assign roles to all players"""
+        remote_count = len(agent_urls)
+        player_count = max(MIN_GAME_SIZE, remote_count)
+        if player_count > len(DEFAULT_PLAYERS):
+            raise ValueError(f"Cannot support more than {len(DEFAULT_PLAYERS)} players.")
+        local_count = player_count - remote_count
+        npc_count = max(player_count - remote_count, 0)
+        
+        names = DEFAULT_PLAYERS[:player_count]
+        roles = ["Werewolf", "Seer", "Medic"] + ["Villager"] * (player_count - 3)
+        agent_urls = agent_urls + [None] * npc_count # pad for local players
 
         random.shuffle(roles)
 
-        for name, role in zip(names, roles):
-            is_remote = name == self.remote_player_name
+        for name, role, agent_url in zip(names, roles, agent_urls):
             player = AsyncPlayer(
-                name, role, names, is_remote=is_remote, white_agent_url=self.remote_agent_url
+                name, role, agent_url
             )
             self.players.append(player)
-            if not is_remote:
-                self.npc_role_briefs.append(
-                    {
-                        "name": name,
-                        "role": role,
-                        "explanation": f"NPC controlled by green agent as {role} to drive the baseline game flow.",
-                    }
-                )
 
         print("--- Roles have been assigned secretly ---")
         for p in self.players:
             print(p)
 
-    async def _get_remote_response(self, prompt: str) -> str:
-        print(f"@@@ Green agent: Sending message to remote white agent...\n{prompt[:200]}...")
-        msg_formatted = f"<prompt>{prompt}</prompt>"
-        white_agent_response = await my_a2a.send_message(
-            self.remote_agent_url, msg_formatted, 
-            context_id=self.agent_ctx_id
-        )
-        res_root = white_agent_response.root
-        assert isinstance(res_root, SendMessageSuccessResponse)
-        res_result = res_root.result
-        assert isinstance(res_result, Message)
-        self.agent_ctx_id = res_result.context_id
-        text_parts = get_text_parts(res_result.parts)
-        if not text_parts:
-            return "..."
-        response_text = text_parts[0]
-        print(f"@@@ White agent response:\n{response_text}")
-        return response_text
 
     async def run_day_phase(self, day: int):
         print(f"\nThe sun rises (Day {day}). All players gather to discuss.")
@@ -130,8 +118,7 @@ class AsyncGameEnvironment:
         for speaker in living_players:
             current_history = "\n".join(discussion_log) if discussion_log else "The discussion has just started."
             
-            if speaker.is_remote:
-                prompt = f"""
+            prompt = f"""
 You are playing a game of Werewolf. It is Day {day}.
 Your name is {speaker.name} and your secret role is {speaker.role}.
 The other players are: {", ".join([p.name for p in self.players if p != speaker])}.
@@ -143,9 +130,7 @@ What is your statement? Based on your role and the conversation, you can accuse 
 Keep your statement to 1-2 sentences. Speak in the first person.
 Response with just the statement.
 """
-                statement = await self._get_remote_response(prompt)
-            else:
-                statement = speaker.agent_logic.generate_statement(current_history)
+            statement = await speaker.send(prompt)
             
             full_statement = f"{speaker.name}: \"{statement}\""
             print(full_statement)
@@ -158,8 +143,7 @@ Response with just the statement.
         for voter in living_players:
             possible_targets = [p.name for p in living_players if p != voter]
             
-            if voter.is_remote:
-                prompt = f"""
+            prompt = f"""
 It is voting time on Day {day}.
 Discussion history:
 {final_discussion_history}
@@ -167,22 +151,20 @@ Discussion history:
 Who do you want to eliminate?
 Reply with ONLY the name of your chosen target from this list: {", ".join(possible_targets)}.
 """
-                raw_vote = await self._get_remote_response(prompt)
-                # Simple extraction logic similar to WhiteAgent._extract_target
-                voted_for = None
-                clean_vote = raw_vote.strip()
-                if clean_vote in possible_targets:
-                    voted_for = clean_vote
-                else:
-                    # heuristic search
-                    for t in possible_targets:
-                        if t.lower() in clean_vote.lower():
-                            voted_for = t
-                            break
-                if not voted_for:
-                    voted_for = random.choice(possible_targets)
+            raw_vote = await voter.send(prompt)
+            # Simple extraction logic similar to WhiteAgent._extract_target
+            voted_for = None
+            clean_vote = raw_vote.strip()
+            if clean_vote in possible_targets:
+                voted_for = clean_vote
             else:
-                voted_for = voter.agent_logic.decide_vote(final_discussion_history, possible_targets)
+                # heuristic search
+                for t in possible_targets:
+                    if t.lower() in clean_vote.lower():
+                        voted_for = t
+                        break
+            if not voted_for:
+                voted_for = random.choice(possible_targets)
             
             if voted_for:
                 print(f"{voter.name} votes for {voted_for}.")
@@ -213,91 +195,74 @@ Reply with ONLY the name of your chosen target from this list: {", ".join(possib
             p.protected = False
 
         living_players = [p for p in self.players if p.is_alive]
-        werewolves = [p for p in living_players if p.role == "Werewolf"]
+        werewolf = next(p for p in living_players if p.role == "Werewolf")
         seers = [p for p in living_players if p.role == "Seer"]
         medics = [p for p in living_players if p.role == "Medic"]
         
         # --- Werewolves choose target ---
         target = None
-        if werewolves:
-            potential_targets = [p for p in living_players if p.role != "Werewolf"]
-            # Simplified: If remote is werewolf, we could ask them, but for now let's random or auto if multiple wolves
-            # If the remote is the ONLY werewolf, we MUST ask them.
-            active_wolves = [w for w in werewolves]
-            remote_wolf = next((w for w in active_wolves if w.is_remote), None)
-            
-            if remote_wolf:
-                prompt = f"""
+        potential_targets = [p for p in living_players if p.role != "Werewolf"]
+        
+        prompt = f"""
 It is Night {day}. You are a Werewolf.
-Your fellow wolves are: {", ".join([w.name for w in active_wolves if w != remote_wolf])}
 Valid targets: {", ".join([p.name for p in potential_targets])}
 
 Who do you want to kill? Reply with ONLY the name.
 """
-                raw_kill = await self._get_remote_response(prompt)
-                # extraction
-                clean_kill = raw_kill.strip()
-                for t in potential_targets:
-                    if t.name == clean_kill or t.name.lower() in clean_kill.lower():
-                        target = t
-                        break
-                if not target and potential_targets:
-                     target = random.choice(potential_targets)
-            else:
-                if potential_targets:
-                    target = random.choice(potential_targets)
-            
-            if target:
-                print("(Werewolves have chosen their target.)")
+        raw_kill = await werewolf.send(prompt)
+        # extraction
+        clean_kill = raw_kill.strip()
+        for t in potential_targets:
+            if t.name == clean_kill or t.name.lower() in clean_kill.lower():
+                target = t
+                break
+        if not target and potential_targets:
+                target = random.choice(potential_targets)
+        
+        if target:
+            print("(Werewolves have chosen their target.)")
 
         # --- Seer inspects ---
         if seers:
             seer = seers[0]
             inspectable = [p for p in living_players if p != seer]
             if inspectable:
-                if seer.is_remote:
-                    prompt = f"""
+                prompt = f"""
 It is Night {day}. You are the Seer.
 Valid targets to inspect: {", ".join([p.name for p in inspectable])}
 Who do you want to inspect? Reply with ONLY the name.
 """
-                    raw_inspect = await self._get_remote_response(prompt)
-                    chosen = None
-                    for t in inspectable:
-                        if t.name in raw_inspect or t.name.lower() in raw_inspect.lower():
-                            chosen = t
-                            break
-                    if not chosen: chosen = random.choice(inspectable)
-                else:
-                    chosen = random.choice(inspectable)
+                raw_inspect = await seer.send(prompt)
+                chosen = None
+                for t in inspectable:
+                    if t.name in raw_inspect or t.name.lower() in raw_inspect.lower():
+                        chosen = t
+                        break
+                if not chosen: chosen = random.choice(inspectable)
                 
                 seer.last_seen = (chosen.name, chosen.role)
                 print(f"(Seer learns privately that {chosen.name} is a {chosen.role}.)")
                 self.game_log.append(f"SEER_SEES:{seer.name}:{chosen.name}:{chosen.role}")
                 
                 # Notify remote seer of result
-                if seer.is_remote:
-                    await self._get_remote_response(f"Result: {chosen.name} is a {chosen.role}. (Ack)")
+                await seer.send(f"Result: {chosen.name} is a {chosen.role}.", skip_response=True)
 
         # --- Medic protects ---
         if medics:
             medic = medics[0]
             protectable = [p for p in living_players]
-            if medic.is_remote:
-                prompt = f"""
+            prompt = f"""
 It is Night {day}. You are the Medic.
 Who do you want to protect? Reply with ONLY the name.
 Possible: {", ".join([p.name for p in protectable])}
 """
-                raw_protect = await self._get_remote_response(prompt)
-                protected = None
-                for t in protectable:
-                    if t.name in raw_protect or t.name.lower() in raw_protect.lower():
-                        protected = t
-                        break
-                if not protected: protected = random.choice(protectable)
-            else:
-                protected = random.choice(protectable)
+            raw_protect = await medic.send(prompt)
+            protected = None
+            for t in protectable:
+                if t.name in raw_protect or t.name.lower() in raw_protect.lower():
+                    protected = t
+                    break
+            if not protected: protected = random.choice(protectable)
                 
             protected.protected = True
             print(f"(Medic protects {protected.name} tonight.)")
@@ -386,53 +351,27 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
             print("Error: No white_agent_url provided.")
             return
 
-        print(f"Target Agent URL: {white_agent_url}")
-
-        # Pull player roster / remote name from env_config if present.
-        player_names = list(DEFAULT_PLAYERS)
-        remote_player_name = "Remote"
-        
-        # Ensure we have at least the remote player present.
-        if remote_player_name not in player_names:
-            player_names[0] = remote_player_name
+        print(f"Agent URLs: {white_agent_url}")
         
         print("Green agent: Starting Werewolf Game Environment...")
         timestamp_started = time.time()
         
-        env = AsyncGameEnvironment(
-            player_names, white_agent_url, remote_player_name=remote_player_name
-        )
+        env = AsyncGameEnvironment([white_agent_url])
         winner = await env.run_game()
         
         metrics = {
             "time_used": time.time() - timestamp_started,
             "winner": winner,
-            "remote_player_role": next(
-                (p.role for p in env.players if p.is_remote), "Unknown"
-            ),
-            "remote_player_won": False,  # set below
-            "remote_player_name": remote_player_name,
-            "npc_roles": env.npc_role_briefs,
             "reports": env.get_reports(),
         }
         
-        # Determine if remote player won
-        remote_p = next((p for p in env.players if p.is_remote), None)
-        if remote_p:
-            is_wolf = remote_p.role == "Werewolf"
-            if (winner == "Werewolves" and is_wolf) or (winner == "Villagers" and not is_wolf):
-                metrics["remote_player_won"] = True
 
-        result_emoji = "✅" if metrics["remote_player_won"] else "❌"
-        npc_summary = "\n".join(
-            f"- {entry['name']}: {entry['role']} ({entry['explanation']})"
-            for entry in metrics["npc_roles"]
-        )
+        result_emoji = "🐺" if winner == "Werewolves" else "🛖"
+        player_summary = "\n".join(f" - {p}" for p in env.players)
         summary_msg = (
-            f"Finished. White agent success: {result_emoji}\n"
-            f"Remote player: {metrics['remote_player_name']} as {metrics['remote_player_role']}\n"
-            f"Winner: {winner}\n"
-            f"NPC roster:\n{npc_summary}\n"
+            f"Finished.\n"
+            f"Winner: {result_emoji} {winner}\n"
+            f"Players:\n{player_summary}\n" 
             f"Metrics: {metrics}\n"
         )
 
@@ -443,6 +382,12 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         raise NotImplementedError
 
 
+
+def load_agent_card_toml(agent_name):
+    current_dir = __file__.rsplit("/", 1)[0]
+    with open(f"{current_dir}/{agent_name}.toml", "rb") as f:
+        return tomllib.load(f)
+    
 def start_green_agent(agent_name="werewolf_green_agent", host="0.0.0.0", port=9001):
     print("Starting green agent...")
     agent_card_dict = load_agent_card_toml(agent_name)

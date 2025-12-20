@@ -115,30 +115,3 @@ Then, trigger a run either locally or through the AgentBeats platform.
 ```bash
 python main.py launch-remote <green-url> <white-url-1> <white-url-2> ...
 ```
-
-## Configuration
-
-First, configure `.env` (or set the variable in your shell) so the white agent can reach Gemini:
-
-```
-OEPNROUTER_API_KEY=...
-```
-
-## Usage (Local)
-
-Note, this doesn't seem to work on Windows due to limitations with the AgentBeats CLI. Definitely use macOS or Linux.
-
-```bash
-# launch green agent
-agentbeats/green/launch.sh
-
-# launch white agent
-agentbeats/white/launch.sh
-
-# (local) launch the assessment
-python main.py launch-remote <green_url> <white_url>`
-```
-
-## Usage (AgentBeats Platform)
-
-After registering the green and white agents on the AgentBeats platform, simply start a new assessment.

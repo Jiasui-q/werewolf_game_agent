@@ -1,5 +1,6 @@
 """Green agent implementation - manages assessment and evaluation for Werewolf Game."""
 
+import asyncio
 from uuid import uuid4
 import random
 from typing import List, Dict, Optional
@@ -64,13 +65,14 @@ class AsyncGameEnvironment:
         agent_urls: List[str],
         player_count = MIN_GAME_SIZE
     ):
-        self.agent_ctx_id = None
         self.players: List[AsyncPlayer] = []
+
         self.game_over = False
         self.winner: Optional[str] = None
+
         self.game_log: List[str] = []
-        # self.remote_agent_urls = agent_urls
-        self.npc_role_briefs: List[Dict[str, str]] = []
+        self.history = []
+
         self._assign_roles(agent_urls, player_count)
 
     def _assign_roles(self, agent_urls: List[str], player_count) -> None:
@@ -79,7 +81,6 @@ class AsyncGameEnvironment:
         player_count = max(player_count, remote_count)
         if player_count > len(DEFAULT_PLAYERS):
             raise ValueError(f"Cannot support more than {len(DEFAULT_PLAYERS)} players.")
-        local_count = player_count - remote_count
         npc_count = max(player_count - remote_count, 0)
         
         names = DEFAULT_PLAYERS[:player_count]
@@ -304,8 +305,90 @@ Possible: {", ".join([p.name for p in protectable])}
             if 'voting_accuracy' in r:
                 print(f"  - Voting Accuracy: {r['voting_accuracy']:.2f}")
 
+    @property
+    def alive_players(self):
+        return [p for p in self.players if p.is_alive]
+
+    async def _broadcast(self, message: str, skip_response=False):
+        """Send a message to all players concurrently."""
+        tasks = []
+        for player in self.players:
+            if player.is_alive:
+                tasks.append(player.send(message, skip_response=skip_response))
+        return await asyncio.gather(*tasks)
+
+
+    async def _phase_day_1(self):
+        """
+        Special handling for Day 1. 
+        - Players are informed of their roles.
+        - Players concurrently generate an initial statement.
+        """
+
+        # gather introductions
+        async def _introduce(player: AsyncPlayer):
+            other_players = ", ".join([p.name for p in self.players if p != player])
+            role_message = (
+                f"It is Day 1. Your name is {player.name} and your secret role is {player.role}.\n"
+                f"The other players are: {other_players}.\n"
+                "Make an opening statement to introduce yourself.\n"
+            )
+            statement = await player.send(role_message)
+            return f"{player.name}: \"{statement}\""
+        
+        print(f"\nThe sun rises (Day 1). All players gather to discuss.")
+        introductions = await asyncio.gather(*[_introduce(p) for p in self.alive_players])
+
+        for intro in introductions:
+            print(f">>> {intro}")
+
+        # notify players of everyone elses introductions
+        async def _notify_introductions(player: AsyncPlayer, idx: int):
+            others_intro = "\n".join([intro for i, intro   in enumerate(introductions) if i != idx])
+            notify_message = f"The other players introduce themselves as well.\n{others_intro}"
+            await player.send(notify_message, skip_response=True)
+
+        await asyncio.gather(*[_notify_introductions(p, i) for i, p in enumerate(self.alive_players)])
+
+    async def _phase_night(self, day: int):
+        """
+        Conduct night phase.
+        - Werewolves choose a target to kill.
+        - Seer inspects a player.
+        - Medic protects a player.
+        - Apply night actions.
+        - Players receive a night outcome summary.
+        """
+
+    async def _phase_day(self, day: int):
+        """
+        Conduct day phase.
+        - Players concurrently generate statements.
+        - Players receive all statements and cast a vote.
+        """
 
     async def run_game(self):
+        day = 1
+        while not self.game_over:
+            if day == 1:
+                await self._phase_day_1()
+            else:
+                await self._phase_day(day)
+            self.check_game_over()
+            if self.game_over: break
+
+            await self._phase_night(day)
+            self.check_game_over()
+            if self.game_over: break
+            day += 1
+        
+        print("\n--- GAME OVER ---")
+        print(f"The winner is: {self.winner}!")
+        self.run_evaluation()
+
+
+
+    async def _run_game(self):
         day = 1
         while not self.game_over:
             print(f"\n=== DAY {day} ===")

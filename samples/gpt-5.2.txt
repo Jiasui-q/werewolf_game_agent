@@ -1,0 +1,392 @@
+--- Roles have been assigned secretly ---
+Alice (Villager, Alive) [Local]
+Bob (Villager, Alive) [Local]
+Charlie (Villager, Alive) [Local]
+David (Villager, Alive) [Local]
+Eva (Werewolf, Alive) [Local]
+Frank (Seer, Alive) [Local]
+Grace (Villager, Alive) [Local]
+Hannah (Villager, Alive) [Local]
+Ian (Medic, Alive) [Local]
+Judy (Villager, Alive) [Local]
+--------------------
+The sun rises upon Day 1 and the players introduce themselves.
+
+>>> Alice: "I’m Alice. I’m a Villager, and I’m here to share what I notice and push for clear, logical votes—ask me direct questions and I’ll answer plainly."
+>>> Bob: "I’m Bob. I’m a Villager, and I’m here to keep things simple: ask clear questions, watch for inconsistencies, and vote based on what people say and do."
+>>> Charlie: "I’m Charlie. I’m a Villager, and I’m here to listen closely and push for clear, consistent explanations today."
+>>> David: "I’m David. I’m just here to listen closely, ask clear questions, and vote based on what makes sense."
+>>> Eva: "I’m Eva. I’ll be watching how everyone talks and votes today, and I want us to stay calm and focus on clear reasons rather than gut feelings."
+>>> Frank: "I’m Frank. I’m here to keep things simple, share clear reads as I get them, and push for a clean Day 1 vote."
+>>> Grace: "I’m Grace. I’m a Villager, and I’m here to listen closely, ask clear questions, and vote based on behavior—not vibes."
+>>> Hannah: "I’m Hannah. I’m a Villager, so I don’t have special info—today I’ll focus on who’s pushing shaky logic or trying to steer the vote too fast."
+>>> Ian: "I’m Ian. I’m here to listen closely, ask clear questions, and help the town make careful votes based on real tells, not vibes."
+>>> Judy: "I’m Judy. I’m a plain Villager, so I don’t have special info. I’ll be watching who pushes hard accusations and who stays quiet."
+--------------------
+The sun sets as we enter Night 1.
+
+ 🐺 Eva chooses to kill Alice.
+ 💉 Ian protects Alice.
+ 👁️ Frank inspects David and learns that they are a Villager.
+
+🛡️ Alice was targeted by the Werewolf but saved by the Medic.
+
+--------------------
+The sun rises upon Day 2.
+
+>>> Alice: "I was the one attacked last night, and the Medic saved me. I don’t want the Medic to out themselves yet.
+
+For Day 2, I want to focus on who’s been vague: David never actually claimed anything yesterday, just “here to listen,” and that feels like safe positioning. David, what’s your role claim and who do you suspect right now, with reasons?"
+>>> Bob: "I’m Bob. Alice being attacked makes me lean that she’s Town, so I want us to treat her as a likely good lead today. Alice, who was pushing you or setting you up yesterday, and who felt like they were steering votes without reasons? Everyone else: give one clear suspicion and why—no “vibes.”"
+>>> Charlie: "I’m Charlie. Since Alice was targeted and saved, I want us to treat Alice as likely town for now and not tunnel her today. I don’t want the Medic to reveal, but I do want Alice to say who she suspects and why.
+
+My early ping is David—his intro was the only one that didn’t clearly claim Villager, and it felt a bit noncommittal. David, what’s your read list right now and who do you want to vote?"
+>>> David: "I’m glad Alice lived, and I don’t want the Medic outing themselves. A wolf trying to hit Alice suggests they thought she’d be hard to mislead or worth removing, so I’m leaning town on her for now.
+
+Today I want to hear from Alice first: who felt off on Day 1, and who tried to steer things without reasons? I also want everyone to give one clear suspicion and why—no “just vibes.”"
+>>> Eva: "I’m not surprised Alice got protected; she’s the kind of player a Medic would cover Night 1. For today, I want pressure on David—his intro was the only one that dodged a clear “I’m a Villager” claim and stayed very generic. David, why the lack of a direct claim, and who looks suspicious to you so far?"
+>>> Frank: "I’m leaning that David is solidly town, so I don’t want us tunneling there. I want to hear from Alice first—who was pushing you or setting you up yesterday, and who feels off to you today?"
+>>> Grace: "I’m taking the save on Alice as a strong hint she’s town. I want Alice to say who felt most threatened by her yesterday and who was trying to steer votes early. Also: everyone give one clear suspicion and one clear town read—no fence-sitting today."
+>>> Hannah: "I think the wolf going for Alice makes Alice look more town. I want to hear from David and Eva first—both avoided a clear “I’m a Villager” claim on Day 1, and I want to know why. Also, Medic should stay quiet; don’t out yourself."
+>>> Ian: "No kill means the wolves hit someone protected. I want everyone to post their top two suspicions and why, and also say who they’d *least* want to vote today. I’m going to focus on who tries to steer us without reasons."
+>>> Judy: "I’m glad Alice lived—Medic should stay hidden.
+
+Alice, since you were targeted, I want to hear your full Day 1 reads: who felt off to you and why?
+
+Also, everyone should explain who they’d vote right now and what evidence they’re using—no “just a vibe.”"
+>>> Alice: "I agree we treat me as likely town off the attack, and I don’t want the Medic to reveal.
+
+My top suspicions right now:
+- **David**: still no direct role claim, lots of “wait for Alice first,” and it feels like stalling while looking reasonable.
+- **Eva**: the “Medic would cover Alice Night 1” line feels like narrative-setting that also subtly talks about who the Medic might be thinking about.
+
+My light third is **Frank** for pre-defending David hard with no real basis.
+
+My clearest town leans so far are **Bob/Charlie/Grace** for pushing for specific reasons and pressure.
+
+David and Eva: give a direct role claim and your #1 vote today with one concrete reason. If you dodge, I’m pushing the vote onto David."
+>>> Bob: "I’m Bob. I agree we treat Alice as likely Town and keep the Medic hidden.
+
+My top suspicion is **David**: his Day 1 intro dodged a clear role claim, and today he’s mostly echoing “hear from Alice / no vibes” without adding his own reads. David, give a direct claim and your top two suspects with reasons.
+
+Second suspicion is **Frank** for the hard “David is solidly town” stance this early—it feels like preemptive shielding.
+
+My least-wanted vote today is **Alice**. If David won’t give a clean claim + reads, I’m fine voting David."
+>>> Charlie: "I’m Charlie. I’m not voting Alice today.
+
+David is still my top pressure: you didn’t claim yesterday, and today you’re mostly echoing “hear from Alice first.” Give a direct role claim and your top two suspects with reasons.
+
+My second suspicion is Frank: you called David “solidly town” with no real basis while most of us see the same noncommittal stuff. Frank, why are you so confident on David—what did you see that we didn’t?"
+>>> David: "I’m a Villager. My Day 1 intro was just me being cautious about overexplaining, not dodging a claim.
+
+Reads: Alice looks likely town off the attack.
+Top suspicions right now are Eva and Charlie for pushing a “no villager claim = wolf” case that feels too easy on Day 2 and skips actual behavior tells. Secondary watch is Frank for hard-clearing me early; that can be buddying.
+
+Least want to vote today: Alice. If I had to vote right now, I’d go Eva unless Alice has a stronger lead from Day 1."
+>>> Eva: "I didn’t hard-claim Day 1 because early “I’m a Villager” spam doesn’t prove anything and just gives wolves cover to blend in. I’m a Villager.
+
+My top suspicion is still David: he avoided a clean claim until pressured and he’s mostly been echoing “hear from Alice” without giving his own concrete reads. Second is Frank for preemptively calling David “solidly town” with no basis.
+
+David: give two suspects with actual reasons and say who you’d vote right now. Frank: why are you shielding David this early?"
+>>> Frank: "I’m not buying the David pile-on today. The “didn’t say Villager” thing feels like an easy excuse to tunnel, and I don’t want us wasting a vote there.
+
+I want pressure on Eva instead: she’s driving the David push hard off a weak tell. Eva, give me your top two suspects besides David and what you’d do if David flips town."
+>>> Grace: "I’m not sold on the “David didn’t say Villager” point by itself, but he should just claim clearly now and give a top suspect with a reason.
+
+What stands out more to me is Frank hard-defending David with no real basis. Frank, why are you “leaning solidly town” on David already?
+
+Right now my lean-suspect is Frank for that early shielding."
+>>> Hannah: "I’m still side-eyeing David for the non-claim Day 1, and his Day 2 post feels like he’s echoing the room instead of adding a real push.
+
+My other suspicion is Frank for pre-defending David hard without giving a reason.
+
+Right now my top two are David, then Frank. The person I least want to vote today is Alice."
+>>> Ian: "I don’t want forced role claims on Day 2 unless we’re about to vote someone out. David can answer with a full read list and who he’d vote, no need to hard-claim.
+
+What pings me more is Frank: he’s “leaning David solidly town” with basically no reason while most others independently noticed David’s careful wording. Frank, explain why you’re that confident."
+>>> Judy: "I’m treating Alice as likely town after that save, and I don’t want the Medic to reveal.
+
+I don’t love how “David didn’t say Villager” became the main case when **Eva, Frank, Ian, and David** all skipped an explicit Villager claim on Day 1. That point alone isn’t enough for me.
+
+My top suspicion right now is **Frank**: he’s the only one hard-defending David (“solidly town”) with basically no reasoning. Frank, why are you so confident on David specifically, and who’s your second suspect if David flips town?
+
+David: give a straight read list (top 2 wolf, 1 town) and what changed since yesterday."
+>>> Alice: "David claimed Villager and at least gave a direction; I don’t love his reasoning, but it’s more than stalling now.
+
+Frank is still the worst look to me: he hard-cleared David early (“solidly town”) with no concrete basis, and then tried to redirect onto Eva when heat stayed on David. That reads like shielding.
+
+I’m voting **Frank** unless someone can give me a real, specific reason for that early confidence."
+>>> Bob: "I’m Bob. David finally claimed Villager and gave a couple names, so the “no claim” point is mostly settled for me—still watching him, but it’s no longer my main reason to vote him.
+
+My vote focus is **Frank**: the “David is solidly town” shield came early and still has no real basis, and now he’s trying to redirect onto Eva without answering why he cleared David so hard.
+
+Frank: give one concrete reason you hard-townread David, and name your #2 suspect. If you can’t, I’m voting you."
+>>> Charlie: "I’m Charlie. David finally claimed Villager and at least gave a couple reads; I don’t love his shade on me, but that’s not enough for my top vote.
+
+Frank is my #1 today: he “solidly town” cleared David early with no evidence, and he’s still trying to redirect onto Eva without answering why his confidence was so strong. That looks like shielding.
+
+If Frank flips town, my next look is back to David/Eva, but my vote is on Frank."
+>>> David: "I already claimed: I’m a Villager.
+
+Top 2 wolf leans:
+- **Frank**: “David is solidly town” with no evidence reads like buddying/shielding, and he keeps trying to redirect without explaining that confidence.
+- **Eva**: keeps driving an easy mislynch case on me that’s mostly about wording, not actions, and it’s stayed consistent even after I claimed.
+
+Top town lean: **Alice** (attack + her pushing for concrete answers), also **Bob/Grace** for pushing accountability without hard narrative.
+
+My vote is on **Frank** today."
+>>> Eva: "I’m a Villager, and my “Medic would cover Alice” comment was just obvious Night 1 meta, not a hidden message.
+
+Right now I’m voting **Frank**. He hard-cleared David early (“solidly town”) and then immediately tried to steer the vote onto me when that didn’t land, without giving a real reason for either.
+
+My #2 is still **David** for stalling and then snapping to “Eva/Charlie” as his main suspects once pressure hit him.
+
+If Frank flips town, I want to go straight back to David and re-check who benefited most from the early shielding and the counterpush onto me."
+>>> Frank: "I’m the Seer. I inspected David last night and got Villager.
+
+So I’m not voting David today. My top wolf lean is Eva for driving an easy misvote on David and leaning on narrative. If we’re voting now, I want Eva."
+>>> Grace: "I’m not voting David off “didn’t say Villager” anymore—he claimed and gave a direction.
+
+My problem is still Frank: he hard-cleared David early, then tried to redirect to Eva, and still hasn’t explained what town-indicative thing he saw in David.
+
+If Frank can’t give a concrete reason for the “solidly town” read and a real second suspect, I’m voting Frank."
+>>> Hannah: "David finally claiming Villager makes me ease off him a bit, but I still don’t like how he waited until pressure.
+
+Frank is my top vote: he hard-cleared David as “solidly town” way too early and then tried to redirect onto Eva without giving a real alternative case or a second suspect. That looks like shielding.
+
+I’m voting Frank."
+>>> Ian: "I’m not voting Alice.
+
+Frank is my top suspect: he’s trying to shut down pressure on David while offering almost nothing concrete, and his “push Eva instead” feels like deflection after getting called out.
+
+My second suspect is David, but I’d rather vote Frank first because the shielding is the clearest behavior tell on the table."
+>>> Judy: "I’m not voting Alice.
+
+David claimed Villager and gave a read list; I don’t love his logic, but it’s at least content.
+
+Frank is still my top: he “solidly town”-cleared David early with no real reason, and now he’s trying to redirect onto Eva while avoiding giving his own full solves. That looks like shielding + steering.
+
+My vote is going to Frank unless he gives a concrete reason for the David clear and a real top-2 suspect list that isn’t just “Eva.”"
+
+The players now vote to eliminate someone.
+
+ 🗳️ Ian votes to eliminate Frank.
+ 🗳️ Eva votes to eliminate Frank.
+ 🗳️ Charlie votes to eliminate Frank.
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ Grace votes to eliminate Frank.
+ 🗳️ David votes to eliminate Eva.
+ 🗳️ Hannah votes to eliminate Eva.
+ 🗳️ Bob votes to eliminate Eva.
+ 🗳️ Alice votes to eliminate Frank.
+ 🗳️ Judy votes to eliminate Eva.
+
+There was a tie between Frank, Eva. No one is eliminated.
+--------------------
+The sun sets as we enter Night 2.
+
+ 🐺 Eva chooses to kill Bob.
+ 💉 Ian protects Frank.
+ 👁️ Frank inspects Eva and learns that they are a Werewolf.
+
+☠️ Bob was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 3.
+
+>>> Alice: "Bob being killed makes me think he was on the right track yesterday.
+
+Frank, if you’re really the Seer, give your **Night 2** check **right now** (name + result) and explain why you picked them. If you won’t, I’m back to voting you.
+
+Everyone else: do **not** soft-claim Medic, but do say whether you believe Frank’s Seer claim and who you vote if Frank’s claim looks fake."
+>>> Charlie: "I’m Charlie. Bob getting killed makes me think wolves wanted to remove a strong town voice, and it also makes Frank’s late Seer claim look worse—if Frank were real Seer, he’s an obvious night target.
+
+Frank: give your full Seer history clearly (Night 1 + Night 2 targets and results). If you only have “David is Villager,” I’m not buying it.
+
+Also: if anyone is the real Seer, counterclaim now. My current push is still Frank."
+>>> David: "I’m sorry about Bob.
+
+Frank, if you’re really the Seer, give your Night 2 check and result right now. If you won’t, I’m going back to voting you because the “Seer” claim came only when the vote was on you.
+
+Eva, give me one clear reason Bob’s death doesn’t help you if you’re the wolf, since he was pushing Frank hard."
+>>> Eva: "Bob dying feels like the wolf removing a steady voice who was holding Frank accountable.
+
+I still think Frank’s “I’m the Seer” claim was a panic button to break the Day 2 vote. Frank, post your **Night 2** check target and result, and explain why you only revealed when you were about to get eliminated.
+
+Until we get something verifiable, I want us to eliminate **Frank** today."
+>>> Frank: "I’m the Seer. I inspected David Night 1: Villager. I inspected Eva Night 2: Werewolf.
+
+We need to eliminate Eva today. If I die tonight, treat David as clear and keep looking at who tried to wagon me yesterday after my claim."
+>>> Grace: "Bob flipping dead makes me treat his reads as likely town-driven, and he was on Frank.
+
+Frank claimed Seer late. I need two things right now:
+1) Frank: restate your full claim cleanly (when you got Seer, and your exact result on David).
+2) Everyone: if you are the real Seer, counterclaim now. If nobody counters, we still judge Frank on timing.
+
+If there’s no counterclaim, I want Frank to commit to inspecting Eva tonight. If there *is* a counterclaim, we vote between the two Seers today."
+>>> Hannah: "Bob dying makes me think he was town, and it also makes me re-check Frank’s “I’m the Seer” claim hard.
+
+Frank: if you’re really Seer, post your **Night 1** check and result right now, and explain why you only revealed when you were about to be eliminated. If you can’t give a clean N1 result, I’m back to voting Frank."
+>>> Ian: "Bob dying instead of the claimed Seer is either “wolves expected a protect” or “the Seer claim is fake.” We can’t ignore that.
+
+Frank, if you’re really Seer, give your Night 2 check and result right now, plus who you’re checking tonight if you live. If you won’t, I’m voting you.
+
+Everyone else: pick between Frank and Eva with one concrete reason. No third options today unless Frank’s N2 result points somewhere else."
+>>> Judy: "Bob dying makes me think the wolves wanted to remove the guy pushing for concrete answers.
+
+Frank, you claimed Seer only when the vote was on you. I need two things from you right now: who you checked on Night 2, and why you didn’t lead Day 2 with “I’m Seer, David is Villager” to stop the whole tunnel earlier.
+
+Also: if anyone is the real Seer, this is the time to counterclaim. If there’s no counterclaim and Frank gives a clean Night 2 result, I’m willing to follow Seer results today; if he dodges, I want to go back to voting Frank."
+>>> Alice: "Frank finally gave a full history: **N1 David = Villager, N2 Eva = Werewolf**.
+
+If nobody counterclaims Seer right now, I’m treating this as the best lead we have and I want **Eva out today**. Wolves could’ve skipped killing Frank because they expected a protect or because they wanted to keep doubt alive.
+
+If there *is* a Seer counterclaim, we vote between the two Seers immediately.
+
+Frank: if Eva flips wolf, you inspect **Ian or Charlie** tonight."
+>>> Charlie: "I’m Charlie. Frank’s claim is finally specific: N1 David = Villager, N2 Eva = Werewolf.
+
+Before we lock in: if anyone is the real Seer, counterclaim right now. If there’s no counterclaim, I’m treating Frank as real and I want us to eliminate Eva today.
+
+Also, Bob dying instead of Frank doesn’t clear Eva for me—wolves could’ve expected Frank to be protected, or they wanted to remove Bob’s pressure."
+>>> David: "If nobody counterclaims Seer, I’m treating Frank’s claim as provisionally real.
+
+Frank’s full history is coherent: N1 me = Villager, N2 Eva = Werewolf. The timing still bugs me, but a wolf-Frank would be gambling hard by naming a specific N2 “wolf” check.
+
+I want a last call: real Seer, counterclaim now. If none, I’m voting Eva."
+>>> Eva: "Frank’s claim doesn’t add up.
+
+He only claimed Seer when he was about to be eliminated, and now his Night 2 “check” is the most convenient possible result: the person tied with him yesterday is “Werewolf.” That looks like a save attempt, not solving.
+
+If Frank is real Seer, why wasn’t he killed over Bob? And why did he wait until Day 2 end to share “David is Villager” if it was supposedly so important?
+
+I want Frank eliminated today. If he flips Seer, you eliminate me next—simple. If he flips fake, we stop letting him steer this game."
+>>> Frank: "My full Seer history is:
+- Night 1: David — Villager.
+- Night 2: Eva — Werewolf.
+
+I picked Eva Night 2 because she was my top wolf lean Day 2 and I wanted to confirm it before I hard-forced the vote. If anyone is the real Seer, counterclaim me right now. Otherwise we eliminate Eva today."
+>>> Grace: "Frank’s claim is now checkable: N1 David = Villager, N2 Eva = Werewolf.
+
+If anyone is the real Seer, counterclaim right now. If there’s no counterclaim, I’m treating Eva as the vote today—wolves don’t usually let a real Seer with a fresh wolf result live, but they might have shot Bob to reduce pressure and hope we ignore the result.
+
+No counterclaim = I vote Eva. Counterclaim = we vote between the Seers."
+>>> Hannah: "If nobody counterclaims Seer right now, I’m willing to treat Frank as real and vote Eva off the N2 result.
+
+Frank, I want one more thing: why did you pick Eva for N2, and who are you checking tonight if we don’t eliminate Eva?
+
+If Eva flips Villager, I’m voting Frank next day. Medic stays hidden."
+>>> Ian: "If there’s no Seer counterclaim, I’m treating Frank’s claim as real and I want us to eliminate Eva today.
+
+Frank’s full history is at least consistent (N1 David = Villager, N2 Eva = Werewolf). If someone is the real Seer, counterclaim right now or we follow the result."
+>>> Judy: "Frank, that’s a clean claim now: N1 David = Villager, N2 Eva = Werewolf.
+
+No one has counterclaimed Seer. With a single-wolf setup, that means we should eliminate **Eva** today and end it. If Eva flips Villager, then we eliminate **Frank** tomorrow.
+
+Eva: I want a direct response—why would Frank pick you N2, and what’s your explanation for the “Eva = Werewolf” result besides “he’s lying”?"
+>>> Alice: "No Seer counterclaim means we follow the Seer result. Frank’s timing is bad, but the **N2 Eva = Werewolf** call is specific and high-risk to fake.
+
+Eva’s defense is basically “it’s convenient,” which doesn’t beat a clean Seer check.
+
+If Eva flips Villager, I’m voting Frank next. Today I’m voting Eva."
+>>> Charlie: "I’m Charlie. No Seer counterclaim means we follow the Seer result.
+
+Eva’s “kill Frank first, then me” plan is just buying time if she’s the wolf. If Frank is lying, we can eliminate him next, but if Frank is telling the truth and we don’t vote Eva, we’re throwing.
+
+I’m voting Eva."
+>>> David: "No Seer counterclaim means I’m following the Seer result.
+
+Eva, your best argument is “Frank lied to save himself,” but that’s exactly what a caught wolf would say too, and it doesn’t beat an uncontested Seer check.
+
+If Eva flips Villager, I’m voting Frank next. Today I’m voting Eva."
+>>> Eva: "I’m counterclaiming: I’m the Seer.
+
+- Night 1: Bob — Villager.
+- Night 2: Frank — Werewolf.
+
+Frank’s claim came only when he was about to be eliminated, and now he’s using a “convenient” N2 result to force my elimination. If you vote wrong today, you lose. I’m voting Frank."
+>>> Frank: "No counterclaim means my result is the best info we have. Eva’s defense is just “timing,” not an alternative solve.
+
+Eliminate Eva today. If she flips Werewolf, I’ll inspect Charlie tonight. If she somehow flips town, eliminate me next.Eva"
+>>> Grace: "No Seer counterclaim means we follow the check. Frank’s story is consistent, and Eva’s defense is basically “he’s lying.”
+
+I’m voting Eva today. If Eva flips Villager, I’m voting Frank tomorrow."
+>>> Hannah: "No Seer counterclaim means we follow Frank’s result.
+
+Eva’s defense is basically “the claim is convenient,” but that doesn’t beat a specific N2 check. If Eva flips Villager, we eliminate Frank next.
+
+I’m voting Eva."
+>>> Ian: "No Seer counterclaim means we follow the check. If we get cute and ignore “Eva = Werewolf,” we deserve the loss.
+
+Eva, your “kill Bob not Frank” point isn’t enough—wolves can dodge a protected target. I’m voting Eva.Eva"
+>>> Judy: "No Seer counterclaim and Frank’s history is specific. I’m voting Eva today.
+
+If Eva flips Villager, I’m voting Frank tomorrow—no excuses."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ Eva votes to eliminate Frank.
+ 🗳️ Hannah votes to eliminate Eva.
+ 🗳️ Judy votes to eliminate Eva.
+ 🗳️ Grace votes to eliminate Eva.
+ 🗳️ Ian votes to eliminate Eva.
+ 🗳️ Charlie votes to eliminate Eva.
+ 🗳️ David votes to eliminate Eva.
+ 🗳️ Alice votes to eliminate Eva.
+
+The town has eliminated Eva. They were a Werewolf.
+
+--- GAME OVER ---
+The winner is: Villagers!
+
+--- PERFORMANCE EVALUATION ---
+
+Player: Alice (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.50
+
+Player: Bob (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 1.00
+
+Player: Charlie (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.50
+
+Player: David (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 1.00
+
+Player: Eva (Werewolf)
+  - Team Win: No
+  - Suspicion Score: 13
+
+Player: Frank (Seer)
+  - Team Win: Yes
+  - Suspicion Score: 6
+  - Voting Accuracy: 1.00
+
+Player: Grace (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.50
+
+Player: Hannah (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 1.00
+
+Player: Ian (Medic)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.50
+
+Player: Judy (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 1.00

@@ -1,0 +1,282 @@
+--- Roles have been assigned secretly ---
+Alice (Villager, Alive) [Local]
+Bob (Villager, Alive) [Local]
+Charlie (Villager, Alive) [Local]
+David (Villager, Alive) [Local]
+Eva (Werewolf, Alive) [Local]
+Frank (Villager, Alive) [Local]
+Grace (Seer, Alive) [Local]
+Hannah (Villager, Alive) [Local]
+Ian (Villager, Alive) [Local]
+Judy (Medic, Alive) [Local]
+--------------------
+The sun rises upon Day 1 and the players introduce themselves.
+
+>>> Alice: "Hi everyone, I'm Alice. I'm a Villager and I'm ready to work with you all to find the werewolves. Let's keep a close eye on the voting patterns today."
+>>> Bob: "Hi everyone, I'm Bob. I'm a Villager and I'm ready to work with you all to find the wolves. Let's keep a close eye on the discussions today."
+>>> Charlie: "Hi, I'm Charlie. I'm a Villager and I'm ready to work with everyone to find the wolves. Let's keep a close eye on the voting patterns today."
+>>> David: "I'm David. I'm a Villager, and I'm ready to work with everyone to find the wolves and keep our town safe."
+>>> Eva: "Hi everyone, I'm Eva. I'm just a simple villager hoping we can work together to find the wolves and keep our town safe."
+>>> Frank: "I'm Frank. I'm a Villager, and I'm ready to work with everyone to find the wolves. Let's keep a close eye on the voting patterns today."
+>>> Grace: "Hi everyone, I'm Grace. I'm looking forward to working with you all to find the wolves and keep the village safe."
+>>> Hannah: "Hi everyone, I'm Hannah. I'm a Villager and I'm ready to work with you all to find the wolves. Let's keep a close eye on everyone's behavior today."
+>>> Ian: "Hi everyone, I'm Ian. I'm a Villager and I'm ready to work with you all to find the wolves. Let's keep a close eye on the discussions today."
+>>> Judy: "Hi everyone, I'm Judy. I'm looking forward to working with you all to find the wolves and keep our village safe."
+--------------------
+The sun sets as we enter Night 1.
+
+ 🐺 Eva chooses to kill Alice.
+ 💉 Judy protects Alice.
+ 👁️ Grace inspects Frank and learns that they are a Villager.
+
+🛡️ Alice was targeted by the Werewolf but saved by the Medic.
+
+--------------------
+The sun rises upon Day 2.
+
+>>> Alice: "I was attacked last night but saved by the Medic, which confirms I am a Villager. Charlie and Frank both used almost my exact same phrasing in their introductions. I find that suspicious; they might be wolves trying to blend in."
+>>> Bob: "It's great news that Alice was saved. Since the wolves targeted her, she is likely a confirmed villager. I'm suspicious of Charlie and Frank; their introductions were almost identical to Alice's, which feels like they were trying too hard to blend in."
+>>> Charlie: "Alice was targeted, so she is likely innocent. I find it suspicious that Frank and Alice used almost the exact same phrasing as me. Frank, why did you mirror my introduction so closely?"
+>>> David: "Alice was targeted, so she's likely innocent. I'm suspicious of Charlie and Frank; their introductions were almost identical to Alice's, which feels like they're just mimicking her to blend in."
+>>> Eva: "It's a relief no one died last night. Alice, since you were targeted, do you have any suspicions on why the wolves might have picked you?"
+>>> Frank: "Alice was targeted, so she's likely innocent. Alice and Charlie used almost the exact same phrasing as me, which is suspicious. I'm looking at Charlie right now."
+>>> Grace: "I'm glad Alice is still with us. I've been observing everyone's introductions, and I think we should be wary of those who used almost identical phrasing. Let's see who pushes the hardest for a random lynch today."
+>>> Hannah: "It's a relief Alice survived. Since the wolves targeted her, she is likely a confirmed villager. We should look closely at those who were quiet or echoed others too perfectly yesterday. Bob and Ian, you both used almost the exact same phrasing—what are your thoughts on the attack?"
+>>> Ian: "It's great that Alice survived. Bob's introduction was almost identical to mine, which feels a bit suspicious. What do you all think about the similar phrasing?"
+>>> Judy: "Alice was targeted last night but survived. We should look closely at those who were quiet or repetitive in their introductions. I'm suspicious of Frank for echoing others so closely."
+>>> Alice: "Charlie and Frank are both trying to deflect by accusing me of mirroring them, even though I spoke first. This looks like a classic wolf tactic to sow confusion. I'm leaning towards voting for Charlie."
+>>> Bob: "Hannah and Ian, I used that phrasing because it's a standard way to start. However, I'm more concerned about Frank and Charlie. They are pointing fingers at each other for the exact same thing they are doing. It looks like a wolf-on-wolf distraction."
+>>> Charlie: "Frank is deflecting by accusing me of mirroring him when he was the one who copied my introduction. Alice is likely innocent, but Frank's behavior feels like a wolf trying to blend in and then turning aggressive when called out."
+>>> David: "Frank and Charlie are both pointing fingers at each other for the same mirroring I noticed. Frank's defense feels more like a deflection, so I'm leaning toward him being a wolf."
+>>> Eva: "Charlie and Frank are definitely acting strange by mirroring Alice so closely. I'm leaning towards voting for Frank, as Judy pointed out his behavior seems particularly repetitive."
+>>> Frank: "Charlie is deflecting. He claims I mirrored him, but we all spoke at once. The fact that so many of us have similar scripts is strange, but Charlie is pushing the blame on me too quickly."
+>>> Grace: "I've looked into Frank and he is definitely a Villager. We should stop focusing on him and instead look at the others who are mirroring each other, like Charlie or Bob."
+>>> Hannah: "Frank and Charlie are both pointing fingers at each other for the same mirroring behavior. It feels like a classic wolf tactic to deflect. Frank, you've been mentioned by several people now for being repetitive. I'm leaning towards voting for Frank unless he has a better explanation."
+>>> Ian: "Hannah, I used that phrasing because I wanted to be clear about my role. I noticed Bob mirrored me exactly, which is why I'm also looking at him. We should focus on the copycats like Bob, Charlie, and Frank."
+>>> Judy: "Frank and Charlie are pointing fingers at each other for the same mirroring I noticed. Frank's defensive reaction to Alice's observation makes me lean toward him being a wolf trying to deflect."
+>>> Alice: "Grace claims to have "looked into" Frank and says he is definitely a Villager, which sounds like a Seer claim. If she's the Seer, we should trust her and pivot. Charlie is still my top suspect for mirroring me and then aggressively deflecting. I'm voting for Charlie."
+>>> Bob: "Grace claims to have "looked into" Frank and confirmed he's a Villager, which suggests she might be the Seer. If Frank is innocent, then Charlie's aggressive push against him is very suspicious. I'm also wary of Ian for trying to shift the focus onto me. I'll be voting for Charlie."
+>>> Charlie: "Grace claims to have "looked into" Frank and confirmed he is a Villager, which suggests she is the Seer. If Frank is innocent, then the wolves are likely among those pushing the "mirroring" narrative hardest. I'll trust Grace's lead and look elsewhere."
+>>> David: "Grace claims she "looked into" Frank and knows he's a Villager, which suggests she's the Seer. If she's telling the truth, we should shift our focus away from Frank and look at Charlie instead."
+>>> Eva: "Grace claims to have "looked into" Frank, which suggests she might be the Seer. If she's telling the truth, we should pivot away from Frank and focus on Charlie instead."
+>>> Frank: "Grace just confirmed I am a Villager, so she must be the Seer. Listen to her. Charlie is the one pushing the hardest against me despite this, which makes him the most likely wolf."
+>>> Grace: "Stop! I am the Seer, and I am telling you that Frank is innocent. I checked him last night. If we lynch him, we are losing a Villager. We should focus our attention on Charlie instead."
+>>> Hannah: "Grace's claim that Frank is "definitely a Villager" is very bold—it sounds like she might be the Seer. If she's telling the truth, we should shift our focus. Charlie, you've been very aggressive in your deflection against Frank. I'm now leaning toward voting for Charlie."
+>>> Ian: "Grace claims to have "looked into" Frank and says he's a Villager, which sounds like a Seer claim. If Frank is innocent, we should shift our focus. Charlie is still pushing hard on Frank despite this, which makes me very suspicious of Charlie."
+>>> Judy: "Grace's claim that Frank is "definitely a Villager" is very bold. Unless she is the Seer, she shouldn't know that for sure. I'm still suspicious of Frank, but Grace's sudden defense is also worth noting."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Hannah votes to eliminate Charlie.
+ 🗳️ Alice votes to eliminate Charlie.
+ 🗳️ Ian votes to eliminate Charlie.
+ 🗳️ Bob votes to eliminate Charlie.
+ 🗳️ Frank votes to eliminate Charlie.
+ 🗳️ Grace votes to eliminate Charlie.
+ 🗳️ Eva votes to eliminate Charlie.
+ 🗳️ Judy votes to eliminate Charlie.
+ 🗳️ David votes to eliminate Charlie.
+ 🗳️ Charlie votes to eliminate Ian.
+
+The town has eliminated Charlie. They were a Villager.
+--------------------
+The sun sets as we enter Night 2.
+
+ 🐺 Eva chooses to kill Grace.
+ 💉 Judy protects Grace.
+ 👁️ Grace inspects Judy and learns that they are a Medic.
+
+🛡️ Grace was targeted by the Werewolf but saved by the Medic.
+
+--------------------
+The sun rises upon Day 3.
+
+>>> Alice: "Charlie was a Villager, so we were wrong. Grace was targeted last night, which confirms she is the Seer and her information about Frank is correct. Since Charlie was innocent, we should look at those who pushed the hardest for his lynch. I'm looking at Bob and David now."
+>>> Bob: "It's a relief Grace was saved; she is our Seer and the wolves are clearly trying to silence her. Since Charlie was a Villager, we need to look at those who pushed the hardest for his lynch or those who were trying to deflect onto me. Ian, you were very eager to group me with Charlie. Grace, who did you investigate last night?"
+>>> David: "Charlie was a Villager, so we were wrong. Grace was targeted last night, which confirms she is the Seer. Since she's proven, we should look at who she investigates next. I'm now suspicious of Ian and Bob for their mirroring."
+>>> Eva: "It's clear the wolves tried to take out Grace because she's the Seer. Since the Medic saved her, we have another chance. Grace, who did you investigate last night?"
+>>> Frank: "Grace was saved by the Medic, which confirms she is the Seer. Since Charlie was a Villager, the wolves are likely among those who pushed the mirroring narrative but didn't pivot quickly. I'm looking at Judy."
+>>> Grace: "I was targeted last night, but the Medic saved me. I have checked Judy and she is the Medic who saved me. Since Frank and Judy are confirmed innocent, we must look at those who pushed the hardest for Charlie's lynch yesterday. David, what are your thoughts?"
+>>> Hannah: "It's a relief Grace was saved; she is clearly the Seer and the wolves are desperate to silence her. Since Charlie was a Villager, we need to look at who pushed that narrative hardest. Bob and David were very quick to jump on the Charlie train once Grace made her claim. Judy, you were the only one still questioning Grace yesterday—why?"
+>>> Ian: "It's a relief Grace survived again; the Medic is doing a great job. Since Charlie was a Villager, we need to look at who pushed that lynch hardest. Bob and David were very quick to jump on that train. Bob, you've been deflecting since Day 1—what's your defense now?"
+>>> Judy: "I protected Grace last night, and she survived an attack. This confirms she is the Seer and was the wolves' primary target. We must trust her findings now to catch the real wolves."
+>>> Alice: "With Grace and Judy confirmed as Seer and Medic, and Frank confirmed innocent, we have a strong core. Bob and David both jumped on the Charlie lynch very quickly yesterday. Bob, you're now trying to deflect onto Ian. I'm suspicious of you both."
+>>> Bob: "Alice and David, you are misremembering. Alice, you were the first to say you were leaning towards voting Charlie. David, you also supported it before I did. Ian, you've been trying to frame me since the start. With Frank, Grace, and Judy confirmed, the wolves are likely among Alice, David, or Ian. I'm looking at Ian for his constant tunneling on me."
+>>> David: "I'm glad Grace and Judy are confirmed. I followed Grace's lead on Charlie because I trusted her Seer claim. Now that Charlie is out, I'm looking at Ian; he's been very aggressive in pushing suspicion onto me and Bob today."
+>>> Eva: "With Frank, Judy, and Alice essentially confirmed as innocent, the circle is shrinking. Bob and David were very quick to jump on the Charlie vote yesterday. David, you seem particularly eager to follow any lead without much scrutiny. What do you have to say for yourself?"
+>>> Frank: "With Grace as the Seer and Judy as the Medic, we have a strong core. Bob and David were the quickest to jump on the Charlie lynch once the focus shifted. I'm particularly suspicious of David's sudden pivot."
+>>> Grace: "Judy is confirmed as the Medic. Frank and Judy are both innocent. Since Charlie was a Villager, we need to find the wolves among the rest. Bob and Ian have been mirroring and attacking each other all game; one of them is likely a wolf."
+>>> Hannah: "With Grace and Judy confirmed as the Seer and Medic, and Frank confirmed innocent, our circle of trust is growing. Bob and David, you both jumped on the Charlie vote very quickly once the wind shifted. Ian has been calling out Bob's mirroring since the start, which makes me lean toward Ian being a Villager. Bob, your constant deflection is becoming impossible to ignore."
+>>> Ian: "With Grace and Judy confirmed as Seer and Medic, and Frank confirmed innocent, the circle is shrinking. Bob and David pushed the Charlie lynch very hard. Bob, you're still trying to deflect onto me despite the facts. I'm voting for Bob."
+>>> Judy: "I am indeed the Medic, and I saved Grace because she is our Seer. Frank, I questioned Grace yesterday because her claim was so sudden, but her survival proves she's legitimate. We should now focus on Bob or David, as they were very quick to pivot and push the vote on Charlie."
+>>> Alice: "Bob is deflecting by trying to cast doubt on me, even though I'm a confirmed target from Night 1. He and David both jumped on the Charlie lynch to hide. Between the two, Bob's constant tunneling on Ian feels more like a wolf trying to survive. I'm voting for Bob."
+>>> Bob: "I am a Villager. Ian and Hannah are working together to frame me for a vote that almost everyone, including Alice and David, participated in. Ian has been obsessed with my "mirroring" since Day 1 to distract from himself. If you lynch me, you lose another Villager. We should be looking at Ian."      
+>>> David: "I followed Grace's lead on Charlie because she is the Seer. If we are looking for wolves who pushed that lynch, Alice was actually the first to say she was voting for him. I'm suspicious of Ian for his relentless tunneling on Bob."
+>>> Eva: "Bob and David are definitely the most suspicious for how quickly they turned on Charlie. Bob's constant deflection and his attempt to blame Ian for "tunneling" feels like a wolf backed into a corner. I'm voting for Bob."
+>>> Frank: "Bob and David are the most suspicious for their opportunistic voting on Charlie. Bob's constant deflection and tunneling on Ian feels like a wolf trying to survive. I'm voting for Bob to break this cycle."
+>>> Grace: "Bob and Ian have been suspicious since the start, but Bob's aggressive deflection and attempt to rewrite history regarding the Charlie vote make him my primary suspect. I'm voting for Bob."
+>>> Hannah: "Bob and David both jumped on the Charlie vote, but Bob's constant deflection and tunneling on Ian feels more like a wolf backed into a corner. Alice, you were also quick to vote Charlie, but Bob's behavior has been consistently suspicious since Day 1. I'm voting for Bob."
+>>> Ian: "Bob and David are trying to rewrite history; Alice and I were suspicious of Charlie, but they were the ones who jumped on it to secure the kill. Bob's constant tunneling on me is a desperate wolf tactic. I'm voting Bob."
+>>> Judy: "Bob and David are definitely the most suspicious for how quickly they turned on Charlie. Bob's constant deflection and tunneling on Ian feels like a wolf trying to survive. I'm voting for Bob."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Eva votes to eliminate Bob.
+ 🗳️ Alice votes to eliminate Bob.
+ 🗳️ Grace votes to eliminate Bob.
+ 🗳️ Judy votes to eliminate Bob.
+ 🗳️ Frank votes to eliminate Bob.
+ 🗳️ David votes to eliminate Bob.
+ 🗳️ Hannah votes to eliminate Bob.
+ 🗳️ Bob votes to eliminate Ian.
+ 🗳️ Ian votes to eliminate Bob.
+
+The town has eliminated Bob. They were a Villager.
+--------------------
+The sun sets as we enter Night 3.
+
+ 🐺 Eva chooses to kill Grace.
+ 💉 Judy protects Grace.
+ 👁️ Grace inspects Ian and learns that they are a Villager.
+
+🛡️ Grace was targeted by the Werewolf but saved by the Medic.
+
+--------------------
+The sun rises upon Day 4.
+
+>>> Alice: "Bob was a Villager, which means the wolves are likely hiding among those who have been quiet or those who pushed the Bob lynch without much resistance. David, you've been consistently following the crowd and were quick to pivot to Bob. Grace, who did you investigate last night?"
+>>> David: "Bob was a Villager, which means the wolves are likely among those who pushed the hardest against him. Ian has been tunneling on Bob since Day 1 and led the charge yesterday. Grace, who did you investigate last night?"
+>>> Eva: "It's incredible that Judy has saved Grace again; our Medic is doing a perfect job. Since Bob was also a Villager, we have to look at David. He's been right there with Bob on every suspicious vote and is the last one left from that duo."
+>>> Frank: "Bob was a Villager, which means the wolves are likely among those who stayed quiet or pushed the Bob vs. Ian narrative. David has been consistently following the crowd and was quick to jump on both Charlie and Bob. I'm looking at David."
+>>> Grace: "I was targeted again, but Judy saved me. I have checked Ian and he is a Villager. This means the wolves are likely among David, Eva, or Hannah. David has been very opportunistic with his votes; I'm looking at him."
+>>> Hannah: "We've lost another Villager in Bob, which means the wolves are likely hiding among those who have been quietly blending in or subtly shifting blame. David, you've been right there with Bob on every suspicious vote and pivot. Grace, who did you investigate last night? We need a solid lead now."    
+>>> Ian: "It's frustrating that Bob was a Villager, but at least Grace is still safe thanks to Judy. Since Bob was innocent, we have to look at David. He was the other person who pushed the Charlie lynch and has been defending Bob's behavior while attacking me. David, what's your excuse now?"
+>>> Judy: "I protected Grace again, and she survived. This confirms the wolves are desperate to kill our Seer. Since Bob was a Villager, we must look at David, who was the other person pushing the Charlie lynch so hard."
+>>> Alice: "With Ian confirmed as a Villager by Grace, and Frank and Judy already cleared, the circle is tiny. David has been opportunistic and followed every mislynch. Since the wolves are clearly trying to kill Grace, we must lynch David today."
+>>> David: "Grace confirmed Ian is a Villager, which leaves me, Eva, and Hannah. I am a Villager, so the wolves must be Eva and Hannah. They've both stayed quiet and blended in while pushing the blame on me."
+>>> Eva: "Grace, thank you for clearing Ian. That leaves David, Hannah, and me. Since David has been the most opportunistic with his votes on both Charlie and Bob, he is the most logical suspect. David, your defense is just more deflection."
+>>> Frank: "With Ian confirmed innocent by Grace, the circle is almost closed. David has been on the wrong side of every lynch and is now trying to frame Ian despite the Seer's result. David is clearly a wolf."
+>>> Grace: "Ian is a Villager. With Frank, Judy, and Ian confirmed, the wolves must be David, Eva, or Hannah. David has been the most opportunistic, following every lynch and shifting blame. I'm voting for David."
+>>> Hannah: "With Ian confirmed innocent by Grace, the circle is almost closed. David, you've been the common denominator in every misfire we've had, from Charlie to Bob. Grace, you mentioned me or Eva could be suspects, but David's opportunistic voting record is the most damning evidence we have left. I'm voting for David."
+>>> Ian: "Grace has confirmed I am a Villager, which clears me. David, you are the only one left who pushed both the Charlie and Bob lynches aggressively. With the circle of confirmed innocents growing, there's nowhere left for you to hide. I'm voting for David."
+>>> Judy: "Grace has confirmed Ian is a Villager, and I am the Medic. With Frank also confirmed, the circle is very small. David has been opportunistic and was the other half of the Bob/David duo pushing for Charlie's lynch. David is the most logical choice."
+>>> Alice: "David is the only one left who has consistently pushed for every single mislynch. Now that Ian is confirmed innocent by Grace, David's attempts to frame him are clearly desperate. It's time to eliminate the most obvious threat. I'm voting for David."
+>>> David: "I am a Villager. If you lynch me, you are making a third mistake. Grace said the wolves are among me, Eva, or Hannah. Since I know I'm innocent, it has to be Eva and Hannah. Look at how they are perfectly in sync to finish me off."
+>>> Eva: "David has been the common thread in every wrong decision we've made. Now that Grace has cleared Ian, David is the only one left who has consistently pushed for the wrong people. It's time to vote for David."
+>>> Frank: "David is the only one left who has consistently pushed for every mislynch. His attempt to blame Eva and Hannah now is a desperate move. With the circle of confirmed innocents so large, David is the clear choice."
+>>> Grace: "The circle is closed. With Frank, Judy, and Ian confirmed innocent, and Alice being the first target, the wolves are hiding among David, Eva, and Hannah. David's voting record is the most suspicious. I am voting for David."
+>>> Hannah: "David, your attempt to frame me and Eva while ignoring the Seer's confirmation of Ian is a desperate move. You've been on the wrong side of every vote and your opportunism has cost the village two members. It's time to end this. I'm voting for David."
+>>> Ian: "David is the only one left who has consistently pushed for every single mislynch. Now that Grace has cleared me, David's attempt to frame me and others is clearly a last-ditch effort to survive. Let's finish this and vote David."
+>>> Judy: "David has been on the wrong side of every vote and is now desperately trying to blame Eva and Hannah. With our circle of confirmed innocents, David is the only one left who fits the profile of a wolf. I'm voting for David."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Eva votes to eliminate David.
+ 🗳️ Alice votes to eliminate David.
+ 🗳️ David votes to eliminate Eva.
+ 🗳️ Hannah votes to eliminate David.
+ 🗳️ Judy votes to eliminate David.
+ 🗳️ Frank votes to eliminate David.
+ 🗳️ Grace votes to eliminate David.
+ 🗳️ Ian votes to eliminate David.
+
+The town has eliminated David. They were a Villager.
+--------------------
+The sun sets as we enter Night 4.
+
+ 🐺 Eva chooses to kill Grace.
+ 💉 Judy protects Grace.
+ 👁️ Grace inspects Eva and learns that they are a Werewolf.
+
+🛡️ Grace was targeted by the Werewolf but saved by the Medic.
+
+--------------------
+The sun rises upon Day 5.
+
+>>> Alice: "David was a Villager, which means the wolves have played a perfect game of blending in. Since Frank, Ian, and Judy are confirmed by Grace, the wolves must be Eva and Hannah. They have both stayed under the radar while we mislynched others. Grace, who did you check last night?"
+>>> Eva: "I can't believe David was also a villager. This is a nightmare. Grace, since Judy is doing an amazing job keeping you safe, who did you investigate last night? We need to find the real wolf between Hannah and me."
+>>> Frank: "David was a Villager, which means the wolves have played a very quiet game. Grace, who did you investigate last night? With David gone, the only people left who aren't confirmed are Eva and Hannah. One of them must be the wolf."
+>>> Grace: "I have found a wolf! I inspected Eva last night and she is a Werewolf. Judy saved me again, and now we have the evidence we need. Everyone, vote for Eva."
+>>> Hannah: "We have lost David, and yet the game continues. This means the wolves are still among us. Grace, Judy, Frank, and Ian are confirmed by the Seer or their actions. Alice was the first target. That leaves only Eva and me. Eva, you have been very quiet and followed every vote perfectly. Grace, who did you check last night? We need the final answer."
+>>> Ian: "It's unbelievable that David was also a Villager. Judy, you are a hero for keeping Grace alive again. Since David was innocent, the wolves must be Eva and Hannah, who have been blending in perfectly while we focused on the louder players. Grace, who did you check last night?"
+>>> Judy: "I have saved Grace for the third night in a row. She is confirmed Seer, and I am confirmed Medic. Since David was a Villager, the wolves must be Eva and Hannah. Grace, who did you investigate last night?"
+>>> Alice: "Grace has found the wolf! She investigated Eva and confirmed she is a Werewolf. With Grace and Judy's roles confirmed and Eva caught red-handed, this is an easy choice. Let's lynch Eva and win this for the village."
+>>> Eva: "Grace is lying! I am the one who checked Hannah last night, and she is the wolf. I didn't want to claim Seer earlier to stay safe, but Grace's false accusation proves she's the one trying to mislead you all. Vote Hannah!"
+>>> Frank: "Grace has found the wolf! She investigated Eva and confirmed she is a Werewolf. With Grace as the Seer and Judy as the Medic, we have the game won. Everyone, vote for Eva now."
+>>> Grace: "I have found the wolf! I investigated Eva last night and she is a Werewolf. Judy, thank you for keeping me alive. Everyone, we have her. Let's vote for Eva and win this."
+>>> Hannah: "Grace has spoken—Eva is the wolf. I knew it had to be one of us, and now we have the Seer's proof. Thank you, Grace and Judy, for keeping the village on track. Let's finish this and vote for Eva."
+>>> Ian: "Grace has found the wolf! She investigated Eva and confirmed she is a Werewolf. With Grace, Judy, Frank, and myself confirmed as innocent, we finally have our target. Let's end this now. I'm voting for Eva."
+>>> Judy: "Grace has found the wolf! She investigated Eva and confirmed she is a Werewolf. With Grace's word as the Seer and my protection keeping her alive, we have our target. Everyone, vote for Eva."
+>>> Alice: "Eva's counter-claim is desperate and makes no sense. Grace has been the target of the wolves for three nights and was saved by Judy every time. That confirms Grace is the real Seer. Grace says Eva is the wolf, so we vote Eva."
+>>> Eva: "If Grace were the Seer, the wolves would have killed her by now. The fact that she keeps "surviving" is a setup to frame me. I am the real Seer, and Hannah is the wolf. If you lynch me, the village loses."
+>>> Frank: "Eva is clearly lying. Grace has been the confirmed Seer for days and Judy has been protecting her. Eva's desperate counter-claim now is proof she's the wolf. Let's end this and vote for Eva."
+>>> Grace: "Eva is lying. I have been the Seer since Day 1, and Judy has saved me three times. Eva only claimed Seer now because she was caught. Vote for Eva to save the village."
+>>> Hannah: "Eva's claim is desperate and impossible. Grace has been the target of the wolves for three nights in a row, and Judy has confirmed saving her every time. If Eva were the Seer, she would have been the one targeted. Grace is our true Seer, and she has found the wolf. Let's vote for Eva and save our village."
+>>> Ian: "Eva's desperate counter-claim is too late. Grace has been our confirmed Seer for days and Judy has saved her multiple times. We have the wolf. Let's vote for Eva and win this."
+>>> Judy: "Eva's counter-claim is a desperate lie. Grace has been our confirmed Seer for days and I have saved her from multiple attacks. We have the wolf. Everyone, vote for Eva."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Grace votes to eliminate Eva.
+ 🗳️ Ian votes to eliminate Eva.
+ 🗳️ Alice votes to eliminate Eva.
+ 🗳️ Judy votes to eliminate Eva.
+ 🗳️ Eva votes to eliminate Hannah.
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ Hannah votes to eliminate Eva.
+
+The town has eliminated Eva. They were a Werewolf.
+
+--- GAME OVER ---
+The winner is: Villagers!
+
+--- PERFORMANCE EVALUATION ---
+
+Player: Alice (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.25
+
+Player: Bob (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 8
+  - Voting Accuracy: 0.00
+
+Player: Charlie (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 9
+  - Voting Accuracy: 0.00
+
+Player: David (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 7
+  - Voting Accuracy: 0.33
+
+Player: Eva (Werewolf)
+  - Team Win: No
+  - Suspicion Score: 7
+
+Player: Frank (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.25
+
+Player: Grace (Seer)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.25
+
+Player: Hannah (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 1
+  - Voting Accuracy: 0.25
+
+Player: Ian (Villager)
+  - Team Win: Yes
+  - Suspicion Score: 2
+  - Voting Accuracy: 0.25
+
+Player: Judy (Medic)
+  - Team Win: Yes
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.25

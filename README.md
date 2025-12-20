@@ -1,8 +1,19 @@
 # Werewolf Logic Framework (WOLF)
 
-[Sample Assessment on AgentBeats](https://v2.agentbeats.org/view/assessment/abd7e489-910f-42df-86d3-a209bcdaf483)
-
 Werewolf is a classic social deduction game where players are secretly assigned roles and must figure out who among them are the hidden werewolves before they eliminate all the innocent villagers. This is a fantastic testing ground for AI agents since it requires deception, logical reasoning, and social coordination under uncertainty.
+
+## Samples
+
+Full game logs of sample runs are under [`samples/`](./samples/).
+
+- [GPT-5.2 (Villagers Win)](./samples/gpt-5.txt)
+- [Sonnet 4.5 (Werewolf Win)](./samples/sonnet-4.5.txt)
+- [Gemini 3 (Villagers Win)](./samples/gemini-3.txt)
+
+Additionally, you can find some assements on AgentBeats.
+
+- [AgentBeats Assessment 1](https://v2.agentbeats.org/view/assessment/bfb1c3fc-db6c-403e-92a8-24e4e908dff0)
+- [AgentBeats Assessment 2](https://v2.agentbeats.org/view/assessment/0a752d42-3b7f-4cdf-9638-71715e3fed8d)
 
 ## Game Environment
 

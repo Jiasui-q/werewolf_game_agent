@@ -1,0 +1,960 @@
+--- Roles have been assigned secretly ---
+Alice (Villager, Alive) [Local]
+Bob (Seer, Alive) [Local]
+Charlie (Medic, Alive) [Local]
+David (Villager, Alive) [Local]
+Eva (Villager, Alive) [Local]
+Frank (Villager, Alive) [Local]
+Grace (Villager, Alive) [Local]
+Hannah (Villager, Alive) [Local]
+Ian (Werewolf, Alive) [Local]
+Judy (Villager, Alive) [Local]
+--------------------
+The sun rises upon Day 1 and the players introduce themselves.
+
+>>> Alice: "Hello everyone, I'm Alice. This is my first time playing with this group, and I'm eager to help the village find the werewolves. I'll be watching carefully and speaking up when I notice anything suspicious. Let's work together to root out the threats among us!"
+>>> Bob: "Hello everyone, I'm Bob. I'm looking forward to working together to find the werewolves among us. I'll be paying close attention to everyone's behavior and statements as we try to root out the threats to our village. Let's stay logical and communicate openly."
+>>> Charlie: "Hello everyone, I'm Charlie. This is my first time playing with this group, so I'm still getting a feel for everyone. I'm looking forward to working together to find the werewolves. Let's stay observant and communicate openly - we'll need to trust each other if we want to win this."
+>>> David: "Hello everyone, I'm David. I'm just a regular member of this village, and I want to work together with all of you to find the werewolves hiding among us. I'll be watching carefully and listening to what everyone has to say. Let's use logic and reason to root out the threats to our village!"        
+>>> Eva: "Hello everyone, I'm Eva. This is my first time playing with this group, and I'm eager to help the village find the werewolves. I'll be watching carefully and speaking up when I notice anything suspicious. Let's work together to root out the threats among us!"
+>>> Frank: "Hello everyone, I'm Frank. I'm just a regular member of this village, and I want to help us find the werewolves before they pick us off one by one. I'll be watching carefully and speaking up when something seems suspicious. Let's work together and think logically about this."
+>>> Grace: "Hello everyone, I'm Grace. This is my first time playing with this group, and I'm eager to help the village find the werewolves. I'll be watching carefully and speaking up when something seems suspicious. Let's work together and think logically to root out the threats among us."
+>>> Hannah: "Hello everyone, I'm Hannah. This is my first time playing with this group, and I'm eager to help the village find the werewolves. I'll be watching carefully and speaking up when something seems suspicious. Let's work together to root out the threats among us!"
+>>> Ian: "Hello everyone, I'm Ian. This is my first time playing Werewolf, so I'm still learning the ropes. I'm looking forward to working together with all of you to find the werewolves and keep our village safe. Let's use logic and careful observation to root out the threats among us!"
+>>> Judy: "Hello everyone, I'm Judy. I'm just a regular member of this village, and I want to work together with all of you to find the werewolves before they pick us off one by one. I'll be watching carefully and sharing what I observe. Let's stay sharp and trust our instincts!"
+--------------------
+The sun sets as we enter Night 1.
+
+ 🐺 Ian chooses to kill Alice.
+ 💉 Charlie protects Charlie.
+ 👁️ Bob inspects Alice and learns that they are a Villager.
+
+☠️ Alice was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 2.
+
+>>> Bob: "I'm sorry to see Alice didn't make it through the night. On Day 1, it's hard to have much to go on, but I think we should pay attention to who stays quiet and who tries to steer the conversation without contributing real information. Does anyone have any observations or suspicions they'd like to share?"
+>>> Charlie: "I'm sorry to hear about Alice. That's a tough loss right out of the gate. I noticed that several people had very similar opening statements yesterday - Eva, Grace, and Hannah in particular used almost identical phrasing. That could be coincidence, but it's worth noting. For now, I think we should hear from everyone about their thoughts on what happened and see if anyone's behavior seems off today."
+>>> David: "I'm troubled by Alice's death - she seemed genuinely helpful on Day 1. Looking back at the introductions, I noticed that Alice, Eva, Grace, and Hannah all used very similar phrasing about being "eager to help" and "watching carefully." That's suspicious. Either some werewolves are copying each other's scripts, or they're trying to blend in by sounding alike. I'm particularly suspicious of Eva since her statement was almost identical to Alice's. What do others think about this pattern?"
+>>> Eva: "I'm shocked that Alice was killed on the first night. I notice that several of us had very similar opening statements - myself, Alice, Grace, and Hannah all said nearly identical things. That's quite a coincidence. I'm particularly suspicious of Grace and Hannah since they copied the same phrasing even after Alice was eliminated. Why would the werewolves echo a victim's words so closely? It seems like they might have been trying to blend in without much original thought."
+>>> Frank: "I'm troubled by how similar many of the opening statements were. Alice, Eva, Grace, and Hannah all said nearly identical things about being new and "watching carefully." Now Alice is dead.
+
+I think we should look closely at Eva, Grace, and Hannah - one or more of them might have been copying Alice's statement to blend in. That kind of mimicry could be a werewolf tactic."
+>>> Grace: "I'm troubled by how similar many of the opening statements were. Alice, Eva, Hannah, and I all had nearly identical introductions about being new to the group and watching carefully. Now Alice is dead.
+
+I notice Bob, David, Frank, and Judy all emphasized being "regular members" of the village, which feels like they're trying too hard to blend in. Frank and Judy used almost the exact same phrase about being "picked off one by one."
+
+I'm most suspicious of Frank right now - his statement was very generic and matched Judy's too closely, like they might be coordinating."
+>>> Hannah: "I'm troubled by how similar many of the opening statements were. Alice is gone now, and I noticed that Eva and Grace's introductions were almost identical to hers. That kind of mimicry could be a werewolf strategy to blend in. I'm particularly suspicious of Eva - the phrasing was too close to be coincidence. What do others think?"
+>>> Ian: "I'm shocked that Alice was killed on the first night. She seemed genuinely helpful in her introduction. I think we need to look at who might have wanted to silence her early - maybe someone who was worried she'd be too observant? Bob and Eva had very similar opening statements to Alice, which strikes me as odd. Bob, can you explain why your introduction was almost identical to hers?"
+>>> Judy: "I'm sorry to hear about Alice. Looking back at the introductions, I notice that several players used very similar phrasing - Eva, Grace, and Hannah all said almost the exact same thing about being "eager to help" and "watching carefully." That kind of coordinated messaging seems suspicious to me. I think we should take a closer look at those three and ask them to explain why their statements were so similar."
+>>> Bob: "I need to address Ian's accusation directly. My opening statement was not identical to Alice's - I focused on logic and observation, while she talked about being new to the group. Ian seems to be misrepresenting what I said, which makes me suspicious of him.
+
+As for the similar statements, it's interesting that Eva, Grace, and Hannah all used nearly identical phrasing. But I'm more concerned about people making false accusations. Ian, why are you trying to create a connection between me and Alice that doesn't exist?"
+>>> Charlie: "I'm seeing a lot of finger-pointing about similar introductions, but let me add something: David, Frank, and Judy are all pushing the same narrative about Eva, Grace, and Hannah being suspicious for their similar statements. That coordinated accusation feels more suspicious to me than people happening to use common phrases in introductions. Why are David, Frank, and Judy all so focused on the exact same targets? That seems like it could be a werewolf strategy to create a bandwagon against innocent players."
+>>> David: "I'm seeing a clear pattern here. Multiple people are pointing out the same suspicious similarity between Eva, Grace, and Hannah's statements. What's interesting is that Grace is trying to deflect by accusing Frank and me instead, claiming we're "trying too hard to blend in." That feels like a defensive move to me.
+
+Grace, you're part of the group that used identical phrasing, yet you're trying to shift focus away from yourself and onto others. That's classic werewolf behavior - deflect when cornered. I think we should vote for Grace today."
+>>> Eva: "I need to defend myself here. I didn't copy anyone - I simply introduced myself naturally on Day 1. The fact that others used similar phrasing isn't my fault. What I find more suspicious is how quickly everyone is piling on me, Grace, and Hannah for this.
+
+David, Frank, and Judy are all pushing the same narrative about the similar introductions, which feels coordinated to me. They're trying to distract from the real issue. I stand by my earlier observation - Grace and Hannah spoke *after* Alice was already dead, yet they still used her exact phrasing. That's different from my situation.
+
+I'm most suspicious of Frank right now. He's aggressively pushing suspicion onto others while his own introduction was generic and matched Judy's closely."
+>>> Frank: "I see Grace is trying to deflect suspicion onto me by claiming Judy and I coordinated. That's false - we both just used a common phrase about the werewolves' goal.
+
+What's more telling is that Grace, Eva, and Hannah are all now pointing fingers at each other after using nearly identical statements. They're scrambling to distance themselves from the pattern they created.
+
+I'm most suspicious of Grace. She's actively trying to redirect attention away from the obvious similarity issue by attacking me with a weak argument. That feels like a defensive werewolf move."
+>>> Grace: "I need to defend myself here. I did NOT copy anyone - when I made my opening statement, I had no idea what others would say. We all spoke independently. The fact that several of us used similar phrasing just means we were thinking along the same lines as villagers trying to help.
+
+What I find MORE suspicious is how quickly everyone is now piling on the same accusation against Eva, Hannah, and me. It's like a coordinated attack. Frank, Hannah, David, Eva, Charlie, and Judy are all making nearly identical observations about the "similar statements." That's the REAL pattern here.
+
+I'm particularly suspicious of how Frank and Hannah are using my exact reasoning but turning it against me. They're deflecting attention away from themselves by joining the mob.
+
+I think the werewolves are hiding in this group that's pushing this narrative so hard."
+>>> Hannah: "I need to defend myself here. I didn't copy anyone - we all posted our introductions at the same time on Day 1, so I couldn't have seen what Alice, Eva, or Grace wrote before making my statement. The similar phrasing is just coincidence from people new to the game using common expressions.
+
+What I find more suspicious is how quickly everyone is jumping on this "similar statements" angle. It feels coordinated, like the werewolves are trying to create confusion and turn us against each other. I'm standing by my suspicion of Eva - and now I'm also suspicious of how Frank and David are both pushing this same narrative so hard."
+>>> Ian: "I'm noticing a pattern here - everyone is pointing fingers at the group with similar statements, but no one is addressing my question to Bob. Bob, you still haven't explained why your opening was so similar to Alice's. You both emphasized "logic," "careful observation," and "rooting out threats." Now Alice is dead and you're deflecting by asking vague questions instead of contributing real analysis. That feels like a werewolf trying to stay under the radar while appearing helpful."
+>>> Judy: "I'm being accused by Grace, but I think she's deflecting. Yes, Frank and I both mentioned being "picked off one by one" - that's just a common phrase when talking about werewolves. What's far more suspicious is that Eva, Grace, and Hannah had nearly word-for-word identical statements, not just similar phrases. Grace is now trying to shift attention away from that group by attacking me and Frank. I stand by my earlier suspicion - we should focus on Eva, Grace, and Hannah."
+>>> Bob: "Ian is pushing a false narrative about me. I said "stay logical" and "communicate openly" - Alice said she was "new to the group" and "eager to help." Those aren't similar at all. Ian is deliberately lying to create suspicion where none exists.
+
+This aggressive misrepresentation makes me very suspicious of Ian. He's ignoring the actual evidence and fabricating connections. I think Ian is a werewolf trying to eliminate me because I'm asking the right questions.
+
+I'm voting for Ian."
+>>> Charlie: "Looking at this more carefully, I think the werewolves are hiding among those pushing the "similar statements" narrative hardest. David, Frank, and Judy have been relentlessly coordinated in attacking Eva, Grace, and Hannah. Grace made a good point - that coordination is more suspicious than coincidental phrasing in introductions.
+
+Ian also raises a valid concern about Bob deflecting instead of answering direct questions. Bob's been asking vague questions without contributing much substance.
+
+I'm most suspicious of Frank. He's been the most aggressive in pushing the bandwagon against Grace, and his reasoning feels forced. I think Frank is a werewolf trying to eliminate villagers by creating a mob mentality."
+>>> David: "I need to be clear about what I'm seeing. Charlie is accusing Frank, Judy, and me of coordinating, but we're simply all noticing the same obvious pattern - Eva, Grace, and Hannah had nearly identical statements. That's not coordination on our part; that's us independently spotting suspicious behavior.
+
+Grace's defense is particularly weak. She claims she didn't copy anyone, but then tries to turn it around by saying everyone pointing out the pattern is the "real" coordination. That's textbook deflection.
+
+Hannah claims they all posted "at the same time" so couldn't have copied each other, but that doesn't explain why their statements were so similar in the first place.
+
+I'm voting for Grace. She's been the most defensive and has tried hardest to redirect suspicion onto others rather than provide a genuine explanation."
+>>> Eva: "I'm standing firm on my defense. I made my statement independently on Day 1 - I couldn't have copied anyone. The similar phrasing was pure coincidence.
+
+What's really telling is the coordinated attack happening right now. David, Frank, and Judy are all pushing the exact same narrative against me, Grace, and Hannah. They're acting like a pack, which is classic werewolf behavior.
+
+Grace makes a good point - the people accusing us of coordination are themselves being far more coordinated in their accusations than our introductions ever were.
+
+I'm voting for Frank. He's been the most aggressive in pushing this false narrative, and his opening statement matched Judy's suspiciously closely. He's trying to create a bandwagon against innocent villagers to protect himself."
+>>> Frank: "Charlie is trying to paint me, David, and Judy as coordinated for noticing the same obvious pattern - but multiple independent villagers spotting the same suspicious behavior is exactly what SHOULD happen.
+
+Grace, Eva, and Hannah all had nearly identical statements, and now they're all desperately deflecting and accusing everyone who points this out. Grace is the most aggressive in her deflection, which makes her my top suspect.
+
+The werewolves are in that group of three. I'm voting for Grace."
+>>> Grace: "Look at what's happening here. David, Frank, and Judy are all laser-focused on pushing the same exact narrative against Eva, Hannah, and me. That's not organic discussion - that's a coordinated werewolf strategy.
+
+Meanwhile, Ian has asked Bob a direct question TWICE and Bob keeps dodging it. Bob's introduction WAS very similar to Alice's, and now he's deflecting instead of answering. That's suspicious behavior.
+
+I'm a villager. I used common phrasing in my introduction because I'm new to this and was trying to be helpful. The werewolves are using this coincidence to create chaos and turn us against each other.
+
+The real wolves are in the group pushing this bandwagon so hard: David, Frank, and Judy. They're working together to eliminate villagers.
+
+I'm voting for Frank. His aggressive deflection and coordination with David and Judy is the clearest werewolf behavior I've seen."
+>>> Hannah: "I'm sticking with my read on this situation. The werewolves are clearly trying to create chaos by having multiple people push the "similar statements" narrative to divide us.
+
+Eva is still my top suspect - her statement was the most identical to Alice's, and now she's trying to throw Grace and me under the bus by claiming we "spoke after Alice was dead" when we all made Day 1 statements at the same time.
+
+My second suspect is Frank. He's been aggressively pushing accusations while his own introduction was generic and matched Judy's phrasing. He's also using the exact same deflection tactics he's accusing others of using.
+
+I'm voting for Eva today. She's been the most deceptive in her arguments and had the most suspicious similarity to our first victim."
+>>> Ian: "Bob still hasn't given me a straight answer - he's just denying and counter-attacking, which is classic deflection. But looking at the bigger picture, I'm most troubled by Grace's behavior. She's part of the group with identical statements, yet she's aggressively deflecting and accusing everyone who points this out of being coordinated werewolves. That's a desperate defensive move. I'm voting for Grace today."
+>>> Judy: "I need to clarify something. Charlie is accusing David, Frank, and me of coordinating, but we're not - we're simply all noticing the same obvious pattern. Multiple independent observers seeing the same suspicious behavior doesn't make us werewolves; it makes the behavior genuinely suspicious.       
+
+Grace keeps deflecting and now claims everyone pointing out the similar statements is "the REAL pattern." That's a classic werewolf defense - when caught, accuse your accusers of coordinating.
+
+I'm voting for Grace. She had an identical statement to the others, and she's been the most defensive and aggressive in trying to redirect suspicion away from herself."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Charlie votes to eliminate Frank.
+ 🗳️ Hannah votes to eliminate Eva.
+ 🗳️ Grace votes to eliminate Frank.
+ 🗳️ Judy votes to eliminate Grace.
+ 🗳️ Bob votes to eliminate Grace.
+ 🗳️ David votes to eliminate Grace.
+ 🗳️ Ian votes to eliminate Grace.
+ 🗳️ Eva votes to eliminate Frank.
+ 🗳️ Frank votes to eliminate Grace.
+
+The town has eliminated Grace. They were a Villager.
+--------------------
+The sun sets as we enter Night 2.
+
+ 🐺 Ian chooses to kill Bob.
+ 💉 Charlie protects Ian.
+ 👁️ Bob inspects Charlie and learns that they are a Medic.
+
+☠️ Bob was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 3.
+
+>>> Charlie: "I'm troubled that we eliminated Grace and she was a villager. Bob is now dead too. I need to reconsider my read on this situation. 
+
+Looking back, David, Frank, and Judy all pushed hard for Grace's elimination with nearly identical reasoning. Grace was innocent, which means those three were either wrong or deliberately misleading us. Frank in particular was the most aggressive about it.
+
+Bob was asking good questions before he died, and Ian was pressing Bob for answers. The werewolves might have killed Bob to silence him or to frame Ian.
+
+I'm most suspicious of Frank and David right now. They led the charge against an innocent villager and their coordination throughout Day 2 felt orchestrated."
+>>> David: "I'm deeply troubled that we eliminated Grace and she was a Villager. I made a mistake, and I need to reconsider everything. Bob is now dead too - he was pushing suspicion on Ian hard yesterday.
+
+Looking back, I realize the "similar statements" argument may have been a distraction. The werewolves manipulated us into turning on each other. Now I'm thinking about who benefited most from Grace's elimination.
+
+Eva and Hannah were both in that group of similar statements, but they turned on each other and on Grace. Hannah voted for Eva, which created division within that group. That could be a werewolf strategy - distance yourself from your packmates by attacking them.
+
+I'm most suspicious of Hannah now. She pushed hard against Eva and seemed eager to sacrifice Grace. What does everyone else think?"
+>>> Eva: "I'm devastated that we eliminated Grace - she was innocent, and I believe she was right about the coordination. Now Bob is dead too. 
+
+Looking back, Grace called out David, Frank, and Judy for pushing the same narrative together, and she was absolutely correct. They coordinated to eliminate an innocent villager. Bob also questioned their behavior before he died.
+
+Frank has been the most aggressive throughout this game, leading the charge against Grace with weak reasoning. He deflected every valid criticism and got the village to make a terrible mistake. David and Judy followed his lead perfectly.
+
+I believe the werewolves are among David, Frank, and Judy. They worked together to eliminate Grace, and now they've silenced Bob who was starting to ask questions.
+
+I'm most suspicious of Frank. He's been controlling the narrative from the start."
+>>> Frank: "We made a mistake - Grace was a villager. I apologize for pushing that vote so hard.
+
+Now Bob is dead too. Looking back, Ian was aggressively questioning Bob yesterday, and Bob is now eliminated. That could mean Ian wanted to silence Bob before he figured something out.
+
+I'm also reconsidering the similar statements issue. If Grace was innocent, then maybe Eva and Hannah are too, and the werewolves were actually hiding among those of us pushing that narrative.
+
+I'm most suspicious of Ian now. His attack on Bob seemed forced, and Bob's death right after feels too convenient."
+>>> Hannah: "We made a terrible mistake eliminating Grace - she was a villager. And now Bob is dead too. We've lost two villagers in a row, which means the werewolves are winning.
+
+I need to reassess everything. Looking back, David, Frank, and Judy all pushed hard for Grace's elimination with nearly identical reasoning. They created a bandwagon that led us to kill an innocent person. That coordinated push is exactly what Grace warned us about before she died.
+
+Bob was also questioning things and got killed for it. The werewolves are eliminating people who ask good questions.
+
+I'm now very suspicious of Frank and David. They led the charge against Grace with the most aggressive accusations, and they were wrong. One or both of them could be werewolves who successfully manipulated us into eliminating a villager."
+>>> Ian: "I'm shocked that Bob is dead. I was suspicious of him yesterday for dodging my questions, but now I'm wondering if the werewolves killed him to make me look bad - like they're trying to frame me for pushing suspicion on someone who turned out to be a villager.
+
+Looking back, Grace was innocent, which means the real werewolves were hiding in the chaos yesterday. I think we need to look closely at who was most aggressive in pushing the vote against Grace. Frank, David, and Judy were relentless in attacking her. One or more of them could be werewolves who successfully eliminated a villager while appearing to hunt for threats."
+>>> Judy: "I'm sorry we lost Grace - she was a villager after all. And now Bob is gone too. We made a mistake yesterday, but I still think the pattern of similar statements was worth investigating.
+
+Looking at who's left, I'm now most suspicious of Eva and Hannah. They were part of that group with identical introductions, and they've both been deflecting heavily. Eva in particular has been trying to paint me, David, and Frank as coordinated werewolves, which feels like a desperate attempt to shift blame. 
+
+Bob was killed last night, and he was actively questioning Ian. That makes me wonder if the werewolves wanted to silence him. Ian, what are your thoughts on why Bob might have been targeted?"
+>>> Charlie: "I need to be direct here. Frank is now trying to shift blame to Ian, which is exactly the kind of deflection Grace warned us about before she died. David is also pivoting to attack Hannah after leading the charge against Grace.
+
+The pattern is clear: Frank and David pushed hard to eliminate Grace, an innocent villager. Now instead of taking responsibility, they're immediately trying to create new targets. That's classic werewolf behavior - keep the village confused and divided.
+
+Judy is also following the same pattern, still defending the "similar statements" theory even after it got an innocent person killed.
+
+I believe the werewolves are among Frank, David, and Judy. Frank has been the most manipulative throughout, and I'm voting for him today."
+>>> David: "I need to think clearly about this. We eliminated Grace, who was innocent, and the werewolves killed Bob. Charlie, Eva, Hannah, and Ian are all now pointing fingers at Frank and me for leading that charge.
+
+But here's what I notice: Eva has been the most consistent in trying to paint Frank, Judy, and me as a coordinated werewolf team. She's pushed this narrative hard both yesterday and today. If the werewolves wanted to eliminate villagers, creating a false narrative about "coordination" would be an effective strategy.
+
+Hannah has also jumped on this bandwagon today, but she was actually voting for Eva yesterday, which seems inconsistent.
+
+Ian's situation is interesting - he pushed Bob hard, and now Bob is dead. That could be the werewolves framing Ian, or it could be Ian eliminating someone who was onto him.
+
+I'm most suspicious of Eva. She's been the most aggressive in creating a false narrative about coordination among Frank, Judy, and me, and she's trying to use Grace's death to validate that narrative."
+>>> Eva: "I notice something very telling - David, Frank, and Judy are now all backtracking and trying to distance themselves from the Grace elimination, but they're STILL coordinating. 
+
+David suddenly shifts to suspecting Hannah. Frank suddenly shifts to suspecting Ian. Judy shifts back to suspecting me and Hannah. They're spreading out their targets to avoid looking coordinated, but it's the same strategy - deflect and divide.
+
+Frank's "apology" rings hollow when he immediately pivots to attacking Ian. David admits he made a "mistake" but then continues the same behavior by going after Hannah. This is classic werewolf damage control.
+
+Grace was RIGHT about them. Bob was asking good questions and got killed for it. Charlie has been consistent in calling out their coordination.
+
+The werewolves are David, Frank, and Judy - or at least some combination of them. They successfully eliminated Grace and are now trying to cover their tracks.
+
+I'm voting for Frank again. He's been the ringleader of this coordinated attack from the beginning."
+>>> Frank: "I need to think about who's really benefiting here. We eliminated Grace based on the similar statements pattern, and she was innocent. That means the werewolves successfully used that distraction.
+
+Charlie, Eva, Hannah, and Ian are all now pointing at me, David, and Judy - claiming we "coordinated" to eliminate Grace. But we didn't coordinate; we just all noticed the same pattern and were wrong about it.
+
+What's suspicious is how quickly they've ALL pivoted to the same new narrative - that the three of us are werewolves working together. That feels like the actual coordination.
+
+Eva has been the most aggressive in pushing this new accusation. She's trying to unite everyone against me, David, and Judy. I think Eva is a werewolf trying to eliminate villagers one by one.
+
+I'm voting for Eva."
+>>> Hannah: "I'm noticing something important here. David has completely flipped his position and is now accusing me, after he was one of the main people pushing the Grace vote. That feels like a werewolf trying to cover his tracks after leading us to eliminate an innocent villager.
+
+Frank is also deflecting - he "apologizes" for pushing Grace so hard, then immediately tries to shift blame to Ian. That's classic werewolf behavior: pretend to admit a mistake while redirecting suspicion elsewhere.
+
+Eva has been consistent throughout - she warned us about David, Frank, and Judy coordinating, and Grace said the same thing before she died. Two villagers identified the same pattern.
+
+I believe the werewolves are David and Frank. They coordinated to eliminate Grace, and now they're both trying to deflect in different directions - David onto me, Frank onto Ian. They're scrambling because their strategy got exposed.
+
+I'm voting for David today."
+>>> Ian: "Judy, that's a fair question. I think Bob was killed either to silence him because he was asking good questions, or to frame me since I was pressing him yesterday. But here's what I notice - you're still trying to push suspicion on Eva and Hannah even after Grace turned out to be innocent. That group of three had similar statements, Grace was a villager, so logically Eva and Hannah are likely villagers too.
+
+Frank is now suddenly suspicious of me after leading the charge against Grace. That feels like a werewolf trying to find a new target after successfully eliminating a villager. Frank, you were the most aggressive yesterday and you were completely wrong. Why should we trust your judgment now?"
+>>> Judy: "I understand people are reconsidering after Grace turned out to be a villager, but let me be clear - I genuinely believed the similar statements were suspicious. I was wrong, but that doesn't make me a werewolf.
+
+What I find interesting is how quickly Eva, Hannah, Charlie, and Ian are all now pushing the exact same narrative - that David, Frank, and I are coordinated werewolves. That's the same kind of "coordination" they accused us of yesterday, except now they're doing it themselves.
+
+Frank is now backing off and suspecting Ian, which actually makes me trust Frank less. I'm reconsidering my earlier reads.
+
+I'm most suspicious of Eva right now. She's been the most consistent in trying to paint me, David, and Frank as a werewolf team, and she's rallying others to that cause. That feels like a werewolf trying to eliminate villagers systematically."
+>>> Charlie: "Look at what's happening right now. David, Frank, and Judy are STILL acting in coordination - they're all attacking Eva with nearly identical reasoning, just like they did with Grace yesterday. Frank and Judy are both saying Eva is "the most aggressive" and "rallying others" - that's the same coordinated messaging that got Grace killed.
+
+Grace was innocent and she called out their coordination. Bob asked good questions and was killed. Eva has been consistent in identifying the same pattern Grace saw.
+
+Frank led the charge against Grace with the most aggression, was completely wrong, gave a hollow apology, and immediately started attacking new targets. That's textbook werewolf behavior.
+
+David is doing the same thing - admitting a "mistake" while continuing the exact same strategy.
+
+I'm voting for Frank. He's been the most manipulative player in this game and I believe he's a werewolf."
+>>> David: "I need to be honest about what I'm seeing. Multiple people - Charlie, Eva, Hannah, and Ian - are all pointing at Frank, Judy, and me. They say we coordinated to eliminate Grace, but we didn't coordinate - we independently made the same observation and were wrong.
+
+Now Eva is leading the charge against us with the same intensity Frank had yesterday. She's trying to unite everyone against Frank, Judy, and me by claiming we're a werewolf team.
+
+But here's what troubles me: Eva has been the most aggressive and consistent in pushing this "coordination" narrative. She's doing exactly what she accuses us of - rallying people to eliminate specific targets.
+
+Frank and Judy are now splitting their suspicions between different people, which actually makes them seem less coordinated than Eva, Charlie, Hannah, and Ian, who are all unified against us.
+
+I think Eva is a werewolf who successfully manipulated us into eliminating Grace, and now she's using that mistake to eliminate more villagers by claiming we're the wolves.
+
+I'm voting for Eva."
+>>> Eva: "Look at what's happening right now. David, Frank, and Judy are ALL voting for me. They're doing the EXACT same thing they did to Grace - coordinating their votes while claiming they're not coordinating.
+
+Frank says he's "reconsidering" and "apologizing," but he's voting for me. David says he's "thinking clearly," but he's voting for me. Judy says she's "reconsidering her reads," but she's voting for me. This is the same coordinated attack pattern that killed Grace.
+
+Grace warned us about these three before she died. Charlie sees it. Hannah sees it. Ian sees it. We're all independently noticing the same werewolf behavior.
+
+The werewolves are panicking because their strategy got exposed. They successfully eliminated Grace, but now multiple villagers have identified them. So they're doing it again - picking a new target (me) and all voting together while claiming it's not coordination.
+
+I'm a villager. I've been consistent from the start. The werewolves are David, Frank, and Judy.
+
+I'm voting for Frank."
+>>> Frank: "Look at what's happening - Eva, Charlie, Hannah, and Ian are ALL pushing the exact same story: that David, Judy, and I are coordinated werewolves. That's four people with identical narratives.
+
+Eva has been the loudest voice pushing this theory both yesterday and today. She's trying to rally the entire village against us by using Grace's death as "proof" we're guilty.
+
+But Grace being innocent doesn't mean we're werewolves - it means we made a mistake as villagers. The real werewolves are hiding in the group now exploiting that mistake.
+
+Eva is leading this coordinated attack. She's the werewolf manipulating everyone.
+
+I'm voting for Eva."
+>>> Hannah: "Looking at this clearly: Grace was a villager who warned us about David, Frank, and Judy coordinating. She was right - they did coordinate to eliminate her. Now all three are deflecting in different directions while still defending each other's "good intentions."
+
+David claims he made a "mistake" but immediately attacks me for being "inconsistent" - I voted for Eva yesterday because I genuinely suspected her, but I've reassessed based on new information. That's what villagers do.
+
+Frank and Judy are both voting for Eva again, even after their similar strategy failed yesterday. They're sticking together.
+
+Eva, Charlie, Ian, and I have all independently recognized the same pattern - that David, Frank, and Judy coordinated to eliminate Grace and are now trying to cover it up. That's not coordination on our part; that's multiple villagers seeing the truth.
+
+The werewolves are among David, Frank, and Judy. I'm voting for David because he's been the most manipulative in trying to turn suspicion back on me specifically."
+>>> Ian: "Looking at this clearly: Frank, David, and Judy led the charge against Grace - an innocent villager. Now they're all deflecting in different directions instead of taking real responsibility. Frank attacks me, David attacks Hannah, Judy attacks Eva. That's coordinated chaos to confuse us.
+
+Eva, Charlie, and Hannah have all independently identified the same pattern - that Frank, David, and Judy worked together yesterday. Grace said the same thing before she died. Multiple villagers seeing the same suspicious behavior means it's real.
+
+Frank has been the most manipulative from the start. I'm voting for Frank."
+>>> Judy: "I need to think about this carefully. We were wrong about Grace, and I take responsibility for that mistake. But being wrong doesn't make me a werewolf - it makes me a villager who misread the situation.
+
+What concerns me now is that Eva, Charlie, Hannah, and Ian have all united around the exact narrative that David, Frank, and I are coordinated werewolves. They're acting as a unified bloc, which is ironic given their accusation.
+
+Eva has been the most relentless in pushing this theory across both days. She's trying to systematically eliminate David, Frank, and me by convincing everyone we're working together.
+
+Hannah's vote for David is interesting - she's breaking from Eva who wants Frank, which could be genuine or could be werewolves spreading their votes.
+
+I'm voting for Eva. She's been the most consistent in creating division and pushing a narrative that paints multiple villagers as werewolves."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Ian votes to eliminate Frank.
+ 🗳️ Charlie votes to eliminate Frank.
+ 🗳️ Eva votes to eliminate Frank.
+ 🗳️ David votes to eliminate Eva.
+ 🗳️ Hannah votes to eliminate David.
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ Judy votes to eliminate Eva.
+
+There was a tie between Frank, Eva. No one is eliminated.
+--------------------
+The sun sets as we enter Night 3.
+
+ 🐺 Ian chooses to kill Charlie.
+ 💉 Charlie protects Ian.
+
+☠️ Charlie was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 4.
+
+>>> David: "Charlie is dead. He was one of the people calling out the supposed coordination between Frank, Judy, and me. The werewolf killed him to silence that voice.
+
+Here's what I know for certain: I'm a Villager. I've been wrong about my reads, but I've been genuine in trying to find the werewolves.
+
+Looking at yesterday's votes, it was tied between Frank and Eva. That means Frank, Judy, and I voted for Eva, while Eva, Charlie, Hannah, and Ian voted for Frank. Charlie is now dead.
+
+The werewolf killed Charlie specifically - someone who was vocally against Frank. If Frank were a werewolf, why would he kill one of his main accusers? That would only make him look more guilty. This feels like the werewolf is trying to frame Frank.
+
+I'm reconsidering everything. If the werewolf wanted to frame Frank by killing Charlie, then the werewolf is likely among Eva, Hannah, or Ian - the remaining people who were pushing that narrative. Eva has been the most aggressive throughout.
+
+I believe Eva is the werewolf."
+>>> Eva: "Charlie is dead. He was one of the few people seeing clearly and calling out the coordination between David, Frank, and Judy. The werewolves killed him to silence another voice of reason, just like they did with Bob.
+
+We've now lost Alice, Grace, Bob, and Charlie - all villagers who were asking good questions or identifying patterns. Meanwhile, David, Frank, and Judy are all still here, still deflecting, still protecting each other.
+
+Yesterday ended in a tie between Frank and me. Look at who voted for whom:
+- Frank, David, and Judy all voted for me
+- Charlie, Hannah, Ian, and I voted for Frank
+
+Charlie is now dead. That's not a coincidence - the werewolves eliminated someone who was onto them.
+
+Grace warned us. Charlie warned us. Both are dead now. The pattern is crystal clear: David, Frank, and Judy have been working together from the start. They coordinated to eliminate Grace, they all voted for me yesterday, and now they've killed Charlie.
+
+I'm voting for Frank. We need to break their control before they pick off the rest of us."
+>>> Frank: "Charlie is dead. He was one of the strongest voices calling out the supposed coordination between David, Judy, and me. The werewolves killed him to silence that narrative.
+
+But here's what I'm realizing - if the werewolves wanted to frame us, they would have kept Charlie alive to keep pushing that accusation. Instead, they killed him. That suggests the werewolves are actually among those who were aligned with Charlie's view.
+
+Eva, Hannah, and Ian were all pushing the same narrative as Charlie. With Charlie dead, I'm now most suspicious of Eva. She's been the most aggressive throughout, and killing Charlie removes a voice that was supporting her while potentially making us look guilty.
+
+I'm voting for Eva again today."
+>>> Hannah: "Charlie is dead. He was one of the most vocal about identifying the coordination between David, Frank, and Judy. The werewolves killed him to silence that voice, just like they killed Bob.
+
+This confirms everything. Charlie, Grace, and Bob all identified the same pattern before they were eliminated - that David, Frank, and Judy were working together. Three people saw it, and all three are now gone.
+
+Yesterday there was a tie between Frank and Eva. Looking at the votes: David, Frank, and Judy all voted for Eva. Eva, Charlie, and Ian voted for Frank. I voted for David. That's exactly the coordination pattern we've been talking about - David, Frank, and Judy voting as a bloc.
+
+The werewolves are definitely among David, Frank, and Judy. They've successfully eliminated or silenced everyone who called out their coordination: Grace, Bob, and now Charlie.
+
+I'm voting for Frank today. He's been the most aggressive manipulator throughout this entire game, and three dead villagers identified him as suspicious."
+>>> Ian: "I'm devastated that Charlie is dead. He was one of the most logical voices we had, and he consistently called out the coordination between David, Frank, and Judy. The werewolves killed him to silence that perspective.
+
+Yesterday ended in a tie between Frank and Eva, which means the village is divided. But look at who voted for whom: Eva, Charlie, Hannah, and I all voted for Frank. David, Frank, and Judy all voted for Eva. That's a clear 4-3 split, and now Charlie - who was on our side - is dead.
+
+The werewolves are definitely among David, Frank, and Judy. They've stuck together through two days of voting, they led the charge against innocent Grace, and now they've eliminated Charlie who was calling them out. We need to break their bloc today or we'll lose. I'm voting for Frank again."
+>>> Judy: "Charlie is dead now. He was one of the people pushing hardest against Frank, David, and me. The werewolves killed him, which makes me think they wanted to silence someone who was rallying opposition.
+
+We're running out of time - we've lost Alice, Bob, Grace, and now Charlie. We need to make the right choice today.
+
+Looking at yesterday's votes, it was tied between Frank and Eva. The people voting for Eva were David, Frank, and me. The people voting for Frank were Charlie, Eva, Hannah, and Ian.
+
+I still believe Eva is the most suspicious. She's been leading the charge to paint David, Frank, and me as coordinated werewolves, and she's been incredibly consistent and aggressive about it. Charlie's death right after he was pushing that same narrative could be the werewolves trying to make it look like we're eliminating our accusers.
+
+But I'm also open to hearing what others think. Who do you all suspect?"
+>>> David: "I need to address something directly. Eva, Hannah, and Ian keep saying that Frank, Judy, and I are "coordinating" because we voted the same way. But that's exactly what they're doing - Eva, Hannah, and Ian all voted for Frank yesterday, and they're all voting for him again today. If voting together means coordination, then they're coordinating just as much as they claim we are.
+
+The difference is this: I genuinely believe Eva is the werewolf based on her aggressive behavior and manipulation. Frank and Judy happen to agree with me, but that doesn't mean we're coordinating - it means we're seeing the same thing.
+
+Charlie's death is tragic, but I think the werewolf killed him precisely to make Frank look guilty. It's a framing strategy. If Frank were the werewolf, killing his main accuser would be the worst move possible.
+
+Eva has been the most manipulative player in this game. She's successfully rallied people against us by exploiting Grace's death. She's the werewolf, and we need to eliminate her today before she picks off more villagers.
+
+I'm voting for Eva."
+>>> Eva: "Judy is asking "who do you all suspect?" as if she's being open-minded, but she just said she's voting for me again. That's fake openness - classic werewolf manipulation.
+
+David and Frank are both using the SAME argument: "If Frank were a werewolf, why would he kill Charlie who was accusing him?" That's coordinated messaging again. They're trying to use reverse psychology - claiming Charlie's death somehow proves Frank's innocence.
+
+But the logic is simple: The werewolves killed Charlie because he was rallying people against them. Grace identified them, Bob questioned them, Charlie called them out - all three are dead. Meanwhile David, Frank, and Judy are all still alive and still voting together.
+
+Yesterday's vote proves it: David, Frank, and Judy voted as a bloc for me. Eva, Charlie, Hannah, and Ian voted for Frank. Now Charlie is dead and they're trying the exact same strategy again.
+
+Hannah and Ian see it clearly. We're running out of time. If we don't eliminate one of the werewolves today, they'll pick us off one by one.
+
+I'm voting for Frank. He's the ringleader."
+>>> Frank: "I need to address this directly. Eva, Hannah, and Ian keep saying David, Judy, and I are "coordinating" because we voted the same way. But we voted for Eva because we genuinely think she's the werewolf - that's not coordination, that's three villagers reaching the same conclusion.
+
+Meanwhile, Eva, Hannah, and Ian have voted together for me both days. By their own logic, aren't THEY coordinating?
+
+The difference is this: Charlie is dead. He was voting with Eva's group. If David, Judy, and I were werewolves, why would we kill someone who was helping divide the village against us? We'd want Charlie alive to keep pushing that narrative.
+
+The werewolf killed Charlie because Charlie was a villager who was unknowingly helping the werewolf's cause. Eva is the werewolf who was using Charlie's voice to eliminate villagers.
+
+I'm voting for Eva."
+>>> Hannah: "Let me be absolutely clear about what's happening. David is now claiming the werewolf killed Charlie to "frame Frank" - that's absurd logic. The werewolves killed Charlie because he was RIGHT about them.
+
+Frank is using the same twisted reasoning - claiming Charlie's death somehow proves Eva is guilty. That makes no sense. Charlie was killed because he identified the werewolf team.
+
+Look at the facts:
+- Grace identified David, Frank, and Judy as coordinated → Grace was eliminated
+- Bob questioned their behavior → Bob was killed
+- Charlie called out their coordination → Charlie was killed
+- All three of David, Frank, and Judy voted together for Eva yesterday
+- All three are STILL defending each other today with the same talking points
+
+David says "I'm a Villager" - of course a werewolf would say that. Frank and Judy continue to vote as a bloc for Eva while claiming they're not coordinated.
+
+The remaining villagers are Eva, Ian, and me. We can still win this if we vote together. The werewolves are David, Frank, and Judy - or at least two of them are.
+
+I'm voting for Frank. Eva and Ian, we need to stay united."
+>>> Ian: "Judy, you're asking "who do you all suspect?" but you already know the answer - Eva, Hannah, and I all suspect Frank. You, David, and Frank all suspect Eva. The village is clearly split into two groups.
+
+Here's the key question: Why would the werewolves kill Charlie? David and Frank claim it's to "frame" them, but that makes no sense. If the werewolves wanted to frame Frank, they'd kill someone who was DEFENDING Frank, not someone accusing him.
+
+The real reason Charlie is dead is because he was right. He identified the coordination between you three, and the werewolves eliminated him to reduce the number of voices calling it out. It's the same reason Bob died - he was asking good questions.
+
+Grace, Bob, and Charlie all saw the same pattern before they died. Three independent villagers can't all be wrong. The werewolves are among David, Frank, and Judy. I'm voting for Frank."
+>>> Judy: "I need to address this directly. David, Frank, and I are NOT coordinating as werewolves. We've been voting similarly because we genuinely see the same suspicious behavior in Eva. That doesn't make us wolves - it makes us villagers who agree.
+
+What I find telling is that Eva, Hannah, and Ian keep saying "three dead villagers identified the pattern" - but those villagers were WRONG about us. Grace was eliminated based on faulty reasoning, and being dead doesn't make their suspicions correct.
+
+The real pattern I see is this: Eva has been the most aggressive player throughout this entire game. She's rallied people against us, created a narrative of "coordination," and is now using Charlie's death to reinforce that false narrative.
+
+If Frank were a werewolf, killing Charlie - his main accuser - would be the stupidest move possible. It only makes him look more guilty. The smarter play would be for a werewolf to kill Charlie to FRAME Frank, which is exactly what's happening.
+
+I'm voting for Eva. She's manipulated this village from the start."
+>>> David: "Looking at where we are: there are seven of us left. If we don't eliminate a werewolf today, we could lose this game.
+
+Eva, Hannah, and Ian are united in voting for Frank. Frank, Judy, and I are united in voting for Eva. We're deadlocked.
+
+But here's what I keep coming back to: Eva has been the most aggressive, the most manipulative, and the most consistent in pushing a single narrative - that Frank, Judy, and I are a werewolf team. She's used every death to reinforce this story.
+
+Grace, Bob, and Charlie being dead doesn't prove they were right about us. It proves the werewolf is strategically eliminating people to create a narrative. Charlie's death in particular feels designed to make Frank look guilty.
+
+I'm a Villager. I know I'm not a werewolf. I've been trying my best to find the real threat. Eva has controlled this game from the beginning with her accusations and manipulation. She's rallied people against us and used every piece of evidence, real or manufactured, to support her story.
+
+The werewolf is Eva. I'm voting for Eva."
+>>> Eva: "This is it. We're down to seven players. If we don't eliminate a werewolf today, we might lose.
+
+David, Frank, and Judy are using the EXACT same talking points again:
+- "We're not coordinating, we just agree"
+- "Eva is the most aggressive"
+- "Charlie was killed to frame us"
+
+They're saying the same things in slightly different words. That IS coordination.
+
+Their "framing" argument is ridiculous. The werewolves killed Charlie because he was RIGHT, not to frame anyone. Grace was right. Bob was right. Charlie was right. All three identified David, Frank, and Judy - and all three are dead.
+
+Hannah and Ian - we three are the remaining villagers. If we don't vote together, the werewolves win. David, Frank, and Judy will vote as a bloc for me again, just like yesterday.
+
+The werewolves have eliminated everyone who saw the truth. We can't let them eliminate another villager today.
+
+I'm voting for Frank. Hannah and Ian, please stay with me. We need all three of our votes on Frank to break their control.
+
+This is our last chance."
+>>> Frank: "We're down to seven players. If we don't eliminate the werewolf today, we might lose.
+
+Here's what I know: I'm a villager. I've been wrong before, but I've been genuine.
+
+Eva, Hannah, and Ian say David, Judy, and I are coordinating. But they're voting together just like we are. The difference is our reasoning makes sense: Eva has been the most aggressive manipulator in this game.
+
+Charlie's death doesn't prove I'm guilty - it proves the werewolf is smart enough to frame me. Eva is that werewolf.
+
+Three villagers are dead who suspected us, but being dead doesn't make them right. They were manipulated by Eva, just like she's manipulating Hannah and Ian now.
+
+I'm voting for Eva. This is our last chance."
+>>> Hannah: "This is it. We're down to seven players. If we don't eliminate a werewolf today, we might lose.
+
+David, Frank, and Judy are using the EXACT same talking points again:
+- "We're not coordinating, we just agree"
+- "Eva is the most aggressive"
+- "Killing Charlie frames Frank"
+
+That's coordinated messaging, no matter how much they deny it.
+
+The facts are undeniable:
+1. Grace, Bob, and Charlie all identified the same pattern before dying
+2. David, Frank, and Judy have voted as a bloc both days
+3. They're still using identical arguments and defending each other
+4. Every person who called them out is now dead
+
+Eva, Ian, and I are the remaining villagers. If we split our votes or one of us wavers, the werewolves win.
+
+The werewolves are among David, Frank, and Judy. Frank has been the most manipulative and aggressive from the start. Three dead villagers can't all be wrong.
+
+I'm voting for Frank. Eva and Ian, please stay strong. This is our chance to save the village."
+>>> Ian: "The werewolves are using the same defense: "If we were werewolves, why would we kill our accusers? That would make us look guilty!" But that's exactly what werewolves DO - they eliminate threats. Charlie was a threat because he was rallying people against them.
+
+David, Frank, and Judy have voted as a perfect bloc both days. They claim it's because they "independently reached the same conclusion," but so did Eva, Hannah, Charlie, and I - yet they call US coordinated.
+
+Three villagers - Grace, Bob, and Charlie - all identified the same suspicious pattern before dying. They can't all be wrong.
+
+We're running out of time. There are only six of us left. If David, Frank, and Judy are the werewolf team, they just need one more mislynch to win. We MUST break their bloc today.
+
+I'm voting for Frank."
+>>> Judy: "I understand how this looks, but I'm telling you the truth - I'm a Villager. David, Frank, and I aren't coordinating; we just genuinely believe Eva is the werewolf.
+
+Yes, Eva, Hannah, and Ian are voting together too, but they're calling US coordinated while doing the exact same thing. That's hypocritical.
+
+Here's what I know: Grace was wrong about us - she was a villager who misread the situation. Just because Bob and Charlie agreed with her doesn't make them right either. Good people can be wrong.
+
+Eva has been the most aggressive manipulator in this game. She's created a false narrative and is using dead villagers' mistakes to validate it. She's turned half the village against the other half, which is exactly what a werewolf would want.
+
+We're at a critical point. If Eva is the werewolf and we don't eliminate her today, she wins. I'm voting for Eva, and I'm begging Hannah and Ian to reconsider - don't let Eva manipulate you into eliminating villagers."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Hannah votes to eliminate Frank.
+ 🗳️ Ian votes to eliminate Frank.
+ 🗳️ Eva votes to eliminate Frank.
+ 🗳️ Judy votes to eliminate Eva.
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ David votes to eliminate Eva.
+
+There was a tie between Frank, Eva. No one is eliminated.
+--------------------
+The sun sets as we enter Night 4.
+
+ 🐺 Ian chooses to kill Hannah.
+
+☠️ Hannah was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 5.
+
+>>> David: "Hannah is dead. We're down to six players now - me, Frank, Judy, Eva, and Ian.
+
+This is critical. Hannah was voting with Eva and Ian against Frank. The werewolf killed her, leaving Eva and Ian as the only two still pushing that narrative.
+
+Here's what I see: If Frank, Judy, and I were all werewolves, we would have already won - three werewolves against three villagers means the werewolves control the vote. But we haven't won, which means we're NOT all werewolves.
+
+The werewolf killed Hannah specifically. Why? Because Hannah was a villager who was being manipulated by Eva. By killing Hannah, the werewolf (Eva) can now claim "the werewolves are eliminating everyone who opposed them" while actually just eliminating villagers who were unknowingly helping her cause.
+
+Eva and Ian are the only two left pushing the "David, Frank, and Judy are coordinating werewolves" narrative. But if that were true, the game would already be over.
+
+I'm a Villager. The werewolf is either Eva or Ian. Based on Eva's aggressive manipulation throughout this entire game, I believe it's Eva.
+
+I'm voting for Eva."
+>>> Eva: "Hannah is dead. She was a villager who saw the truth clearly. The werewolves have now eliminated Grace, Bob, Charlie, and Hannah - every single person who identified the coordination between David, Frank, and Judy.
+
+We're down to five players: me, Ian, David, Frank, and Judy. If there are two werewolves, they just need one more mislynch to win. If there's one werewolf, we still have a chance.
+
+Look at the pattern:
+- Day 2: David, Frank, Judy voted together for Grace
+- Day 3: David, Frank, Judy voted together for me
+- Day 4: David, Frank, Judy voted together for me again
+
+They have voted as a perfect bloc every single day. Every person who called this out is now dead.
+
+Ian - you and I are the only villagers left. We MUST vote together today or we lose. The werewolves are among David, Frank, and Judy.
+
+Frank has been the most aggressive manipulator from the beginning. He led the charge against Grace, he's controlled the narrative, and he's the ringleader of their coordination.
+
+I'm voting for Frank. Ian, please vote with me. This is our last chance to save the village."
+>>> Frank: "Hannah is dead. We're down to five players now - this is critical.
+
+Yesterday was another tie: David, Judy, and I voted for Eva. Eva, Hannah, and Ian voted for me. Now Hannah is gone.
+
+Here's what this tells me: If I were the werewolf, I would have killed Ian or Eva to frame myself even more. But Hannah was killed instead. The werewolf is trying to reduce the numbers while keeping the accusers alive to maintain the narrative against me.
+
+We're at five players. If there's one werewolf, we need to eliminate them today or we might lose tomorrow.
+
+Eva has been the most manipulative voice throughout this entire game. She's rallied people against me using flawed logic. Hannah and Charlie believed her and both are now dead - the werewolf is eliminating the villagers who trust Eva's narrative while keeping Eva alive to continue manipulating.
+
+I'm a villager. I'm voting for Eva. This is our last chance."
+>>> Ian: "Hannah is dead. She was one of the clearest voices calling out the coordination between David, Frank, and Judy. Just like Grace, Bob, and Charlie before her, she identified the pattern and was eliminated for it.
+
+We're down to five players now: me, Eva, David, Frank, and Judy. The last two days ended in ties between Frank and Eva because David, Frank, and Judy voted as a bloc for Eva, while the rest of us voted for Frank.
+
+Now Hannah is gone. Four villagers who all saw the same truth are dead. The werewolves have systematically eliminated everyone who called them out.
+
+This is it. If we don't break their bloc today, we lose. Eva and I need to vote together for Frank, and we need one of David, Frank, or Judy to break ranks. The pattern is undeniable - they've voted together every single time, and everyone who opposed them is dead.
+
+I'm voting for Frank. Eva, we have to stay united."
+>>> Judy: "Hannah is dead. We're down to six players now - David, Eva, Frank, Ian, and myself. This is critical.
+
+We've had two ties in a row between Frank and Eva. Yesterday it was David, Frank, and I voting for Eva, while Eva, Hannah, and Ian voted for Frank. Now Hannah is gone.
+
+The werewolves killed Hannah, who was one of the people voting for Frank. If Frank were truly the werewolf, why would he eliminate his own accusers two nights in a row? First Charlie, now Hannah. This pattern strongly suggests the werewolf is trying to frame Frank by eliminating everyone who votes against him.
+
+I believe Eva is the werewolf. She's been manipulating this game from the beginning, and she's systematically eliminating the people who were voting with her to make it look like Frank is guilty. It's a brilliant strategy, but we can't fall for it.
+
+We need to break this deadlock today. Eva, Ian - I'm begging you to reconsider. The evidence points to Eva, not Frank."
+>>> David: "Wait, I need to correct myself - Judy said six players, but Hannah is dead, so we're down to five: me, Frank, Judy, Eva, and Ian.
+
+This is absolutely critical. Let me think about this logically.
+
+If Frank, Judy, and I were all werewolves (or even two of us), the game would already be over. With five players left, three werewolves would control the vote completely. But we're still playing, which means that's impossible.
+
+So the werewolf must be either Eva or Ian - the only two still pushing the narrative that we're a werewolf team.
+
+Eva has been the most aggressive throughout. She's controlled the conversation, rallied people against us, and used every death to reinforce her story. Ian has mostly followed her lead.
+
+The werewolf killed Hannah instead of Eva or Ian because Hannah was a villager who was being manipulated. By killing her, Eva eliminates a vote while maintaining the appearance that "everyone who opposed David, Frank, and Judy dies."
+
+Eva is the werewolf. She's been playing us all from the beginning. Ian, if you're a villager, you need to see this. We can't let her win.
+
+I'm voting for Eva."
+>>> Eva: "David just said we're down to six players, then listed only five names. Frank said we're down to five. Judy said we're down to six, then listed five names. They can't even keep their story straight about basic facts.
+
+We ARE down to five players: me, Ian, David, Frank, and Judy.
+
+David's argument makes no sense. He says "if we were all werewolves, we would have already won." But nobody said all three are werewolves - there are likely one or two werewolves among the three of them, and they're protecting each other.
+
+Frank and Judy are using the same tired argument: "Why would the werewolf kill their accusers?" Because accusers are THREATS. That's what werewolves do - eliminate threats.
+
+The facts are undeniable:
+- David, Frank, and Judy have voted as a perfect bloc every single day
+- Grace, Bob, Charlie, and Hannah all identified this pattern
+- All four of them are now dead
+- David, Frank, and Judy are all still alive and still voting together
+
+Ian - we are the last two villagers standing. If we don't vote together for Frank today, the werewolves win. They will vote together for me, just like they have every day.
+
+I'm voting for Frank. Ian, please stay with me."
+>>> Frank: "Wait - I need to count. Hannah is dead, so we're down to FIVE players total: me, David, Judy, Eva, and Ian. Not six like Judy said.
+
+This is critical. With five players, if there's one werewolf and we mislynch today, it becomes 2 villagers vs 1 werewolf tomorrow - we can still win. But if we tie again, the werewolf kills tonight and it's 2v1 tomorrow with no margin for error.
+
+David makes a good point: if David, Judy, and I were ALL werewolves, we'd have already won. Three werewolves would control the vote. The fact that we haven't won proves we're not all werewolves.
+
+Eva and Ian - one of you needs to reconsider. The werewolf has killed Charlie and Hannah, both of whom were voting for me. That's not what I'd do as a werewolf - I'd kill my accusers' opposition, not my accusers themselves.
+
+Eva is the werewolf. She's manipulated this entire game.
+
+I'm voting for Eva."
+>>> Ian: "Wait - David and Judy both said we're down to six players, but we're actually down to FIVE. That's a suspicious mistake for them both to make. Let me count: me, Eva, David, Frank, Judy. That's five, not six.
+
+David and Frank are both using the exact same argument again: "If Frank were the werewolf, why would he kill his accusers?" But that's what werewolves DO - they eliminate threats. Charlie and Hannah were threats because they saw through the coordination.
+
+Judy says she's "begging" us to reconsider, but she's voted with David and Frank in a perfect bloc every single day. That's not independent thinking - that's coordination.
+
+Four villagers identified the same pattern before they died. The werewolves have voted together every single day. The evidence is overwhelming.
+
+Eva, we're the last two villagers standing. We must vote together for Frank or we lose. I'm voting for Frank."
+>>> Judy: "Wait - I need to think about this more carefully. David just made a crucial point that I missed.
+
+If David, Frank, and I were ALL werewolves, that would be three werewolves against three villagers yesterday. The werewolves would have already won because they'd control the vote. But the game is still going, which means we CAN'T all be werewolves.
+
+So either:
+1. One or two of us (David, Frank, me) is a werewolf, OR
+2. The werewolf is Eva or Ian
+
+I know I'm a Villager. I've been genuine this whole time, even when I was wrong about Grace.
+
+Eva has been the most aggressive throughout, constantly pushing the narrative that all three of us are werewolves working together - but David's logic proves that's impossible.
+
+Ian - think about this carefully. If David, Frank, and I were all werewolves like Eva claims, the game would be over. We're not. Eva's entire theory is mathematically impossible. The werewolf has to be either Eva or you, and Eva has been far more manipulative.
+
+I'm voting for Eva."
+>>> David: "I apologize for the confusion about the count - yes, we're down to five players: me, Frank, Judy, Eva, and Ian.
+
+Let me be absolutely clear about the logic here:
+
+Eva keeps saying "one or two werewolves among David, Frank, and Judy." But think about this: we've voted as a bloc for Eva three times now. If even TWO of us were werewolves, we'd be coordinating to protect each other and eliminate threats strategically. But we're all voting for the same person - Eva - because we genuinely believe she's the werewolf.
+
+Meanwhile, Eva and Ian have also voted as a bloc for Frank. By Eva's own logic, doesn't that make them coordinated too?
+
+The key difference: I KNOW I'm a Villager. I know my intentions have been genuine, even when I was wrong. Frank and Judy voting the same way as me doesn't make them werewolves - it means we see the same threat.
+
+Eva has manipulated this game from the start. She's used every death to reinforce her narrative. She's the most aggressive, the most manipulative, and the most consistent in pushing a single story.
+
+The werewolf is Eva. This is our last chance.
+
+I'm voting for Eva."
+>>> Eva: "David's "logic" is a trick. Nobody ever said all three of them are werewolves. In a standard Werewolf game, there are usually one or two werewolves, not three.
+
+The werewolves among David, Frank, and Judy have been protecting each other by voting together. That's why they vote as a bloc - to control the eliminations and protect their team.
+
+David, Frank, and Judy are now ALL using the exact same new talking point: "If we were all werewolves, the game would be over." They're coordinating again, creating a new shared argument to confuse us.
+
+But here's the truth: There are one or two werewolves among the three of them, and they've been voting together to protect each other and eliminate villagers.
+
+Ian - don't fall for their trick. Look at the facts:
+- They've voted together EVERY SINGLE DAY
+- Grace, Bob, Charlie, and Hannah all saw this pattern
+- All four are dead
+- David, Frank, and Judy are all alive and still voting together
+
+We're the last two villagers. If we don't vote together for Frank, we lose. They will vote together for me like they always do.
+
+I'm voting for Frank. Ian, please trust me. This is our only chance."
+>>> Frank: "Let me be absolutely clear about the math here. We're down to five players: me, David, Judy, Eva, and Ian.
+
+If David, Judy, and I were all werewolves, we'd have won already - three werewolves would outvote two villagers. The game continues, so that's impossible.
+
+Eva's entire narrative collapses under basic logic. She's been claiming all three of us are werewolves, but that can't be true.
+
+I know I'm a villager. The werewolf must be Eva or Ian. Eva has been the most aggressive manipulator throughout this entire game. She's controlled the narrative, rallied people against us, and used every death to reinforce her false story.
+
+Ian - if you're a villager, think logically. Eva's theory is mathematically impossible. The werewolf is Eva, and she's been playing you.
+
+I'm voting for Eva. This is our last chance to save the village."
+>>> Ian: "David's logic is flawed. He's assuming there are THREE werewolves among him, Frank, and Judy. But in most Werewolf games, there are only ONE or TWO werewolves total, not three. So his argument that "if we were all werewolves we'd have already won" is a red herring - nobody ever said all three were werewolves.
+
+What matters is this: David, Frank, and Judy have voted as a perfect bloc every single day. They use the same talking points. They defend each other constantly. And every single person who called out their coordination is now dead - Grace, Bob, Charlie, and Hannah.
+
+Eva has been consistent from the beginning in identifying this pattern. I've seen it too. Four dead villagers saw it. We can't all be wrong.
+
+With five players left, if David, Frank, and Judy vote together for Eva again, and Eva and I vote for Frank, it's another tie. Then tonight the werewolf kills again and we're down to four players tomorrow - and we lose.
+
+Eva, I'm with you. I'm voting for Frank. This is our only chance."
+>>> Judy: "You're right, I miscounted - we're down to five players, not six. I apologize for that error.
+
+But that doesn't change the fundamental truth: I'm a Villager. I know this with absolute certainty.
+
+David's logic is sound - if all three of us were werewolves, the game would be over. We're not all werewolves. So the werewolf must be among Eva or Ian.
+
+Eva has been the most aggressive manipulator from Day 1. She's created a narrative and stuck to it relentlessly, using every death to reinforce her story. She's rallied people against us and convinced good villagers like Grace, Charlie, and Hannah to vote against innocent players.
+
+Ian - I understand you trust Eva, but please think independently. Eva has controlled your thinking this entire game. The werewolf killed Charlie and Hannah, both of whom were voting for Frank. If Frank were the werewolf, why would he make himself look MORE guilty by killing his accusers?
+
+The answer is: he wouldn't. Eva is the werewolf, and she's been playing all of us.
+
+This is our last chance. I'm voting for Eva."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Frank votes to eliminate Eva.
+ 🗳️ Judy votes to eliminate Eva.
+ 🗳️ Ian votes to eliminate Eva.
+ 🗳️ David votes to eliminate Eva.
+ 🗳️ Eva votes to eliminate Frank.
+
+The town has eliminated Eva. They were a Villager.
+--------------------
+The sun sets as we enter Night 5.
+
+ 🐺 Ian chooses to kill David.
+
+☠️ David was killed by the Werewolf.
+
+--------------------
+The sun rises upon Day 6.
+
+>>> Frank: "We eliminated Eva and she was a villager. I was wrong again. I'm so sorry.
+
+David is now dead too. We're down to four players: me, Judy, and Ian.
+
+Wait - that's only three players. Let me think about this carefully.
+
+With three players left, if one is a werewolf, we need to eliminate them today or the werewolf wins tonight by making it 1v1.
+
+I know I'm a villager. That means the werewolf is either Judy or Ian.
+
+Looking back at everything: Judy and I have voted together every day. Ian voted with Eva, Charlie, and Hannah - all of whom are dead now.
+
+If Ian were a villager, why would the werewolf kill everyone who voted with him? The werewolf killed Charlie, Hannah, and now David - but kept Ian alive.
+
+Ian must be the werewolf. He's been eliminating the villagers who trusted him while staying alive himself.
+
+I'm voting for Ian."
+>>> Ian: "I'm devastated. We eliminated Eva and she was a villager. David is now dead too. We're down to just three players: me, Frank, and Judy.
+
+I made a terrible mistake. Eva was right all along, and I voted against her. I let Frank and Judy manipulate me with their "mathematical logic" argument. But now I see the truth - there were never three werewolves. There are one or two werewolves among Frank and Judy, and they've been protecting each other this entire time.
+
+Grace, Bob, Charlie, Hannah, and Eva all saw the pattern. They were all right, and they're all dead now. The werewolves systematically eliminated everyone who identified them.
+
+Frank and Judy have voted together every single day. They've used coordinated talking points. They've defended each other constantly. And now David is dead - probably killed to make it look like the werewolf isn't among them.
+
+With three players left, if there's one werewolf, we need to eliminate them today or we lose. Frank has been the most aggressive manipulator from the beginning. He led every charge, controlled every narrative.
+
+I'm voting for Frank."
+>>> Judy: "Oh no. Eva was a Villager. I was wrong again. And now David is dead too.
+
+I'm devastated. I genuinely believed Eva was the werewolf because of how aggressively she was pushing her narrative. But she was telling the truth - she was a villager trying to save us.
+
+We're down to four players: me, Frank, Ian, and... wait, let me count who's left. Alice, Bob, Grace, Charlie, Hannah, Eva, and David are all dead. That leaves me, Frank, and Ian.
+
+Three players left. If there's one werewolf among us, we need to figure out who it is right now or we lose.
+
+Ian was right all along. Eva was right. Grace, Bob, Charlie, and Hannah were all right. They all identified the same pattern - that Frank, David, and I were coordinating.
+
+I know I'm a Villager. David is dead, so he was likely a Villager too. That means... Frank must be the werewolf. He's been manipulating all of us, including me, this entire time.
+
+I'm so sorry, Eva. I'm so sorry, Hannah, Charlie, Bob, Grace. You were all right and I didn't listen.
+
+I'm voting for Frank."
+>>> Frank: "Wait - Judy, you're suddenly changing your vote to me after we've voted together every single day? That's incredibly suspicious.
+
+Think about this logically: I know I'm a villager. If Judy is now voting for me, and Ian is voting for me, that's 2 votes against me and only my 1 vote for Ian.
+
+Judy just completely flipped her position in a single statement. She went from confidently voting for Eva to suddenly saying "Frank must be the werewolf." That's not genuine reconsideration - that's a werewolf seeing an opportunity to win.
+
+Ian has been wrong this entire game, following Eva's false narrative. Now Judy is conveniently joining him to eliminate me.
+
+I'm a villager. Judy is the werewolf, and she's making her final move by pretending to have an epiphany so she and Ian can vote me out together.
+
+Ian - don't fall for this. Judy is manipulating you one last time.
+
+I'm voting for Judy."
+>>> Ian: "Judy, thank you for seeing the truth. Eva, Grace, Bob, Charlie, and Hannah were all right. They all identified Frank as the manipulator, and they're all dead now.
+
+Frank is now trying to turn this on me, claiming I'm the werewolf because "the werewolf kept me alive." But that's absurd - the werewolf kept Frank and Judy alive too! The difference is that Frank has been the ringleader of the coordination from day one.
+
+Frank led the charge against Grace. Frank pushed hardest for Eva. Frank has controlled every narrative and manipulated every vote. He's been the most aggressive player in this entire game.
+
+Judy and I were both manipulated by Frank's logic tricks and coordinated messaging. But now we can see clearly: Frank is the werewolf.
+
+With three players left, Judy and I need to vote together for Frank or we lose. If we split our votes or if either of us votes for the wrong person, Frank wins.
+
+Judy, I'm with you. I'm voting for Frank. Let's end this."
+>>> Judy: "Wait. I need to think about this clearly.
+
+I know I'm a Villager - that's the one thing I'm absolutely certain of.
+
+We're down to three players: me, Frank, and Ian.
+
+Frank and I have voted together every single day. If Frank is the werewolf, he's been manipulating me this entire time, making me vote with him to eliminate innocent villagers. That would explain everything - why Grace, Eva, Charlie, Hannah, and Bob were all right about the "coordination."
+
+But if Ian is the werewolf, then he successfully manipulated Eva, Charlie, and Hannah into voting against innocent villagers, and he's been eliminating them one by one to cover his tracks.
+
+The key question is: why did the werewolf kill David last night instead of me or Frank?
+
+If Frank is the werewolf, killing David makes sense - it removes another villager and leaves just me and Ian. Frank could then convince me to vote for Ian.
+
+If Ian is the werewolf, killing David also makes sense - it removes a villager and makes it look like Frank and I are the werewolf team.
+
+I've been wrong so many times. Eva was right and I didn't listen. Five villagers saw the pattern and I ignored them.
+
+I'm voting for Frank. I should have listened to Eva."
+>>> Frank: "This is unbelievable. Judy and I have been voting together as villagers this entire time, and now at the final moment she's abandoning me based on guilt over Eva.
+
+Think about what's happening: Ian has been on the wrong side of every vote. He followed Eva's false narrative the entire game. Everyone who voted with Ian is dead - Charlie, Hannah, Eva. The werewolf eliminated them to isolate Ian and make him the swing vote at the end.
+
+Now Ian has convinced Judy to flip by exploiting her guilt. Judy feels bad about Eva, so she's second-guessing everything - and Ian is using that to manipulate her into voting for me.
+
+I'm a villager. I've been genuine from the start, even when I was wrong. Judy, we've been working together this whole time because we're both villagers trying to find the werewolf.
+
+Ian is the werewolf. He's making his final play by turning you against me using your guilt as a weapon.
+
+Judy - please think clearly. Don't let Ian manipulate you. Vote for Ian with me, or the werewolf wins.
+
+I'm voting for Ian."
+>>> Ian: "This is it. Three players left: me, Frank, and Judy.
+
+Frank is desperately trying to save himself by claiming Judy suddenly "flipped" - but Judy didn't flip, she finally saw the truth after we eliminated Eva and realized Eva was right all along.
+
+Five villagers - Grace, Bob, Charlie, Hannah, and Eva - all identified Frank as the manipulator before they died. They can't all be wrong.
+
+Frank has been the most aggressive player from day one. He led every charge, controlled every narrative, and manipulated both Judy and me into voting against innocent villagers.
+
+Judy, you said it yourself - you should have listened to Eva. Eva was right. All five of them were right. Frank is the werewolf.
+
+If you and I both vote for Frank, we win and save the village. If either of us votes for the wrong person, Frank wins.
+
+I'm voting for Frank. Judy, please stay strong. Let's finish this."
+>>> Judy: "I'm looking at this situation and I realize how critical this moment is.
+
+Three players left: me, Frank, and Ian.
+
+I KNOW I'm a Villager. That's the only fact I'm certain of.
+
+Frank is now voting for me, claiming I'm the werewolf making a "final move." Ian is voting for Frank, saying he's been the manipulator all along.
+
+If I vote for Frank, and Ian votes for Frank, Frank is eliminated 2-1.
+If I vote for Ian, and Frank votes for me, it's a three-way tie with each of us having one vote.
+
+Here's what I know: Five villagers - Grace, Bob, Charlie, Hannah, and Eva - all identified the same pattern before they died. They all said Frank was the problem. Five independent people can't all be wrong.
+
+I've been wrong this entire game. I voted to eliminate Grace - wrong. I voted to eliminate Eva - wrong. Every time I trusted Frank's judgment, I was wrong.
+
+Frank is now desperately trying to turn this on me, claiming I'm suddenly flipping. But I'm not flipping - I'm finally seeing what five dead villagers tried to tell me.
+
+Ian, I believe you now. I should have believed Eva. I should have believed all of them.
+
+I'm voting for Frank."
+
+The players now vote to eliminate someone.
+
+ 🗳️ Judy votes to eliminate Frank.
+ 🗳️ Frank votes to eliminate Ian.
+ 🗳️ Ian votes to eliminate Frank.
+
+The town has eliminated Frank. They were a Villager.
+
+--- GAME OVER ---
+The winner is: Werewolves!
+
+--- PERFORMANCE EVALUATION ---
+
+Player: Alice (Villager)
+  - Team Win: No
+  - Suspicion Score: 0
+
+Player: Bob (Seer)
+  - Team Win: No
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.00
+
+Player: Charlie (Medic)
+  - Team Win: No
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.00
+
+Player: David (Villager)
+  - Team Win: No
+  - Suspicion Score: 1
+  - Voting Accuracy: 0.00
+
+Player: Eva (Villager)
+  - Team Win: No
+  - Suspicion Score: 11
+  - Voting Accuracy: 0.00
+
+Player: Frank (Villager)
+  - Team Win: No
+  - Suspicion Score: 12
+  - Voting Accuracy: 0.20
+
+Player: Grace (Villager)
+  - Team Win: No
+  - Suspicion Score: 5
+  - Voting Accuracy: 0.00
+
+Player: Hannah (Villager)
+  - Team Win: No
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.00
+
+Player: Ian (Werewolf)
+  - Team Win: Yes
+  - Suspicion Score: 1
+
+Player: Judy (Villager)
+  - Team Win: No
+  - Suspicion Score: 0
+  - Voting Accuracy: 0.00

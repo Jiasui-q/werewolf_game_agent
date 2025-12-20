@@ -35,7 +35,9 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         timestamp_started = time.time()
         
         env = AsyncGameEnvironment(agent_urls)
-        winner = await env.run_game()
+        await env.run_game()
+        
+        winner = env.winner
         
         metrics = {
             "time_used": time.time() - timestamp_started,

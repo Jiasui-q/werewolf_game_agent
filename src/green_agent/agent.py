@@ -15,6 +15,7 @@ from src.white_agent.agent import WhiteAgent
 
 DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Hannah", "Ian", "Judy"]
 MIN_GAME_SIZE = 6
+CONVERSATION_ITERATIONS = 3
 
 class AsyncPlayer:
     def __init__(self, name, role, agent_url=None):
@@ -295,6 +296,23 @@ class AsyncGameEnvironment:
 
         for stmt in statements:
             print(f">>> {stmt}")
+
+        for i in range(CONVERSATION_ITERATIONS - 1):
+            # notify players of everyone elses statements
+            async def _notify_statements(player: AsyncPlayer, idx: int):
+                others_statements = "\n".join([stmt for i, stmt   in enumerate(statements) if i != idx])
+                notify_message = (
+                    f"The other players have made the following statements:\n"
+                    f"{others_statements}\n\n"
+                    f"You may make {'your final statement before voting.' if i == CONVERSATION_ITERATIONS - 2 else 'another statement.'}"
+                )
+                new_statement = await player.send(notify_message)
+                return f"{player.name}: \"{new_statement}\""
+            new_statements = await asyncio.gather(*[_notify_statements(p, i) for i, p in enumerate(self.alive_players)])
+            statements = new_statements
+
+            for stmt in new_statements:
+                print(f">>> {stmt}")
 
         print("\nThe players now vote to eliminate someone.\n")
         votes = {}

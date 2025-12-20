@@ -45,7 +45,7 @@ def load_agent_card_toml(agent_name):
 
 
 def start_white_agent(model=DEFAULT_MODEL, host: str = "0.0.0.0", port: int = 9002) -> None:
-    print("Starting white agent...")
+    print(f"Starting player with model", {model})
     agent_card_dict = load_agent_card_toml("werewolf_white_agent")
     agent_card_dict["name"] = f"werewolf_player_{model.replace('/', '_')}"
     agent_card_dict["url"] = os.getenv("AGENT_URL") or f"http://{host}:{port}"

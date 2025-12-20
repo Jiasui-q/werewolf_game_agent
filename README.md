@@ -66,7 +66,7 @@ uv sync
 First, configure `.env` (or set the variable in your shell) so the white agent can reach Gemini:
 
 ```
-OEPNROUTER_API_KEY=...
+OPENROUTER_API_KEY=...
 ```
 
 ## Usage (Local)

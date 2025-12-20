@@ -13,3 +13,4 @@ dist/
 .python-version
 agentify-example-tau-bench/
 .ab/
+.DS_Store

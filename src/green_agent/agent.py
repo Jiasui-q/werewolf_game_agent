@@ -21,7 +21,6 @@ class AsyncPlayer:
         self.role = role
         
         self.is_alive = True
-        self.last_seen = None
         self.protected = False
 
         self.agent_url = agent_url
@@ -63,6 +62,7 @@ class AsyncGameEnvironment:
     def __init__(
         self,
         agent_urls: List[str],
+        player_count = MIN_GAME_SIZE
     ):
         self.agent_ctx_id = None
         self.players: List[AsyncPlayer] = []
@@ -71,12 +71,12 @@ class AsyncGameEnvironment:
         self.game_log: List[str] = []
         # self.remote_agent_urls = agent_urls
         self.npc_role_briefs: List[Dict[str, str]] = []
-        self._assign_roles(agent_urls)
+        self._assign_roles(agent_urls, player_count)
 
-    def _assign_roles(self, agent_urls: List[str]) -> None:
+    def _assign_roles(self, agent_urls: List[str], player_count) -> None:
         """Assign roles to all players"""
         remote_count = len(agent_urls)
-        player_count = max(MIN_GAME_SIZE, remote_count)
+        player_count = max(player_count, remote_count)
         if player_count > len(DEFAULT_PLAYERS):
             raise ValueError(f"Cannot support more than {len(DEFAULT_PLAYERS)} players.")
         local_count = player_count - remote_count
@@ -230,7 +230,6 @@ Who do you want to inspect? Reply with ONLY the name.
                         break
                 if not chosen: chosen = random.choice(inspectable)
                 
-                seer.last_seen = (chosen.name, chosen.role)
                 print(f"(Seer learns privately that {chosen.name} is a {chosen.role}.)")
                 self.game_log.append(f"SEER_SEES:{seer.name}:{chosen.name}:{chosen.role}")
                 

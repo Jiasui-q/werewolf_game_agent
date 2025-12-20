@@ -47,9 +47,9 @@ def run() -> None:
 
 
 @app.command()
-def launch(players: Optional[List[str]] = typer.Option(None, "--players", "-p", help="Explicit player roster to use.")) -> None:
+def launch(player_count: Optional[int] = typer.Argument(None, help="Number of players.")) -> None:
     """Launch a complete Werewolf evaluation."""
-    launch_evaluation(players)
+    launch_evaluation(player_count)
 
 
 @app.command()

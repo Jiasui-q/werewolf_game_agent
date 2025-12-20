@@ -1,72 +1,51 @@
-import uvicorn
-import tomllib
+import dotenv
+dotenv.load_dotenv()
+
+from collections import defaultdict
 import os
 
-from a2a.server.apps import A2AStarletteApplication
-from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import InMemoryTaskStore
 from a2a.types import AgentCard, SendMessageSuccessResponse, Message
-from a2a.utils import new_agent_text_message, get_text_parts
-from src.my_util import parse_tags, my_a2a
+from a2a.utils import new_agent_text_message
 
-from werewolf_game_agent.white_agent import client, MODEL_NAME
+from openai import AsyncOpenAI
 
+DEFAULT_MODEL = os.getenv("AGENT_MODEL", "google/gemini-2.0-flash-001")
+DEFAULT_SYSTEM_PROMPT = (
+    "You are playing a game of Werewolf. Follow the instructions provided by the user exactly. "
+    "Keep your statements short and speak in the first person. "
+    "When asked to pick a player, respond with only the player's name. "
+)
 
-def load_agent_card_toml(agent_name):
-    current_dir = __file__.rsplit("/", 1)[0]
-    with open(f"{current_dir}/{agent_name}.toml", "rb") as f:
-        return tomllib.load(f)
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
-class WerewolfWhiteAgentExecutor(AgentExecutor):
-    def __init__(self):
-        pass
+client = AsyncOpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=OPENROUTER_API_KEY,
+)
 
-    async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        print("White agent: Received a task, parsing...")
-        user_input = context.get_user_input()
-        tags = parse_tags(user_input)
-        prompt = tags.get("prompt")
-
-        try:
-            response = client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.8,
-            )
-            statement = (response.choices[0].message.content or "").strip()
-            if not statement:
-                statement = "..."
-        except Exception as e:
-            print(f"An error occurred during statement generation: {e}")
-            statement = "..."  # Return a silent response if the API fails
-        
-        print(f"White agent: Generated response: {statement[:200]}...")
-        await event_queue.enqueue_event(
-            new_agent_text_message(
-                statement, context_id=context.context_id
-            )
+class WhiteAgent:
+    def __init__(self, system_prompt=DEFAULT_SYSTEM_PROMPT, model=DEFAULT_MODEL):
+        self.messages = defaultdict(lambda: [{"role": "system", "content": system_prompt}])
+        self.model = model
+    
+    def add(self, ctx_id: str, role: str, content: str):
+        self.messages[ctx_id].append({"role": role, "content": content})
+    
+    async def respond(self, ctx_id: str) -> str:
+        response = await client.chat.completions.create(
+            model=self.model,
+            messages=self.messages[ctx_id],
+            temperature=0,
         )
-
-    async def cancel(self, context, event_queue) -> None:
-        raise NotImplementedError
-
-
-def start_white_agent(agent_name="werewolf_white_agent", host: str = "0.0.0.0", port: int = 9002) -> None:
-    print("Starting white agent...")
-    agent_card_dict = load_agent_card_toml(agent_name)
-
-    agent_card_dict["url"] = os.getenv("AGENT_URL") or f"http://{host}:{port}"
-
-    request_handler = DefaultRequestHandler(
-        agent_executor=WerewolfWhiteAgentExecutor(),
-        task_store=InMemoryTaskStore(),
-    )
-
-    app = A2AStarletteApplication(
-        agent_card=AgentCard(**agent_card_dict),
-        http_handler=request_handler,
-    )
-
-    uvicorn.run(app.build(), host=host, port=port)
+        statement = (response.choices[0].message.content or "").strip()
+        self.add(ctx_id, "assistant", statement)
+        return statement
+    
+    async def handle(self, ctx_id: str, message: str, skip_response: bool = False) -> str:
+        self.add(ctx_id, "user", message)
+        if skip_response:
+            return ""
+        return await self.respond(ctx_id)

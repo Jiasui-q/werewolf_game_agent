@@ -11,7 +11,7 @@ Werewolf is a classic social deduction game where players are secretly assigned 
 - 1 Werewolf (trying not to get caught)
 - 1 Seer (can investigate players at night)
 - 1 Medic (protects people from werewolf attacks)
-- 2 Villagers (just trying to survive)
+- Villagers (just trying to survive)
 
 **Game Loop:**
 
@@ -33,32 +33,87 @@ Werewolf is a classic social deduction game where players are secretly assigned 
 
 ## Agent Setup
 
-Each player is supported by a white agent that receives the conversation history up to this point. The environment (green agent) controls a number of "NPC" agents, with room for one "player" white agent through the AgentBeats platform.
+Each player is supported by a white agent that receives its secret role as well as the conversations taking place. Multiple white agents can play in the same environment, and they can even be backed by different models. The environment will instantiate extra "NPC" white agents if necessary to make sure the lobby is full.
 
-We use OpenRouter to make it easy to switch between different models based and evaluate comparatively.
+We use OpenRouter to make it easy to switch between different models and evaluate comparatively.
+
+The interface is purely conversational (no tool calls), and the environment communicates with the agents in natural language.
+
+Our white agent implementation is deliberately simple (just a system prompt and message context), since we are more interested in the behaviors the models "naturally" exhibit.
 
 ## Project Structure
 
 ```
-src/
-└── werewolf_game_agent/
-    ├── agentbeats.py      # AgentBeats-compatible controller shim
-    ├── controller.py      # FastAPI controller for `/task`, `/agent_info`, etc.
-    ├── agent_logic.py     # Shared exports for white-agent logic
-    ├── launcher.py        # Tau-Bench/Agentify-style evaluation runner
-    ├── green_agent/       # Assessment manager environment
-    └── white_agent/       # Gemini-powered target agent
-main.py                    # CLI entry point (uv run python main.py launch)
-pyproject.toml             # uv sync manifest
-README.md                  # This document
-.python-version            # Recommended Python version
-.gitignore                 # Workspace hygiene
+werewolf_game_agent/
+├── agentbeats              # Launch scripts for the different AgentBeats controllers.
+│   ├── green
+│   │   ├── launch.sh
+│   │   └── run.sh
+│   ├── white-gemini
+│   │   ├── launch.sh
+│   │   └── run.sh
+│   ├── white-gpt
+│   │   ├── launch.sh
+│   │   └── run.sh
+│   └── white-sonnet
+│       ├── launch.sh
+│       └── run.sh
+├── src
+│   ├── green_agent
+│   │   ├── agent.py        # Core logic for environment
+│   │   └── executor.py     # A2A glue for environment
+│   ├── launcher.py         # Launcher functions (powering the CLI)
+│   ├── my_util
+│   │   └── my_a2a.py       # A2A client for cross-agent communication
+│   └── white_agent
+│       ├── agent.py        # Core logic for player
+│       └── executor.py     # A2A glue for player
+└── main.py                 # CLI entrypoint
 ```
 
 ## Installation
 
 ```bash
 uv sync
+```
+
+## Configuration
+
+First, configure `.env` (or set the variable in your shell) so the white agent can reach Gemini:
+
+```bash
+OPENROUTER_API_KEY=...
+# optionally, set the openrouter model you want to evaluate.
+AGENT_MODEL=google/gemini-3-flash-preview
+```
+
+## Usage (Local)
+
+To run the environment locally
+
+```bash
+# (local) launch the assessment with 5 players
+python main.py launch 5
+```
+
+## Usage (A2A / AgentBeats)
+
+First, start all the AgentBeats controllers for the various agents.
+
+```bash
+# start green agent controller
+agentbeats/green/launch.sh
+
+# start controllers for white agents
+agentbeats/white-gemini/launch.sh
+agentbeats/white-gpt/launch.sh
+agentbeats/white-sonnet/launch.sh
+```
+
+Then, trigger a run either locally or through the AgentBeats platform.
+
+```bash
+python main.py launch-remote <green-url> <white-url-1> <white-url-2> ...
 ```
 
 ## Configuration

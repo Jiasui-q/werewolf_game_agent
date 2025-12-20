@@ -47,15 +47,15 @@ def run() -> None:
 
 
 @app.command()
-def launch(players: Optional[List[str]] = typer.Option(None, "--players", "-p", help="Explicit player roster to use.")) -> None:
+def launch(player_count: Optional[int] = typer.Argument(None, help="Number of players.")) -> None:
     """Launch a complete Werewolf evaluation."""
-    launch_evaluation(players)
+    launch_evaluation(player_count)
 
 
 @app.command()
-def launch_remote(green_url: str, white_url: str) -> None:
+def launch_remote(green_url: str, white_urls: list[str]) -> None:
     """Attempt a remote evaluation (not yet supported)."""
-    launch_remote_evaluation(green_url, white_url)
+    launch_remote_evaluation(green_url, *white_urls)
 
 
 if __name__ == "__main__":

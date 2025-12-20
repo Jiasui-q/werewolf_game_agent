@@ -10,7 +10,6 @@ from a2a.utils import get_message_text
 from src.my_util import my_a2a
 
 # Import the local WhiteAgent for NPC players
-from werewolf_game_agent.white_agent import WhiteAgent
 from src.white_agent.agent import WhiteAgent
 
 DEFAULT_PLAYERS = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Hannah", "Ian", "Judy"]

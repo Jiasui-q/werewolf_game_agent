@@ -53,9 +53,9 @@ def launch(players: Optional[List[str]] = typer.Option(None, "--players", "-p", 
 
 
 @app.command()
-def launch_remote(green_url: str, white_url: str) -> None:
+def launch_remote(green_url: str, white_urls: list[str]) -> None:
     """Attempt a remote evaluation (not yet supported)."""
-    launch_remote_evaluation(green_url, white_url)
+    launch_remote_evaluation(green_url, *white_urls)
 
 
 if __name__ == "__main__":

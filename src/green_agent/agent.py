@@ -321,6 +321,34 @@ Possible: {", ".join([p.name for p in protectable])}
             self.game_over = True
             self.winner = "Werewolves"
 
+    def get_reports(self):
+        reports = {p.name: {'role': p.role,
+                            'team_win': (self.winner == 'Werewolves' and p.role == 'Werewolf')
+                                        or (self.winner == 'Villagers' and p.role != 'Werewolf')}
+                   for p in self.players}
+        for name in reports:
+            reports[name]['suspicion_score'] = sum(1 for log in self.game_log
+                                                   if log.startswith("VOTE:") and log.split(':')[2] == name)
+        for voter in self.players:
+            if voter.role != 'Werewolf':
+                votes = [log for log in self.game_log if log.startswith(f"VOTE:{voter.name}:")]
+                if votes:
+                    correct = sum(1 for v in votes if
+                                  reports[v.split(':')[2]]['role'] == 'Werewolf')
+                    reports[voter.name]['voting_accuracy'] = correct / len(votes)
+        return reports
+
+    def run_evaluation(self):
+        print("\n--- PERFORMANCE EVALUATION ---")
+        reports = self.get_reports()
+        for name, r in reports.items():
+            print(f"\nPlayer: {name} ({r['role']})")
+            print(f"  - Team Win: {'Yes' if r['team_win'] else 'No'}")
+            print(f"  - Suspicion Score: {r['suspicion_score']}")
+            if 'voting_accuracy' in r:
+                print(f"  - Voting Accuracy: {r['voting_accuracy']:.2f}")
+
+
     async def run_game(self):
         day = 1
         while not self.game_over:
@@ -338,6 +366,7 @@ Possible: {", ".join([p.name for p in protectable])}
             
         print(f"\n--- GAME OVER ---")
         print(f"The winner is: {self.winner}!")
+        self.run_evaluation()
         return self.winner
 
 
@@ -382,6 +411,7 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
             "remote_player_won": False,  # set below
             "remote_player_name": remote_player_name,
             "npc_roles": env.npc_role_briefs,
+            "reports": env.get_reports(),
         }
         
         # Determine if remote player won

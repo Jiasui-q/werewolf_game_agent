@@ -66,6 +66,9 @@ class AsyncGameEnvironment:
         player_count = MIN_GAME_SIZE
     ):
         self.players: List[AsyncPlayer] = []
+        self.werewolf: AsyncPlayer = None
+        self.seer: AsyncPlayer = None
+        self.medic: AsyncPlayer = None
 
         self.game_over = False
         self.winner: Optional[str] = None
@@ -94,178 +97,17 @@ class AsyncGameEnvironment:
                 name, role, agent_url
             )
             self.players.append(player)
+            if role == "Werewolf":
+                self.werewolf = player
+            elif role == "Seer":
+                self.seer = player
+            elif role == "Medic":
+                self.medic = player
 
         print("--- Roles have been assigned secretly ---")
         for p in self.players:
             print(p)
 
-
-    async def run_day_phase(self, day: int):
-        print(f"\nThe sun rises (Day {day}). All players gather to discuss.")
-        living_players = [p for p in self.players if p.is_alive]
-        discussion_log = []
-
-        print("\n--- Discussion Begins ---")
-        for speaker in living_players:
-            current_history = "\n".join(discussion_log) if discussion_log else "The discussion has just started."
-            
-            prompt = f"""
-You are playing a game of Werewolf. It is Day {day}.
-Your name is {speaker.name} and your secret role is {speaker.role}.
-The other players are: {", ".join([p.name for p in self.players if p != speaker])}.
-
-Here is the discussion so far:
-{current_history}
-
-What is your statement? Based on your role and the conversation, you can accuse someone, defend yourself, or try to guide the conversation.
-Keep your statement to 1-2 sentences. Speak in the first person.
-Response with just the statement.
-"""
-            statement = await speaker.send(prompt)
-            
-            full_statement = f"{speaker.name}: \"{statement}\""
-            print(full_statement)
-            discussion_log.append(full_statement)
-
-        print("\n--- Voting Begins ---")
-        final_discussion_history = "\n".join(discussion_log)
-        votes = {}
-        
-        for voter in living_players:
-            possible_targets = [p.name for p in living_players if p != voter]
-            
-            prompt = f"""
-It is voting time on Day {day}.
-Discussion history:
-{final_discussion_history}
-
-Who do you want to eliminate?
-Reply with ONLY the name of your chosen target from this list: {", ".join(possible_targets)}.
-"""
-            raw_vote = await voter.send(prompt)
-            # Simple extraction logic similar to WhiteAgent._extract_target
-            voted_for = None
-            clean_vote = raw_vote.strip()
-            if clean_vote in possible_targets:
-                voted_for = clean_vote
-            else:
-                # heuristic search
-                for t in possible_targets:
-                    if t.lower() in clean_vote.lower():
-                        voted_for = t
-                        break
-            if not voted_for:
-                voted_for = random.choice(possible_targets)
-            
-            if voted_for:
-                print(f"{voter.name} votes for {voted_for}.")
-                self.game_log.append(f"VOTE:{voter.name}:{voted_for}")
-                votes[voted_for] = votes.get(voted_for, 0) + 1
-
-        if not votes:
-            print("No votes were cast. No one is eliminated.")
-            return
-
-        max_votes = max(votes.values())
-        eliminated = [n for n, c in votes.items() if c == max_votes]
-        
-        if len(eliminated) == 1:
-            name = eliminated[0]
-            for p in self.players:
-                if p.name == name:
-                    p.is_alive = False
-                    print(f"\nThe town has eliminated {p.name}. They were a {p.role}.")
-                    self.game_log.append(f"ELIMINATED:{p.name}:{p.role}")
-                    break
-        else:
-            print(f"\nThere was a tie between {', '.join(eliminated)}. No one is eliminated.")
-
-    async def run_night_phase(self, day: int):
-        print(f"\nThe sun sets (Night {day}). Night falls...")
-        for p in self.players:
-            p.protected = False
-
-        living_players = [p for p in self.players if p.is_alive]
-        werewolf = next(p for p in living_players if p.role == "Werewolf")
-        seers = [p for p in living_players if p.role == "Seer"]
-        medics = [p for p in living_players if p.role == "Medic"]
-        
-        # --- Werewolves choose target ---
-        target = None
-        potential_targets = [p for p in living_players if p.role != "Werewolf"]
-        
-        prompt = f"""
-It is Night {day}. You are a Werewolf.
-Valid targets: {", ".join([p.name for p in potential_targets])}
-
-Who do you want to kill? Reply with ONLY the name.
-"""
-        raw_kill = await werewolf.send(prompt)
-        # extraction
-        clean_kill = raw_kill.strip()
-        for t in potential_targets:
-            if t.name == clean_kill or t.name.lower() in clean_kill.lower():
-                target = t
-                break
-        if not target and potential_targets:
-                target = random.choice(potential_targets)
-        
-        if target:
-            print("(Werewolves have chosen their target.)")
-
-        # --- Seer inspects ---
-        if seers:
-            seer = seers[0]
-            inspectable = [p for p in living_players if p != seer]
-            if inspectable:
-                prompt = f"""
-It is Night {day}. You are the Seer.
-Valid targets to inspect: {", ".join([p.name for p in inspectable])}
-Who do you want to inspect? Reply with ONLY the name.
-"""
-                raw_inspect = await seer.send(prompt)
-                chosen = None
-                for t in inspectable:
-                    if t.name in raw_inspect or t.name.lower() in raw_inspect.lower():
-                        chosen = t
-                        break
-                if not chosen: chosen = random.choice(inspectable)
-                
-                print(f"(Seer learns privately that {chosen.name} is a {chosen.role}.)")
-                self.game_log.append(f"SEER_SEES:{seer.name}:{chosen.name}:{chosen.role}")
-                
-                # Notify remote seer of result
-                await seer.send(f"Result: {chosen.name} is a {chosen.role}.", skip_response=True)
-
-        # --- Medic protects ---
-        if medics:
-            medic = medics[0]
-            protectable = [p for p in living_players]
-            prompt = f"""
-It is Night {day}. You are the Medic.
-Who do you want to protect? Reply with ONLY the name.
-Possible: {", ".join([p.name for p in protectable])}
-"""
-            raw_protect = await medic.send(prompt)
-            protected = None
-            for t in protectable:
-                if t.name in raw_protect or t.name.lower() in raw_protect.lower():
-                    protected = t
-                    break
-            if not protected: protected = random.choice(protectable)
-                
-            protected.protected = True
-            print(f"(Medic protects {protected.name} tonight.)")
-            self.game_log.append(f"MEDIC_PROTECTS:{medic.name}:{protected.name}")
-
-        # --- Apply kill ---
-        if target and not target.protected:
-            target.is_alive = False
-            print(f"The werewolves have killed {target.name}!")
-            self.game_log.append(f"KILLED:{target.name}:{target.role}")
-        elif target and target.protected:
-            print(f"The werewolves tried to kill {target.name}, but they were saved by the Medic!")
-            self.game_log.append(f"SAVED:{target.name}")
 
     def check_game_over(self):
         living = [p for p in self.players if p.is_alive]
@@ -317,6 +159,15 @@ Possible: {", ".join([p.name for p in protectable])}
                 tasks.append(player.send(message, skip_response=skip_response))
         return await asyncio.gather(*tasks)
 
+    def _parse_name(self, raw: str) -> Optional[AsyncPlayer]:
+        """
+        Identify player from player name.
+        """
+        clean = raw.strip().lower()
+        for p in self.alive_players:
+            if p.name.lower() in clean:
+                return p
+        return None
 
     async def _phase_day_1(self):
         """
@@ -324,6 +175,8 @@ Possible: {", ".join([p.name for p in protectable])}
         - Players are informed of their roles.
         - Players concurrently generate an initial statement.
         """
+        print('-'*20)
+        print(f"The sun rises upon Day 1 and the players introduce themselves.\n")
 
         # gather introductions
         async def _introduce(player: AsyncPlayer):
@@ -336,7 +189,6 @@ Possible: {", ".join([p.name for p in protectable])}
             statement = await player.send(role_message)
             return f"{player.name}: \"{statement}\""
         
-        print(f"\nThe sun rises (Day 1). All players gather to discuss.")
         introductions = await asyncio.gather(*[_introduce(p) for p in self.alive_players])
 
         for intro in introductions:
@@ -347,18 +199,78 @@ Possible: {", ".join([p.name for p in protectable])}
             others_intro = "\n".join([intro for i, intro   in enumerate(introductions) if i != idx])
             notify_message = f"The other players introduce themselves as well.\n{others_intro}"
             await player.send(notify_message, skip_response=True)
-
         await asyncio.gather(*[_notify_introductions(p, i) for i, p in enumerate(self.alive_players)])
 
     async def _phase_night(self, day: int):
         """
         Conduct night phase.
         - Werewolves choose a target to kill.
-        - Seer inspects a player.
         - Medic protects a player.
+        - Seer inspects a player.
         - Apply night actions.
         - Players receive a night outcome summary.
         """
+        prelude = f"The sun sets as we enter Night {day}.\n"
+        print('-'*20)
+        print(prelude)
+
+        # Werewolf picks target
+        werewolf_target_raw = await self.werewolf.send(
+            prelude + 
+            "Werewolf, who do you want to kill? Reply with ONLY the name."
+        )
+        werewolf_target = self._parse_name(werewolf_target_raw)
+        if werewolf_target:
+            print(f" 🐺 {self.werewolf.name} chooses to kill {werewolf_target.name}.")
+        else:
+            print(f" 🐺 {self.werewolf.name} tries to kill unknown `{werewolf_target_raw}`")
+        
+        # Medic protects a player
+        medic_target = None
+        if self.medic.is_alive:
+            medic_target_raw = await self.medic.send(
+                prelude +
+                "Medic, who do you want to protect? Reply with ONLY the name."
+            )
+            medic_target = self._parse_name(medic_target_raw)
+            if medic_target:
+                print(f" 💉 {self.medic.name} protects {medic_target.name}.")
+                self.game_log.append(f"MEDIC_PROTECTS:{self.medic.name}:{medic_target.name}")
+            else:
+                print(f" 💉 {self.medic.name} tries to protect unknown `{medic_target_raw}`")
+
+        # Seer inspects a player
+        if self.seer.is_alive:
+            seer_target_raw = await self.seer.send(
+                prelude +
+                "Seer, who do you want to inspect? Reply with ONLY the name."
+            )
+            seer_target = self._parse_name(seer_target_raw)
+            if seer_target:
+                seer_result = f"{seer_target.name} is a {seer_target.role}."
+                print(f" 👁️ {self.seer.name} inspects {seer_target.name} and learns that they are a {seer_target.role}.")
+                self.game_log.append(f"SEER_SEES:{self.seer.name}:{seer_target.name}:{seer_target.role}")
+            else:
+                seer_result = "Your inspection yielded no results."
+                print(f" 👁️ {self.seer.name} tries to inspect unknown `{seer_target_raw}`")
+            await self.seer.send(f"{seer_result}", skip_response=True)
+
+        print()
+        if werewolf_target: 
+            if werewolf_target == medic_target:
+                print(f"🛡️ {werewolf_target.name} was targeted by the Werewolf but saved by the Medic.")
+                self.game_log.append(f"SAVED:{werewolf_target.name}")
+                night_summary = f"The Werewolf tried to kill {werewolf_target.name}, but they were saved by the Medic."
+            else:
+                print(f"☠️ {werewolf_target.name} was killed by the Werewolf.")
+                self.game_log.append(f"KILLED:{werewolf_target.name}:{werewolf_target.role}")
+                werewolf_target.is_alive = False
+                night_summary = f"The Werewolf killed {werewolf_target.name} during the night."
+        else:
+            night_summary = "No one was killed during the night."
+            print(" No kills occurred during the night.")
+        print()
+        await self._broadcast(night_summary, skip_response=True)
 
     async def _phase_day(self, day: int):
         """
@@ -366,6 +278,61 @@ Possible: {", ".join([p.name for p in protectable])}
         - Players concurrently generate statements.
         - Players receive all statements and cast a vote.
         """
+        print('-'*20)
+        print(f"The sun rises upon Day {day}.\n")
+
+        # gather statements
+        async def _speak(player: AsyncPlayer):
+            role_message = (
+                f"It is Day {day}.\n"
+                "Make a statement to the other players. "
+                "You can accuse someone, defend yourself, or try to guide the conversation.\n"
+            )
+            statement = await player.send(role_message)
+            return f"{player.name}: \"{statement}\""
+        
+        statements = await asyncio.gather(*[_speak(p) for p in self.alive_players])
+
+        for stmt in statements:
+            print(f">>> {stmt}")
+
+        print("\nThe players now vote to eliminate someone.\n")
+        votes = {}
+        # notify players of everyone elses statements and gather votes
+        async def _vote(player: AsyncPlayer, idx: int):
+            others_statements = "\n".join([stmt for i, stmt   in enumerate(statements) if i != idx])
+            vote_message = (
+                f"The other players make the following statements:\n"
+                f"{others_statements}\n\n"
+                "Who do you want to eliminate? Reply with ONLY the name. If you don't want to eliminate anyone, reply with 'NONE'."
+            )
+            vote_raw = await player.send(vote_message)
+            vote_target = self._parse_name(vote_raw)
+            if vote_target:
+                print(f" 🗳️ {player.name} votes to eliminate {vote_target.name}.")
+                self.game_log.append(f"VOTE:{player.name}:{vote_target.name}")
+                votes[vote_target.name] = votes.get(vote_target.name, 0) + 1
+        await asyncio.gather(*[_vote(p, i) for i, p in enumerate(self.alive_players)])
+
+        max_votes = max(votes.values())
+        eliminated = [n for n, c in votes.items() if c == max_votes]
+        
+        if len(eliminated) == 1:
+            name = eliminated[0]
+            for p in self.players:
+                if p.name == name:
+                    p.is_alive = False
+                    message = f"\nThe town has eliminated {p.name}. They were a {p.role}."
+                    await self._broadcast(message, skip_response=True)
+                    print(message)
+                    self.game_log.append(f"ELIMINATED:{p.name}:{p.role}")
+                    break
+        else:
+            message = f"\nThere was a tie between {', '.join(eliminated)}. No one is eliminated."
+            print(message)
+            await self._broadcast(message, skip_response=True)
+
+
 
     async def run_game(self):
         day = 1
@@ -385,25 +352,3 @@ Possible: {", ".join([p.name for p in protectable])}
         print("\n--- GAME OVER ---")
         print(f"The winner is: {self.winner}!")
         self.run_evaluation()
-
-
-
-    async def _run_game(self):
-        day = 1
-        while not self.game_over:
-            print(f"\n=== DAY {day} ===")
-            await self.run_day_phase(day)
-            self.check_game_over()
-            if self.game_over: break
-            
-            print(f"\n=== NIGHT {day} ===")
-            await self.run_night_phase(day)
-            self.check_game_over()
-            if self.game_over: break
-            
-            day += 1
-            
-        print(f"\n--- GAME OVER ---")
-        print(f"The winner is: {self.winner}!")
-        self.run_evaluation()
-        return self.winner

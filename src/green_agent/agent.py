@@ -38,7 +38,7 @@ class AsyncPlayer:
         self.white_agent_url = white_agent_url
         self.last_seen = None
         self.protected = False
-        
+
         if not is_remote:
             self.agent_logic = WhiteAgent(name, role, all_player_names)
         else:
@@ -57,6 +57,7 @@ class AsyncGameEnvironment:
         remote_agent_url: str,
         remote_player_name: str = "Remote",
     ):
+        self.agent_ctx_id = None
         self.players: List[AsyncPlayer] = []
         self.game_over = False
         self.winner: Optional[str] = None
@@ -101,17 +102,18 @@ class AsyncGameEnvironment:
         for p in self.players:
             print(p)
 
-    async def _get_remote_response(self, prompt: str, context_id: str = None) -> str:
+    async def _get_remote_response(self, prompt: str) -> str:
         print(f"@@@ Green agent: Sending message to remote white agent...\n{prompt[:200]}...")
         msg_formatted = f"<prompt>{prompt}</prompt>"
         white_agent_response = await my_a2a.send_message(
-            self.remote_agent_url, msg_formatted, context_id=context_id
+            self.remote_agent_url, msg_formatted, 
+            context_id=self.agent_ctx_id
         )
         res_root = white_agent_response.root
         assert isinstance(res_root, SendMessageSuccessResponse)
         res_result = res_root.result
         assert isinstance(res_result, Message)
-        
+        self.agent_ctx_id = res_result.context_id
         text_parts = get_text_parts(res_result.parts)
         if not text_parts:
             return "..."

@@ -23,18 +23,18 @@ class WerewolfGreenAgentExecutor(AgentExecutor):
         print("Green agent: Received a task, parsing...")
         user_input = context.get_user_input()
         tags = parse_tags(user_input)
-        white_agent_url = tags.get("white_agent_url")
+        agent_urls = tags.get("white_agent_url", [])
         
-        if not white_agent_url:
+        if not agent_urls:
             print("Error: No white_agent_url provided.")
             return
 
-        print(f"Agent URLs: {white_agent_url}")
+        print(f"Agent URLs: {agent_urls}")
         
         print("Green agent: Starting Werewolf Game Environment...")
         timestamp_started = time.time()
         
-        env = AsyncGameEnvironment([white_agent_url])
+        env = AsyncGameEnvironment(agent_urls)
         winner = await env.run_game()
         
         metrics = {
